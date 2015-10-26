@@ -4,6 +4,7 @@
         <link rel="import" href="../bower_components/paper-header-panel">
 		<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
 		<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+		<link rel="import" href="../bower_components/paper-button/paper-button.html">
 		<!-- <link rel="import" href="../scripts/app.js"> -->
 		<style>
             #headerName {
@@ -28,6 +29,24 @@
                 margin-top: 10px;
                 color: green;
             }
+            #submit{
+                clear: both;
+                background-color: blue;
+                color: white;
+                margin-top: 15px;
+                margin-left: 85%;
+            }
+            .optionSection{
+                float: right;
+                color: green;
+
+            }
+            .dmoption{
+                display: inline-block;
+                margin-left: 10px;
+                font-size: 14px;
+            }
+        
         
         }
 		</style>
@@ -41,6 +60,11 @@
             </paper-toolbar>
         </paper-header-panel>
         <div class="sName">Developmental Milestones</div>
+        <div class="optionSection">
+            <div class="dmoption">Not Yet</div>
+            <div class="dmoption">Some What</div>
+            <div class="dmoption">Very Much</div>
+        </div>
         <div class="dmQuestions" id="dmQuestions">
 			<!-- <div class="qWrapper">
 				<div class="qText">Text Here</div>
@@ -59,6 +83,7 @@
 				</paper-radio-group>
 			</div> -->
         </div>
+        <paper-button raised id="submit">Submit</paper-button>
     </body>
 
 </html>
