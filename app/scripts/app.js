@@ -46,8 +46,8 @@ Question.prototype.show = function(container){
 	for(var i = 0; i <= 2; i++){
 		var radioButton = document.createElement("paper-radio-button");
 		radioButton.className = "qButton";
-		var value = document.createTextNode(i.toString());
-		radioButton.appendChild(value);
+        var value = document.createTextNode(i.toString());
+        radioButton.appendChild(value);
 		radioGroup.appendChild(radioButton);
 	}
 
