@@ -22,11 +22,11 @@ body {
 }
 
 .qText{
-				float: left;
+    float: left;
 }
 
 .qGroup{
-				float: right;
+    float: right;
 }
 
 .sName{
@@ -35,6 +35,7 @@ body {
     margin-top: 10px;
     color: green;
 }
+
 #submit{
     clear: both;
     background-color: blue;
@@ -42,16 +43,16 @@ body {
     margin-top: 15px;
     margin-left: 85%;
 }
+
 .optionSection{
     float: right;
     color: green;
     
 }
+
 .dmoption{
     display: inline-block;
     margin-left: 10px;
     font-size: 14px;
 }
 
-
-}
