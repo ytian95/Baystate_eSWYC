@@ -19,6 +19,12 @@ QuestionBlock.prototype.show = function(questionsText){
 	}
 }
 
+function getScore() {
+    console.log("click");
+    var list = document.querySelectorAll("dev-question"); // use document.querySelecotorAll() to get the elements.
+    console.log(list[0].score); //get the score of first question
+}
+
 function initialize(){
 	//window.alert(document.getElementById("dmQuestions"));
 	var questionBlock = new QuestionBlock(
