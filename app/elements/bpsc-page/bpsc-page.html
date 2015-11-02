@@ -1,0 +1,39 @@
+<link rel="import" href="../dev-question/dev-question.html">
+    
+<dom-module id="bpsc-page">
+    <link rel="import" type="css" href="bpsc-page.css">
+    <template>
+        <div class="sName">Baby Pediatric Symptom Checklist</div>
+        <div class="optionSection">
+            <div class="dmoption">Not at all</div>
+            <div class="dmoption">Somewhat</div>
+            <div class="dmoption">Very Much</div>
+            <div class="dmoption">Skip Question</div>
+        </div>
+        <div id="bpscQuestions">
+    </template>
+    <script>
+        HTMLImports.whenReady(function () {
+            Polymer({
+                is: 'bpsc-page',
+                properties: {
+                    questions: {
+                        type: Array,
+                        notify: true,
+                        value: ["Does your child have a hard time being with new people?", "Does your child have a hard time in new places?", "Does your child have a hard time with change?", "Does your child mind being held by other people?", "Does your child cry a lot?", "Does your child have a hard time calming down?", "Is your child fussy or irritable?", "Is it hard to comfort your child?", "Is it hard to keep your child on a schedule or routine?", "Is it hard to put your child to sleep?", "Is it hard to get enough sleep because of your       child?", "Does your child have trouble staying asleep?"],
+                        observer: '_createQuestions',
+                    },
+                },
+                _createQuestions: function(){
+                    for(var i = 0; i < this.questions.length; i++){
+                        var newDevQuestion = document.createElement("dev-question");
+                        newDevQuestion.questionString = this.questions[i];
+                        var questionContainer = document.getElementById("bpscQuestions");
+                        questionContainer.appendChild(newDevQuestion);
+                    };
+                },
+        
+            });
+        });
+    </script>
+</dom-module>

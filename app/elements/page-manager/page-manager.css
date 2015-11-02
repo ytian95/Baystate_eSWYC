@@ -1,0 +1,23 @@
+body {
+  background: #fafafa;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+#back{
+    display: inline-block;
+    background-color: red;
+    margin-top: 3%;
+    color: white;
+}
+
+#next{
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    margin-left: 85%;
+}
+
+#headerName {
+    font-size: 30px;
+}

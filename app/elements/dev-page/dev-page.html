@@ -1,0 +1,40 @@
+<link rel="import" href="../dev-question/dev-question.html">
+    
+<dom-module id="dev-page">
+    <link rel="import" type="css" href="dev-page.css">
+    <template>
+        <div class="sName">Developmental Milestones</div>
+        <div class="optionSection">
+            <div class="dmoption">Not Yet</div>
+            <div class="dmoption">Some What</div>
+            <div class="dmoption">Very Much</div>
+            <div class="dmoption">Skip Question</div>
+        </div>
+        <div id="dmQuestions"></div>
+    </template>
+    <script>
+    HTMLImports.whenReady(function () {
+        Polymer({
+            is: 'dev-page',
+            properties: {
+                questions: {
+                    type: Array,
+                    notify: true,
+                    value: ["Makes sounds that let you know he or she is happy or upset",
+                            "Seems happy to see you ", "Follows a moving toy with his or her eyes", "Turns head to find the person who is talking","Holds head steady when being pulled up to a sitting position", "Brings hands together", "Laughs", "Keeps head steady when held in a sitting position", 'Makes sounds like "ga," "ma," or "ba"', "Looks when you call his or her name" ],
+                    observer: '_createQuestions',
+                },
+            },
+            _createQuestions: function(){
+                for(var i = 0; i < this.questions.length; i++){
+                    var newDevQuestion = document.createElement("dev-question");
+                    newDevQuestion.questionString = this.questions[i];
+                    var questionContainer = document.getElementById("dmQuestions");
+                    questionContainer.appendChild(newDevQuestion);
+                };
+            },
+        
+        });
+    });
+    </script>
+</dom-module>

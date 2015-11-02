@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../dev-page/dev-page.html">
+<link rel="import" href="../bpsc-page/bpsc-page.html">
+<link rel="import" href="../page-login/page-login.html">
+    
+<dom-module id="page-manager">
+    <link rel="import" type="css" href="page-manager.css">
+    <template>
+        <paper-header-panel mode="waterfall">
+            <paper-toolbar>
+                <div id="headerName">eSWYC<span>{{title}}</span></div>
+            </paper-toolbar>
+        </paper-header-panel>
+        <iron-pages selected="0">
+            <div>
+                <page-login></page-login>
+            </div>
+            <div>
+                <dev-page></dev-page>
+            </div>
+            
+            <div>
+                <bpsc-page></bpsc-page>
+            </div>
+            
+        </iron-pages>
+        <br>
+        <paper-button raised on-click="back" id="back">Back</paper-button>
+        <paper-button raised on-click="next" id="next">Next</paper-button>
+    </template>
+    <script>
+        Polymer({
+            is: 'page-manager',
+            properties: {
+                title: {
+                    type: String,
+                    notify: true,
+                    value: ": 2 month"
+                },
+            },
+            next: function(){
+                var pages = document.querySelector('iron-pages');
+                pages.selectNext();
+            },
+            back: function(){
+                var pages = document.querySelector('iron-pages');
+                pages.selectPrevious();
+            },
+        });
+    </script>
+</dom-module>
