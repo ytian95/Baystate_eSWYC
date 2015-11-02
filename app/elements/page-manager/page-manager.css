@@ -18,6 +18,14 @@ body {
     margin-left: 85%;
 }
 
+#submit{
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    margin-left: 85%;
+}
+
 #headerName {
     font-size: 30px;
 }
+
