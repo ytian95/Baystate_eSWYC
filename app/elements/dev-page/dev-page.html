@@ -21,10 +21,26 @@
                     type: Array,
                     notify: true,
                     value: ["Makes sounds that let you know he or she is happy or upset",
-                            "Seems happy to see you ", "Follows a moving toy with his or her eyes", "Turns head to find the person who is talking","Holds head steady when being pulled up to a sitting position", "Brings hands together", "Laughs", "Keeps head steady when held in a sitting position", 'Makes sounds like "ga," "ma," or "ba"', "Looks when you call his or her name" ],
+                            "Seems happy to see you ", 
+                            "Follows a moving toy with his or her eyes", 
+                            "Turns head to find the person who is talking",
+                            "Holds head steady when being pulled up to a sitting position", 
+                            "Brings hands together", "Laughs", 
+                            "Keeps head steady when held in a sitting position", 
+                            'Makes sounds like "ga," "ma," or "ba"', 
+                            "Looks when you call his or her name" ],
                     observer: '_createQuestions',
                 },
+                answers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                                
             },
+        	listeners: {
+        		'scoreChange': 'gatherScore',
+      		},
             _createQuestions: function(){
                 for(var i = 0; i < this.questions.length; i++){
                     var newDevQuestion = document.createElement("dev-question");
@@ -32,6 +48,16 @@
                     var questionContainer = document.getElementById("dmQuestions");
                     questionContainer.appendChild(newDevQuestion);
                 };
+            },
+            gatherScore: function(){
+            	this.answers = []; //clear the answerArray
+            	// use document.querySelecotorAll() to get the elements.
+   				var answerList = document.querySelectorAll("dev-question"); 
+    			for( var i = 0; i < answerList.length; i++ ){
+    				// append answer from each questions to the answerArray
+    				this.answers.push(answerList[i].score); 
+    			};    			
+    			//console.log(this.answers);
             },
         
         });

@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../dev-page/dev-page.html">
 <link rel="import" href="../bpsc-page/bpsc-page.html">
 <link rel="import" href="../page-login/page-login.html">
@@ -28,7 +29,14 @@
         <br>
         <div><paper-button raised on-click="back" id="back">Back</paper-button></div>
         <div><paper-button raised on-click="next" id="next">Next</paper-button></div>
-        <div><paper-button raised on-click="submit" id="submit">Submit</paper-button></div>
+        <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
+        </div>
+        <iron-ajax
+    		method="POST"
+    		url="../../scripts/answer.php"
+    		params=''
+    		handle-as="json"
+    		on-response="handleResponse"></iron-ajax>
     </template>
     <script>
         Polymer({
@@ -65,7 +73,53 @@
                 }else{
                     document.getElementById("back").style.display = 'inline-block';
                     document.getElementById("next").style.display = 'inline-block';
+                    document.getElementById("submit").style.display = 'none';
                 };
+            },
+            submit: function() {
+            	var devAnswers = document.querySelector("dev-page").answers;
+            	var bpscAnswers = document.querySelector("bpsc-page").answers;
+            	var answerHashMap = {};
+            	answerHashMap["dev"] = devAnswers;
+            	answerHashMap["bpsc"] = bpscAnswers;
+            	console.log(devAnswers);
+            	console.log(bpscAnswers);            	
+            	var devTotalScore = 0;
+            	for( var i = 0; i < devAnswers.length; i++){
+            		if(devAnswers[i] === -1 || devAnswers[i] === undefined ){
+            			// skip a question
+            		
+            		} else {
+            			bpscTotalScore += Number(devAnswers[i]);
+            		};
+            	};
+            	
+            	var bpscTotalScore = 0;
+            	for( var i = 0; i < bpscAnswers.length; i++){
+            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            			// skip a question
+            		} else {
+            			bpscTotalScore += Number(bpscAnswers[i]);
+            		};
+            	};
+            	console.log(bpscTotalScore);
+            	alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
+            		+ "Baby Pediatric Symptom Checklist Score : " 
+            		+ bpscTotalScore.toString());
+				/*var a = [1,2,3];
+    			var xmlhttp = new XMLHttpRequest();
+				xmlhttp.open( "POST", "../../scripts/answer.php", true );
+				xmlhttp.setRequestHeader( "Content-Type", "application/json" );
+				xmlhttp.send( '[1,2,3]' ); 
+				*/
+				var a = [1,2,3];
+				var ajax = document.querySelector('iron-ajax');
+				ajax.contentType = 'application/json';
+				ajax.body = a;
+				ajax.generateRequest();
+				
+            },
+            handleResponse: function() {
             },
         });
     </script>
