@@ -4,7 +4,7 @@ body {
   color: #333;
 }
 
-.devWrapper{
+.bpscWrapper{
     clear: both;
 }
 
@@ -12,11 +12,11 @@ body {
     float: left;
 }
 
-.devButtons{
+.bpscButtons{
     float: right;
 }
 
-.devButton{
+.bpscButton{
     margin-left: 22px;
     font-size: 15px;
 }
