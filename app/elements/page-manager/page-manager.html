@@ -31,12 +31,15 @@
         <div><paper-button raised on-click="next" id="next">Next</paper-button></div>
         <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
         </div>
+        <?php include('../../scripts/answer.php') ?>
+        <!--
         <iron-ajax
+        	auto = "ture"
     		method="POST"
     		url="../../scripts/answer.php"
     		params=''
     		handle-as="json"
-    		on-response="handleResponse"></iron-ajax>
+    		on-response="handleResponse"></iron-ajax>-->
     </template>
     <script>
         Polymer({
@@ -90,7 +93,7 @@
             			// skip a question
             		
             		} else {
-            			bpscTotalScore += Number(devAnswers[i]);
+            			devTotalScore += Number(devAnswers[i]);
             		};
             	};
             	
@@ -112,15 +115,18 @@
 				xmlhttp.setRequestHeader( "Content-Type", "application/json" );
 				xmlhttp.send( '[1,2,3]' ); 
 				*/
+				/*
 				var a = [1,2,3];
 				var ajax = document.querySelector('iron-ajax');
 				ajax.contentType = 'application/json';
-				ajax.body = a;
-				ajax.generateRequest();
+				ajax.params = JSON.stringify(a);
+				*/
 				
             },
+            /*
             handleResponse: function() {
             },
+            */
         });
     </script>
 </dom-module>
