@@ -1,9 +1,14 @@
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
-            
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">            
             
 <dom-module id="page-login">
     <link rel="import" type="css" href="page-login.css">
     <template>
+        <paper-header-panel mode="seamed">
+            <paper-toolbar>
+                <div id="headerName">Welcome to the eSWYC</div>
+            </paper-toolbar>
+        </paper-header-panel>
         <paper-input label="Please enter patient's name" id="name"></paper-input>
         <paper-input label="Please enter patient's Date of Birth" placeholder="MM/DD/YY" id="dob"></paper-input>
     </template>
