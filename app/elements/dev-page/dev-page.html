@@ -4,6 +4,11 @@
 <dom-module id="dev-page">
     <link rel="import" type="css" href="dev-page.css">
     <template>
+        <paper-header-panel mode="seamed">
+            <paper-toolbar>
+                <div id="headerName">eSWYC <span>{{version}}</span> months</div>
+            </paper-toolbar>
+        </paper-header-panel>
         <div class="sName">Developmental Milestones</div>
         <div class="optionSection">
             <div class="dmoption">Not Yet</div>
@@ -37,6 +42,10 @@
                     type: Array,
                     notify: true,
                     value: [],
+                },
+                version: {
+                    type: Number,
+                    notify: true,
                 },
                                 
             },

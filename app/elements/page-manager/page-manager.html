@@ -16,14 +16,14 @@
         </paper-header-panel>-->
         <iron-pages selected="{{pageNum}}">
             <div>
-                <page-login></page-login>
+                <page-login version="{{version}}"></page-login>
             </div>
             <div>
-                <dev-page></dev-page>
+                <dev-page version="{{version}}"></dev-page>
             </div>
             
             <div>
-                <bpsc-page></bpsc-page>
+                <bpsc-page version="{{version}}"></bpsc-page>
             </div>
             
         </iron-pages>
@@ -56,6 +56,10 @@
                     notify: true,
                     value: 0,
                     observer: '_pageChange',
+                },
+                version: {
+                    type: Number,
+                    notify: true,
                 },
             },
             next: function(){

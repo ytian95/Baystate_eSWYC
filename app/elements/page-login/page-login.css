@@ -24,3 +24,18 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+#dob2{
+    margin-top: 3%;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dobb {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}

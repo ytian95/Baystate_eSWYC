@@ -3,6 +3,11 @@
 <dom-module id="bpsc-page">
     <link rel="import" type="css" href="bpsc-page.css">
     <template>
+        <paper-header-panel mode="seamed">
+            <paper-toolbar>
+                <div id="headerName">eSWYC <span>{{version}}</span> months</div>
+            </paper-toolbar>
+        </paper-header-panel>
         <div class="sName">Baby Pediatric Symptom Checklist</div>
         <div class="optionSection">
             <div class="dmoption">Not at all</div>
@@ -38,6 +43,10 @@
                     	type: Array,
                     	notify: true,
                     	value: [],
+                	},
+                	version: {
+                    	type: Number,
+                    	notify: true,
                 	},
                 },
                 listeners: {
