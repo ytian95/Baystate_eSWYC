@@ -12,6 +12,10 @@ body {
 }
 
 .optionSection{
+	/*position: fixed;
+	top: 40px;
+    right: 10px;
+    */
     float: right;
     color: green;
 }

@@ -1,15 +1,115 @@
+<link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
-            
+<link rel="import" href="../../bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">           
             
 <dom-module id="page-login">
     <link rel="import" type="css" href="page-login.css">
     <template>
-        <paper-input label="Please enter patient's name" id="name"></paper-input>
-        <paper-input label="Please enter patient's Date of Birth" placeholder="MM/DD/YY" id="dob"></paper-input>
+        <paper-header-panel mode="seamed">
+            <paper-toolbar>
+                <div id="headerName">Welcome to the eSWYC</div>
+            </paper-toolbar>
+        </paper-header-panel>
+        
+        <paper-input label="Please enter patient's name" id="name" type="text">
+        	<paper-icon-button suffix icon="clear"></paper-icon-button>
+        </paper-input>
+        
+        <paper-input label="Please enter patient's Date of Birth" type="date"
+        	placeholder="MM/DD/YY" id="dob" on-change="getDate" value="{{dateString}}">
+    		<paper-icon-button suffix icon="clear"></paper-icon-button>
+        </paper-input>
+        
+        <paper-input label="Please enter phone number(Number Only)" id="phone"
+        	placeholder="xxxxxxxxxx" maxLength="10">
+        	<paper-icon-button suffix icon="clear"></paper-icon-button>
+        </paper-input>
+    
     </template>
     <script>
         Polymer({
             is: 'page-login',
+        	properties: {
+            	dateString: {
+                	type: String,
+                	notify: true,
+            	}, 
+            	date: {
+                	type: String,
+                	notify: true,
+            	},
+            	version: {
+                	type: Number,
+                	notify: true,
+            	},       	        		
+        	},
+        	getDate: function(){
+				var str = this.dateString;
+        		var dateArray = str.split("-");
+        		var dd;
+        		var mm;
+        		var yyyy;
+        		var today = new Date();
+				var todayDD = today.getDate();
+				var todayMM = today.getMonth()+1; //January is 0!
+				var todayYYYY = today.getFullYear();  
+        		var mdiff; // month difference
+        		if(Number(dateArray[0]) <= todayYYYY && Number(dateArray[0]) >= 2000){ 
+        			// check if the date is valid
+        		    dd = dateArray[2];
+        			mm = dateArray[1];
+        			yyyy = dateArray[0];
+					mdiff = (todayYYYY - yyyy)*12;
+					mdiff += todayMM- mm;
+					console.log(mdiff);					
+				};
+				
+        		//get the right month SWYC
+        		if(mdiff === null || mdiff > 70 || mdiff < 2){
+        			alert("No SWYC is applicable to your child's age");
+        		} else if(mdiff >=2 && mdiff <=3){
+        			this.version = 2;
+        			
+        		} else if(mdiff >=4 && mdiff <=5){
+        			this.version = 4;
+        			
+        		} else if(mdiff >=6 && mdiff <=8){
+        			this.version = 6;
+        			
+        		} else if(mdiff >=9 && mdiff <=11){
+        			this.version = 9;  
+        			      			        		
+        		} else if(mdiff >=12 && mdiff <=14){
+        			this.version = 12;
+        			   
+        		} else if(mdiff >=15 && mdiff <=17){
+        			this.version = 15;   
+        		
+        		} else if(mdiff >=18 && mdiff <=22){
+        			this.version = 18;   
+        		      		
+        		} else if(mdiff >=23 && mdiff <=28){
+        			this.version = 24;   
+ 
+        		} else if(mdiff >=29 && mdiff <=34){
+        			this.version = 30;
+        			   
+        		} else if(mdiff >=35 && mdiff <=46){
+        			this.version = 36;  
+        			 
+        		} else if(mdiff >=47 && mdiff <=58){
+        			this.version = 48;  
+        			 
+        		} else if(mdiff >=59 && mdiff <=70){
+        			this.version = 60;   
+        		};
+        		
+        		if(mdiff >=2 && mdiff <=70){
+        			alert("get "+this.version.toString()+" months SWYC");
+        		};          		       	
+        	},
         });
     </script>
 </dom-module>

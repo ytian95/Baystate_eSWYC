@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../dev-page/dev-page.html">
 <link rel="import" href="../bpsc-page/bpsc-page.html">
 <link rel="import" href="../page-login/page-login.html">
@@ -8,21 +9,21 @@
 <dom-module id="page-manager">
     <link rel="import" type="css" href="page-manager.css">
     <template>
-        <paper-header-panel mode="waterfall">
+        <!--<paper-header-panel mode="seamed">
             <paper-toolbar>
                 <div id="headerName">eSWYC<span>{{title}}</span></div>
             </paper-toolbar>
-        </paper-header-panel>
+        </paper-header-panel>-->
         <iron-pages selected="{{pageNum}}">
             <div>
-                <page-login></page-login>
+                <page-login version="{{version}}"></page-login>
             </div>
             <div>
-                <dev-page></dev-page>
+                <dev-page version="{{version}}"></dev-page>
             </div>
             
             <div>
-                <bpsc-page></bpsc-page>
+                <bpsc-page version="{{version}}"></bpsc-page>
             </div>
             
         </iron-pages>
@@ -31,12 +32,15 @@
         <div><paper-button raised on-click="next" id="next">Next</paper-button></div>
         <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
         </div>
+        <?php include('../../scripts/answer.php') ?>
+        <!--
         <iron-ajax
+        	auto = "ture"
     		method="POST"
     		url="../../scripts/answer.php"
     		params=''
     		handle-as="json"
-    		on-response="handleResponse"></iron-ajax>
+    		on-response="handleResponse"></iron-ajax>-->
     </template>
     <script>
         Polymer({
@@ -52,6 +56,10 @@
                     notify: true,
                     value: 0,
                     observer: '_pageChange',
+                },
+                version: {
+                    type: Number,
+                    notify: true,
                 },
             },
             next: function(){
@@ -90,7 +98,7 @@
             			// skip a question
             		
             		} else {
-            			bpscTotalScore += Number(devAnswers[i]);
+            			devTotalScore += Number(devAnswers[i]);
             		};
             	};
             	
@@ -112,15 +120,18 @@
 				xmlhttp.setRequestHeader( "Content-Type", "application/json" );
 				xmlhttp.send( '[1,2,3]' ); 
 				*/
+				/*
 				var a = [1,2,3];
 				var ajax = document.querySelector('iron-ajax');
 				ajax.contentType = 'application/json';
-				ajax.body = a;
-				ajax.generateRequest();
+				ajax.params = JSON.stringify(a);
+				*/
 				
             },
+            /*
             handleResponse: function() {
             },
+            */
         });
     </script>
 </dom-module>
