@@ -16,7 +16,7 @@
         </paper-header-panel>-->
         <iron-pages selected="{{pageNum}}">
             <div>
-                <page-login version="{{version}}"></page-login>
+                <page-login version="{{version}}" is-valid="{{inputValid}}"></page-login>
             </div>
             <div>
                 <dev-page version="{{version}}"></dev-page>
@@ -29,7 +29,8 @@
         </iron-pages>
         <br>
         <div><paper-button raised on-click="back" id="back">Back</paper-button></div>
-        <div><paper-button raised on-click="next" id="next">Next</paper-button></div>
+        <div><paper-button raised on-click="next" id="next">
+        	Next</paper-button></div>
         <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
         </div>
         <?php include('../../scripts/answer.php') ?>
@@ -61,6 +62,12 @@
                     type: Number,
                     notify: true,
                 },
+                inputValid: {
+                	type: Boolean,
+                	notify: true,
+                	value: false,
+                	observer: '_pageChange',
+                },
             },
             next: function(){
                 var pages = document.querySelector('iron-pages');
@@ -75,6 +82,13 @@
                 if(this.pageNum === 0){
                     document.getElementById("back").style.display = 'none';
                     document.getElementById("submit").style.display = 'none';
+                    if(this.inputValid === false){
+                    	document.getElementById("next").disabled = true;
+                    	document.getElementById("next").style.backgroundColor = "grey";
+                    } else {
+                    	document.getElementById("next").style.backgroundColor = "#0aae55";
+                    	document.getElementById("next").disabled = false;
+                    };
                 }else if(this.pageNum === (pageTotal -1)){
                     document.getElementById("next").style.display = 'none';
                     document.getElementById("submit").style.display = 'inline-block';

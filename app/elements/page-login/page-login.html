@@ -1,19 +1,21 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input-container.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">           
             
 <dom-module id="page-login">
     <link rel="import" type="css" href="page-login.css">
     <template>
-        <paper-header-panel mode="seamed">
+        <paper-header-panel id="header" mode="seamed">
             <paper-toolbar>
                 <div id="headerName">Welcome to the eSWYC</div>
             </paper-toolbar>
         </paper-header-panel>
         
-        <paper-input label="Please enter patient's name" id="name" type="text">
+        <paper-input label="Please enter patient's name" id="name" type="text"
+        	value="{{name}}" on-change="getDate">
         	<paper-icon-button suffix icon="clear"></paper-icon-button>
         </paper-input>
         
@@ -23,12 +25,14 @@
         </paper-input>
         
         <paper-input label="Please enter phone number(Number Only)" id="phone"
-        	placeholder="xxxxxxxxxx" maxLength="10">
+        	placeholder="xxxxxxxxxx" maxLength="10" value="{{phoneNum}}"
+        	on-change="getDate">
         	<paper-icon-button suffix icon="clear"></paper-icon-button>
         </paper-input>
     
     </template>
     <script>
+
         Polymer({
             is: 'page-login',
         	properties: {
@@ -43,9 +47,25 @@
             	version: {
                 	type: Number,
                 	notify: true,
-            	},       	        		
+            	}, 
+            	name: {
+            		type: String,
+            		notify: true,
+            		value: "",
+            	}, 
+            	isValid: {
+            		type: Boolean,
+            		notify: true,
+            		value: false,
+            	},
+            	phoneNum: {
+            		type: String,
+            		notify: true,
+            		value: "",
+            	},      	        		
         	},
         	getDate: function(){
+        	    this.isValid = false;
 				var str = this.dateString;
         		var dateArray = str.split("-");
         		var dd;
@@ -106,10 +126,13 @@
         			this.version = 60;   
         		};
         		
-        		if(mdiff >=2 && mdiff <=70){
-        			alert("get "+this.version.toString()+" months SWYC");
+        		if(mdiff >=2 && mdiff <=70 && this.phoneNum.length === 10
+        			&& this.name.length > 0){
+        			//alert("get "+this.version.toString()+" months SWYC");
+        			this.isValid = true;
         		};          		       	
         	},
         });
+
     </script>
 </dom-module>
