@@ -1,0 +1,31 @@
+body {
+  background: #fafafa;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+#back{
+    display: inline-block;
+    background-color: #c30421;
+    margin-top: 3%;
+    color: white;
+}
+
+#next{
+    display: inline-block;
+    background-color: #0aae55;
+    color: white;
+    margin-left: 85%;
+}
+
+#submit{
+    display: inline-block;
+    background-color: #2875e2;
+    color: white;
+    margin-left: 85%;
+}
+
+#headerName {
+    font-size: 30px;
+}
+
