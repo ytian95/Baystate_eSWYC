@@ -1,0 +1,72 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">           
+            
+<dom-module id="result-page">
+    <link rel="import" type="css" href="result-page.css">
+    <template>
+        <paper-header-panel id="header" mode="seamed">
+            <paper-toolbar>
+                <div id="headerName">Patient's Result <span>{{age}}</span> months</div>
+            </paper-toolbar>
+        </paper-header-panel>
+        <paper-button id ="dmstatus">Developmental Milestones Score: <span>{{dmscore}}</span>
+        </paper-button>
+        <paper-button id ="bpscstatus">BPSC Score: <span>{{bpscscore}}</span>
+        </paper-button>
+    
+    
+    </template>
+    <script>
+
+        Polymer({
+            is: 'result-page',
+        	properties: {
+            	version: {
+                	type: Number,
+                	notify: true,
+            	},   
+            	age: {
+            		type: Number,
+            		notify: true,
+            	},  
+                dmscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                	observer: '_scoreChanged',
+                },
+                bpscscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                	observer: '_scoreChanged',
+                },        		
+        	},
+        	_scoreChanged: function(){
+				if(this.age === 2){
+					if(this.dmscore > 13){
+    					this.$$('#dmstatus').style.background = "#0fa955";
+    				} else {
+    	    			this.$$('#dmstatus').style.background = "#de2b41";
+    				};
+				} else if (this.age === 3){
+					if(this.demscore > 16){
+    					this.$$('#dmstatus').style.background = "#0fa955";
+    				} else {
+    	    			this.$$('#dmstatus').style.background = "#de2b41";
+    				};
+				};
+    
+				if(this.bpscscore < 3){
+    				this.$$('#bpscstatus').style.background = "#0fa955";
+    			} else {
+    	    		this.$$('#bpscstatus').style.background = "#de2b41";
+				};
+
+        	},
+        	
+        });
+    </script>
+</dom-module>

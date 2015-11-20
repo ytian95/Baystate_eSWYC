@@ -48,6 +48,10 @@
                 	type: Number,
                 	notify: true,
             	}, 
+            	age: {
+                	type: Number,
+                	notify: true,
+            	},
             	name: {
             		type: String,
             		notify: true,
@@ -83,7 +87,7 @@
         			yyyy = dateArray[0];
 					mdiff = (todayYYYY - yyyy)*12;
 					mdiff += todayMM- mm;
-					console.log(mdiff);					
+					//console.log(mdiff);					
 				};
 				
         		//get the right month SWYC
@@ -130,6 +134,7 @@
         			&& this.name.length > 0){
         			//alert("get "+this.version.toString()+" months SWYC");
         			this.isValid = true;
+        			this.age = mdiff;
         		};          		       	
         	},
         });

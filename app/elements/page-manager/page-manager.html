@@ -5,6 +5,7 @@
 <link rel="import" href="../dev-page/dev-page.html">
 <link rel="import" href="../bpsc-page/bpsc-page.html">
 <link rel="import" href="../page-login/page-login.html">
+<link rel="import" href="../result-page/result-page.html">
     
 <dom-module id="page-manager">
     <link rel="import" type="css" href="page-manager.css">
@@ -16,7 +17,8 @@
         </paper-header-panel>-->
         <iron-pages selected="{{pageNum}}">
             <div>
-                <page-login version="{{version}}" is-valid="{{inputValid}}"></page-login>
+                <page-login version="{{version}}" is-valid="{{inputValid}}"
+                	age="{{age}}"></page-login>
             </div>
             <div>
                 <dev-page version="{{version}}"></dev-page>
@@ -24,6 +26,11 @@
             
             <div>
                 <bpsc-page version="{{version}}"></bpsc-page>
+            </div>
+            
+            <div>
+                <result-page age="{{age}}" dmscore="{{dmscore}}" 
+                	bpscscore="{{bpscscore}}"></result-page>
             </div>
             
         </iron-pages>
@@ -62,11 +69,25 @@
                     type: Number,
                     notify: true,
                 },
+                age: {
+                    type: Number,
+                    notify: true,
+                },
                 inputValid: {
                 	type: Boolean,
                 	notify: true,
                 	value: false,
                 	observer: '_pageChange',
+                },
+                dmscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                },
+                bpscscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
                 },
             },
             next: function(){
@@ -89,9 +110,11 @@
                     	document.getElementById("next").style.backgroundColor = "#0aae55";
                     	document.getElementById("next").disabled = false;
                     };
-                }else if(this.pageNum === (pageTotal -1)){
+                }else if(this.pageNum === (pageTotal - 2)){
                     document.getElementById("next").style.display = 'none';
                     document.getElementById("submit").style.display = 'inline-block';
+                }else if(this.pageNum === (pageTotal - 1)){
+                    document.getElementById("submit").style.display = 'none';                    
                 }else{
                     document.getElementById("back").style.display = 'inline-block';
                     document.getElementById("next").style.display = 'inline-block';
@@ -99,13 +122,15 @@
                 };
             },
             submit: function() {
+                var pages = document.querySelector('iron-pages');
+                pages.selectNext();
             	var devAnswers = document.querySelector("dev-page").answers;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
             	var answerHashMap = {};
             	answerHashMap["dev"] = devAnswers;
             	answerHashMap["bpsc"] = bpscAnswers;
-            	console.log(devAnswers);
-            	console.log(bpscAnswers);            	
+            	//console.log(devAnswers);
+            	//console.log(bpscAnswers);            	
             	var devTotalScore = 0;
             	for( var i = 0; i < devAnswers.length; i++){
             		if(devAnswers[i] === -1 || devAnswers[i] === undefined ){
@@ -124,10 +149,12 @@
             			bpscTotalScore += Number(bpscAnswers[i]);
             		};
             	};
-            	console.log(bpscTotalScore);
-            	alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
-            		+ "Baby Pediatric Symptom Checklist Score : " 
-            		+ bpscTotalScore.toString());
+            	
+            	this.dmscore = devTotalScore;
+            	this.bpscscore = bpscTotalScore;
+            	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
+            		//+ "Baby Pediatric Symptom Checklist Score : " 
+            		//+ bpscTotalScore.toString());
 				/*var a = [1,2,3];
     			var xmlhttp = new XMLHttpRequest();
 				xmlhttp.open( "POST", "../../scripts/answer.php", true );
