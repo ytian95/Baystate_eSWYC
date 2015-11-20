@@ -13,7 +13,10 @@
         </paper-header-panel>
         <paper-button id ="dmstatus">Developmental Milestones Score: <span>{{dmscore}}</span>
         </paper-button>
-        <paper-button id ="bpscstatus">BPSC Score: <span>{{bpscscore}}</span>
+        <br/>
+        <canvas id="canvas"></canvas>
+        <br/>
+    	<paper-button id ="bpscstatus">BPSC Score: <span>{{bpscscore}}</span>
         </paper-button>
     
     
@@ -45,13 +48,54 @@
                 },        		
         	},
         	_scoreChanged: function(){
+        		var scaleRatio = 30;
+        		var canvas = this.$$('#canvas');
+        		canvas.width = innerWidth;
+        		canvas.height = 150;
+				var g = canvas.getContext("2d");
 				if(this.age === 2){
+					g.fillStyle = "#de2b41";
+					g.fillRect(30, 50, 13*scaleRatio,30); 
+    				g.fill();
+    				g.fillStyle = "#0fa955";
+					g.fillRect(30 + 13*scaleRatio, 50, (15-13)*scaleRatio,30);
+    				g.fill();
+    				g.fillStyle = "#f8da25";
+					g.fillRect(30 + 15*scaleRatio, 50, (20-15)*scaleRatio,30);
+    				g.fill();  
+    				g.fillStyle = "white";
+					g.font = "13px Arial";
+					g.fillText("Average",35 + 13*scaleRatio,65);
+					g.fillText("13 -15",35 + 13*scaleRatio,78);
+    				g.beginPath();    				
+					g.moveTo(30+this.dmscore*scaleRatio,30);
+					g.lineTo(30+this.dmscore*scaleRatio,90);
+					g.stroke();
+    				  				
 					if(this.dmscore > 13){
     					this.$$('#dmstatus').style.background = "#0fa955";
     				} else {
     	    			this.$$('#dmstatus').style.background = "#de2b41";
     				};
 				} else if (this.age === 3){
+					g.fillStyle = "#de2b41";
+					g.fillRect(30, 50, 16*scaleRatio,30);
+    				g.fill();
+    				g.fillStyle = "#0fa955";
+					g.fillRect(30 + 16*scaleRatio, 50, (17-16)*scaleRatio,30);
+    				g.fill();
+    				g.fillStyle = "#f8da25";
+					g.fillRect(30 + 17*scaleRatio, 50, (20-17)*scaleRatio,30);
+    				g.fill(); 
+    				g.fillStyle = "white";
+					g.font = "13px Arial";
+					g.fillText("Average",35 + 16*scaleRatio,65);
+					g.fillText("17",35 + 16*scaleRatio,78);
+    				g.beginPath();    				
+					g.moveTo(30+this.dmscore*scaleRatio,30);
+					g.lineTo(30+this.dmscore*scaleRatio,90);
+					g.stroke(); 
+    				  			
 					if(this.demscore > 16){
     					this.$$('#dmstatus').style.background = "#0fa955";
     				} else {
@@ -64,7 +108,6 @@
     			} else {
     	    		this.$$('#bpscstatus').style.background = "#de2b41";
 				};
-
         	},
         	
         });
