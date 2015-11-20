@@ -51,7 +51,7 @@
         		var scaleRatio = 30;
         		var canvas = this.$$('#canvas');
         		canvas.width = innerWidth;
-        		canvas.height = 150;
+        		canvas.height = 100;
 				var g = canvas.getContext("2d");
 				if(this.age === 2){
 					g.fillStyle = "#de2b41";
@@ -63,10 +63,13 @@
     				g.fillStyle = "#f8da25";
 					g.fillRect(30 + 15*scaleRatio, 50, (20-15)*scaleRatio,30);
     				g.fill();  
+
     				g.fillStyle = "white";
 					g.font = "13px Arial";
-					g.fillText("Average",35 + 13*scaleRatio,65);
-					g.fillText("13 -15",35 + 13*scaleRatio,78);
+					g.fillText("Below Average : <= 13 ", 35 ,70);
+					g.fillText("Average",35 + 13*scaleRatio,70);
+					g.fillText("Above Average : >15",35 + 15*scaleRatio,70);
+										
     				g.beginPath();    				
 					g.moveTo(30+this.dmscore*scaleRatio,30);
 					g.lineTo(30+this.dmscore*scaleRatio,90);

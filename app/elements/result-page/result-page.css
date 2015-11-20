@@ -9,11 +9,13 @@ paper-toolbar.paper-toolbar-0 {
 }
 
 #dmstatus {
+	background-color: #5e6048;
 	margin-top: 2%;
 	color: white;
 }
 
 #bpscstatus {
+	background-color: #5e6048;
 	margin-top: 2%;
 	color: white;
 }
