@@ -85,9 +85,9 @@
                 	value: 0,
                 },
                 bpscscore: {
-                	type: Number,
+                	type: Array,
                 	notify: true,
-                	value: 0,
+                	value: [0,0,0],
                 },
             },
             next: function(){
@@ -141,15 +141,28 @@
             		};
             	};
             	
-            	var bpscTotalScore = 0;
-            	for( var i = 0; i < bpscAnswers.length; i++){
+            	var bpscTotalScore = [0,0,0];
+            	for( var i = 0; i < 4; i++){
             		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
             			// skip a question
             		} else {
-            			bpscTotalScore += Number(bpscAnswers[i]);
+            			bpscTotalScore[0] += Number(bpscAnswers[i]);
             		};
             	};
-            	
+            	for( var i = 4; i < 8; i++){
+            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            			// skip a question
+            		} else {
+            			bpscTotalScore[1] += Number(bpscAnswers[i]);
+            		};
+            	};
+            	for( var i = 8; i < 12; i++){
+            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            			// skip a question
+            		} else {
+            			bpscTotalScore[2] += Number(bpscAnswers[i]);
+            		};
+            	};
             	this.dmscore = devTotalScore;
             	this.bpscscore = bpscTotalScore;
             	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
