@@ -170,29 +170,21 @@
 					g.lineTo(30+markPosition*this.scaleRatio,90);
 					g.lineWidth = 2;
 					g.stroke();
-					g.fillText(this.dmscore.toString(),
-						30 - 5 +markPosition*this.scaleRatio,105);
+					if(this.dmscore !== 0 && this.dmscore !== 20 && 
+						this.dmscore !== aveLow && this.dmscore !== aveUpper){
+						g.fillText(this.dmscore.toString(),
+							30 - 5 +markPosition*this.scaleRatio,105);
+					};
         	},
-        	_scoreChanged: function(){
-        		if(this.bpscscore == undefined){
-        			this.bpscscore = [0,0,0]; 
-        		};
-        		var canvas = this.$$('#canvas');
-        		canvas.width = innerWidth;
-        		canvas.height = 110;
-				var g = canvas.getContext("2d");
-				
-				var scoreScale = this.scoreScaleTable[this.age.toString()];
-				var lowCutoff = scoreScale[0];
-				var upCutoff = scoreScale[1];
-    			this.drawdmBar(this.dmscore, lowCutoff, upCutoff, g);  				
+        	updatedmstatus: function(lowCutoff){
 				if(this.dmscore >= lowCutoff){
     				this.$$('#dmstatus').style.background = "#0fa955";
     			} else {
     	    		this.$$('#dmstatus').style.background = "#de2b41";
-    			};
-    			
-				if(this.bpscscore[0] < 3){
+    			};        	
+        	},
+        	updatebpscstatus: function(){
+        		if(this.bpscscore[0] < 3){
     				this.$$('#irritability').style.background = "#0fa955";
     			} else {
     	    		this.$$('#irritability').style.background = "#de2b41";
@@ -207,6 +199,23 @@
     			} else {
     	    		this.$$('#difficulty').style.background = "#de2b41";
 				};
+        	},
+        	_scoreChanged: function(){
+        		if(this.bpscscore == undefined){
+        			this.bpscscore = [0,0,0]; 
+        		};
+        		var canvas = this.$$('#canvas');
+        		canvas.width = innerWidth;
+        		canvas.height = 110;
+				var g = canvas.getContext("2d");
+				
+				var scoreScale = this.scoreScaleTable[this.age.toString()];
+				var lowCutoff = scoreScale[0];
+				var upCutoff = scoreScale[1];
+    			this.drawdmBar(this.dmscore, lowCutoff, upCutoff, g);  				
+				this.updatedmstatus(lowCutoff);
+				
+				this.updatebpscstatus();
 				
         	},
         	
