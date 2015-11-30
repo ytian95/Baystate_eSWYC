@@ -23,3 +23,16 @@ paper-toolbar.paper-toolbar-0 {
 	margin-bottom: 15px;
 	font-size: 30px;
 }
+
+.section {
+	width: 60%;
+	margin-top: 20px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.positiveQ {
+	width: 60%;
+	margin-left: auto;
+    margin-right: auto;
+}

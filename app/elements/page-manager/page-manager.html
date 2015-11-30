@@ -124,13 +124,16 @@
             submit: function() {
                 var pages = document.querySelector('iron-pages');
                 pages.selectNext();
+                var devquestions = document.querySelector("dev-page").questions;
+                document.querySelector("result-page").dmQuestions = devquestions;
             	var devAnswers = document.querySelector("dev-page").answers;
+            	document.querySelector("result-page").dmAnswers = devAnswers;
+            	
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
             	var answerHashMap = {};
             	answerHashMap["dev"] = devAnswers;
             	answerHashMap["bpsc"] = bpscAnswers;
-            	//console.log(devAnswers);
-            	//console.log(bpscAnswers);            	
+          	
             	var devTotalScore = 0;
             	for( var i = 0; i < devAnswers.length; i++){
             		if(devAnswers[i] === -1 || devAnswers[i] === undefined ){
@@ -168,24 +171,22 @@
             	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
             		//+ "Baby Pediatric Symptom Checklist Score : " 
             		//+ bpscTotalScore.toString());
+            		
 				/*var a = [1,2,3];
     			var xmlhttp = new XMLHttpRequest();
 				xmlhttp.open( "POST", "../../scripts/answer.php", true );
 				xmlhttp.setRequestHeader( "Content-Type", "application/json" );
 				xmlhttp.send( '[1,2,3]' ); 
-				*/
-				/*
+				
+				
 				var a = [1,2,3];
 				var ajax = document.querySelector('iron-ajax');
 				ajax.contentType = 'application/json';
 				ajax.params = JSON.stringify(a);
 				*/
 				
+			
             },
-            /*
-            handleResponse: function() {
-            },
-            */
         });
     </script>
 </dom-module>

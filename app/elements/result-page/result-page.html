@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">           
             
@@ -11,19 +12,34 @@
                 <div id="headerName">Patient's Result <span>{{age}}</span> months</div>
             </paper-toolbar>
         </paper-header-panel>
-       	<div class="title">Developmental Milestones</div>
-        <paper-button id ="dmstatus">Developmental Milestones Score: <span>{{dmscore}}</span>
-        </paper-button>
-        <br/>
-        <canvas id="canvas"></canvas>
-        <br/>
-        <div class="title">Baby Pediatric Symptom Checklist</div>
-    	<paper-button id ="irritability">Irritability: <span>{{bpscscore.0}}</span>
-        </paper-button>
-    	<paper-button id ="inflexibility">Inflexibility: <span>{{bpscscore.1}}</span>
-        </paper-button>
-        <paper-button id ="difficulty">Difficulty with Routines: <span>{{bpscscore.2}}</span>
-        </paper-button>
+        <paper-card class="section" heading="Developmental Milestones" elevation="3">
+  			<div class="card-content">
+  				<paper-button id ="dmstatus">Developmental Milestones Score: <span>{{dmscore}}</span>
+  				</paper-button>			
+  				<br/>
+        		<canvas id="canvas"></canvas>
+        		<br/>
+        	</div>
+		</paper-card>
+		
+		<paper-card class="positiveQ" heading="Very Much (score:2)" elevation="3">
+  			<div class="card-content" id="dmQ2"></div>
+		</paper-card>
+		
+		<paper-card class="positiveQ" heading="Some What (score:1)" elevation="3">
+  			<div class="card-content" id="dmQ1"></div>
+		</paper-card>
+		
+        <paper-card class="section" heading="Baby Pediatric Symptom Checklist" elevation="3">
+  			<div class="card-content">
+    		<paper-button id ="irritability">Irritability: <span>{{bpscscore.0}}</span>
+        	</paper-button>
+    		<paper-button id ="inflexibility">Inflexibility: <span>{{bpscscore.1}}</span>
+        	</paper-button>
+        	<paper-button id ="difficulty">Difficulty with Routines: <span>{{bpscscore.2}}
+        	</span></paper-button>
+  			</div>
+		</paper-card>
     
     
     </template>
@@ -44,7 +60,7 @@
             	scaleRatio: {
             		type: Number,
             		value: 60,
-            	},
+            	},        	
             	scoreScaleTable: {
                 	type: Object,
                 	notify: true,
@@ -118,7 +134,17 @@
                 			"69": [18, 19],
                 			"70": [18, 19],
                 			},
-                },   
+                },  
+                dmQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                dmAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
                 dmscore: {
                 	type: Number,
                 	notify: true,
@@ -183,6 +209,27 @@
     	    		this.$$('#dmstatus').style.background = "#de2b41";
     			};        	
         	},
+        	layoutPostiveQuestions: function(){
+        		var question2Container = this.$$('#dmQ2');
+        		question2Container.innerHTML = "";
+        		for( var i = 0; i<this.dmAnswers.length; i++){
+        			if(this.dmAnswers[i] == 2){
+        				var question2 = document.createTextNode(this.dmQuestions[i]);
+                    	question2Container.appendChild(question2);
+                    	question2Container.appendChild(document.createElement("br"));
+        			};
+        		}
+        		
+        		var question1Container = this.$$('#dmQ1');
+        		question1Container.innerHTML = "";
+        		for( var i = 0; i<this.dmAnswers.length; i++){
+        			if(this.dmAnswers[i] == 1){
+        				var question1 = document.createTextNode(this.dmQuestions[i]);
+                    	question1Container.appendChild(question1);
+                    	question1Container.appendChild(document.createElement("br"));
+        			};
+        		}
+        	},
         	updatebpscstatus: function(){
         		if(this.bpscscore[0] < 3){
     				this.$$('#irritability').style.background = "#0fa955";
@@ -214,6 +261,7 @@
 				var upCutoff = scoreScale[1];
     			this.drawdmBar(this.dmscore, lowCutoff, upCutoff, g);  				
 				this.updatedmstatus(lowCutoff);
+				this.layoutPostiveQuestions();
 				
 				this.updatebpscstatus();
 				
