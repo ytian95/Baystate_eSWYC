@@ -101,24 +101,24 @@
             _pageChange: function(){
                 var pageTotal = document.querySelector("iron-pages").items.length;
                 if(this.pageNum === 0){
-                    document.getElementById("back").style.display = 'none';
-                    document.getElementById("submit").style.display = 'none';
+                    this.$$("#back").style.display = 'none';
+                    this.$$("#submit").style.display = 'none';
                     if(this.inputValid === false){
-                    	document.getElementById("next").disabled = true;
-                    	document.getElementById("next").style.backgroundColor = "grey";
+                    	this.$$("#next").disabled = true;
+                    	this.$$("#next").style.backgroundColor = "grey";
                     } else {
-                    	document.getElementById("next").style.backgroundColor = "#0aae55";
-                    	document.getElementById("next").disabled = false;
+                    	this.$$("#next").style.backgroundColor = "#0aae55";
+                    	this.$$("#next").disabled = false;
                     };
                 }else if(this.pageNum === (pageTotal - 2)){
-                    document.getElementById("next").style.display = 'none';
-                    document.getElementById("submit").style.display = 'inline-block';
+                    this.$$("#next").style.display = 'none';
+                    this.$$("#submit").style.display = 'inline-block';
                 }else if(this.pageNum === (pageTotal - 1)){
-                    document.getElementById("submit").style.display = 'none';                    
+                    this.$$("#submit").style.display = 'none';                    
                 }else{
-                    document.getElementById("back").style.display = 'inline-block';
-                    document.getElementById("next").style.display = 'inline-block';
-                    document.getElementById("submit").style.display = 'none';
+                    this.$$("#back").style.display = 'inline-block';
+                    this.$$("#next").style.display = 'inline-block';
+                    this.$$("#submit").style.display = 'none';
                 };
             },
             submit: function() {
@@ -129,7 +129,10 @@
             	var devAnswers = document.querySelector("dev-page").answers;
             	document.querySelector("result-page").dmAnswers = devAnswers;
             	
+            	var bpscquestions = document.querySelector("bpsc-page").questions;
+                document.querySelector("result-page").bpscQuestions = bpscquestions;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
+            	
             	var answerHashMap = {};
             	answerHashMap["dev"] = devAnswers;
             	answerHashMap["bpsc"] = bpscAnswers;
@@ -137,8 +140,7 @@
             	var devTotalScore = 0;
             	for( var i = 0; i < devAnswers.length; i++){
             		if(devAnswers[i] === -1 || devAnswers[i] === undefined ){
-            			// skip a question
-            		
+            			// skip a question            		
             		} else {
             			devTotalScore += Number(devAnswers[i]);
             		};
@@ -147,27 +149,32 @@
             	var bpscTotalScore = [0,0,0];
             	for( var i = 0; i < 4; i++){
             		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			// skip a question
+            			bpscAnswers[i] = -1;
             		} else {
             			bpscTotalScore[0] += Number(bpscAnswers[i]);
             		};
             	};
             	for( var i = 4; i < 8; i++){
             		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			// skip a question
+            			bpscAnswers[i] = -1;
             		} else {
             			bpscTotalScore[1] += Number(bpscAnswers[i]);
             		};
             	};
             	for( var i = 8; i < 12; i++){
             		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			// skip a question
+            			bpscAnswers[i] = -1;
             		} else {
             			bpscTotalScore[2] += Number(bpscAnswers[i]);
             		};
             	};
+            	//the answers need to pass to result page before the score since the  
+            	//scoreChanged in the result-page will be triggered.
+            	document.querySelector("result-page").bpscAnswers = bpscAnswers;
+            	
             	this.dmscore = devTotalScore;
             	this.bpscscore = bpscTotalScore;
+            	
             	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
             		//+ "Baby Pediatric Symptom Checklist Score : " 
             		//+ bpscTotalScore.toString());

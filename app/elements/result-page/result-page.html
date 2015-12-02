@@ -14,7 +14,8 @@
         </paper-header-panel>
         <paper-card class="section" heading="Developmental Milestones" elevation="3">
   			<div class="card-content">
-  				<paper-button id ="dmstatus">Developmental Milestones Score: <span>{{dmscore}}</span>
+  				<paper-button id ="dmstatus">Developmental Milestones Score: 
+  					<span>{{dmscore}}</span>
   				</paper-button>			
   				<br/>
         		<canvas id="canvas"></canvas>
@@ -22,24 +23,46 @@
         	</div>
 		</paper-card>
 		
-		<paper-card class="positiveQ" heading="Very Much (score:2)" elevation="3">
-  			<div class="card-content" id="dmQ2"></div>
+		<paper-card class="positiveQ" id="dmQ0Card" heading="Not Yet (score:0)" 
+			elevation="3">
+  			<div class="card-content" id="dmQ0"></div>
 		</paper-card>
 		
-		<paper-card class="positiveQ" heading="Some What (score:1)" elevation="3">
+		<paper-card class="positiveQ" id="dmQ1Card" heading="Some What (score:1)" 
+			elevation="3">
   			<div class="card-content" id="dmQ1"></div>
 		</paper-card>
 		
-        <paper-card class="section" heading="Baby Pediatric Symptom Checklist" elevation="3">
+        <paper-card class="section" heading="Baby Pediatric Symptom Checklist" 
+        	elevation="3">
   			<div class="card-content">
-    		<paper-button id ="irritability">Irritability: <span>{{bpscscore.0}}</span>
-        	</paper-button>
-    		<paper-button id ="inflexibility">Inflexibility: <span>{{bpscscore.1}}</span>
-        	</paper-button>
-        	<paper-button id ="difficulty">Difficulty with Routines: <span>{{bpscscore.2}}
-        	</span></paper-button>
+    			<paper-button id ="irritability" on-click="irriTurn">Irritability: 
+    				<span>{{bpscscore.0}}</span>
+        		</paper-button>
+    			<paper-button id ="inflexibility" on-click="inflTurn">Inflexibility: 
+    				<span>{{bpscscore.1}}</span>
+        		</paper-button>
+        		<paper-button id ="difficulty" on-click="diffTurn">
+        			Difficulty with Routines: <span>{{bpscscore.2}}</span>
+        		</paper-button>
   			</div>
 		</paper-card>
+		
+		<paper-card class="positiveQ" id="irriCard" heading="Irritability Answer" 
+			elevation="3">
+  			<div class="card-content" id="irriQ"></div>
+		</paper-card>
+		
+		<paper-card class="positiveQ" id="inflCard" heading="Inflexibility Answer" 
+			elevation="3">
+  			<div class="card-content" id="inflQ"></div>
+		</paper-card>
+
+		<paper-card class="positiveQ" id="diffCard" heading="Difficulty Answer" 
+			elevation="3">
+  			<div class="card-content" id="diffQ"></div>
+		</paper-card>
+		
     
     
     </template>
@@ -156,8 +179,17 @@
                 	notify: true,
                 	value: [0,0,0],
                 	observer: '_scoreChanged',
+                },
+                bpscQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
                 }, 
-                       		
+                bpscAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },                  		
         	},
         	drawdmBar: function(value, aveLow, aveUpper, g){
         			g.fillStyle = "#de2b41";
@@ -209,18 +241,25 @@
     	    		this.$$('#dmstatus').style.background = "#de2b41";
     			};        	
         	},
-        	layoutPostiveQuestions: function(){
-        		var question2Container = this.$$('#dmQ2');
-        		question2Container.innerHTML = "";
+        	layoutdmPostiveQuestions: function(){
+        		var question0Container = this.$$('#dmQ0');
+        		this.$$('#dmQ0Card').style.display = 'inline-block';
+        		question0Container.innerHTML = "";
         		for( var i = 0; i<this.dmAnswers.length; i++){
-        			if(this.dmAnswers[i] == 2){
-        				var question2 = document.createTextNode(this.dmQuestions[i]);
-                    	question2Container.appendChild(question2);
-                    	question2Container.appendChild(document.createElement("br"));
+        			if(this.dmAnswers[i] == 0){
+        				var question0 = document.createTextNode(this.dmQuestions[i]);
+                    	question0Container.appendChild(question0);
+                    	question0Container.appendChild(document.createElement("br"));
         			};
         		}
         		
+        		//hidden the the card if there is no score 0 questions.
+        		if(question0Container.hasChildNodes() === false){
+        			this.$$('#dmQ0Card').style.display = 'none';
+        		};
+        		
         		var question1Container = this.$$('#dmQ1');
+        		this.$$('#dmQ1Card').style.display = 'inline-block';
         		question1Container.innerHTML = "";
         		for( var i = 0; i<this.dmAnswers.length; i++){
         			if(this.dmAnswers[i] == 1){
@@ -228,24 +267,105 @@
                     	question1Container.appendChild(question1);
                     	question1Container.appendChild(document.createElement("br"));
         			};
-        		}
+        		};
+
+        		//hidden the the card if there is no score 1 answer.
+        		if(question1Container.hasChildNodes() === false){
+        			this.$$('#dmQ1Card').style.display = 'none';
+        		};
         	},
         	updatebpscstatus: function(){
         		if(this.bpscscore[0] < 3){
     				this.$$('#irritability').style.background = "#0fa955";
+    				this.$$('#irriCard').style.display = 'none';
     			} else {
     	    		this.$$('#irritability').style.background = "#de2b41";
+    	    		this.$$('#irriCard').style.display = 'inline-block';
 				};
 				if(this.bpscscore[1] < 3){
     				this.$$('#inflexibility').style.background = "#0fa955";
+    				this.$$('#inflCard').style.display = 'none';
     			} else {
     	    		this.$$('#inflexibility').style.background = "#de2b41";
+    	    		this.$$('#inflCard').style.display = 'inline-block';
 				};
 				if(this.bpscscore[2] < 3){
     				this.$$('#difficulty').style.background = "#0fa955";
+    				this.$$('#diffCard').style.display = 'none';
     			} else {
     	    		this.$$('#difficulty').style.background = "#de2b41";
+    	    		this.$$('#diffCard').style.display = 'inline-block';
 				};
+        	},
+        	irriTurn: function(){
+        		var display = this.$$('#irriCard').style.display;
+        		if(display === 'none'){
+        			this.$$('#irriCard').style.display = 'inline-block';
+        		} else{
+        			this.$$('#irriCard').style.display = 'none';
+        		};
+        	},
+        	inflTurn: function(){
+        	    var display = this.$$('#inflCard').style.display;
+        		if(display === 'none'){
+        			this.$$('#inflCard').style.display = 'inline-block';
+        		} else{
+        			this.$$('#inflCard').style.display = 'none';
+        		};
+        	},
+        	diffTurn: function(){
+        	    var display = this.$$('#diffCard').style.display;
+        		if(display === 'none'){
+        			this.$$('#diffCard').style.display = 'inline-block';
+        		} else{
+        		    console.log(display);
+        			this.$$('#diffCard').style.display = 'none';
+        		};
+        	},        	
+        	layoutbpscPostiveQuestions: function(){
+        		var qAndAString;
+        		var stringNode;
+        		var answerMap = {"0": "Not at all", 
+        						"1": "Somewhat",
+        						"2": "Very Much",
+        						"-1": "Skip Question"};
+        		
+        		if(this.bpscAnswers === undefined){
+        			this.bpscAnswers = [0,0,0,0,0,0,0,0,0,0,0,0];
+        		};
+        		if(this.bpscQuestions === undefined){
+        			this.bpscQuestions = ["","","","","","","","","","","",""];
+        		};
+        		
+        		var irriContainer = this.$$('#irriQ');
+        		irriContainer.innerHTML = "";				
+        		for( var i = 0; i < 4; i++){
+					qAndAString = this.bpscQuestions[i] + "   Answer: " + 
+						answerMap[this.bpscAnswers[i]];
+					stringNode = document.createTextNode(qAndAString);
+                    irriContainer.appendChild(stringNode);
+                    irriContainer.appendChild(document.createElement("br"));
+            	};
+            	
+            	var inflContainer = this.$$('#inflQ');
+        		inflContainer.innerHTML = "";
+            	for( var i = 4; i < 8; i++){
+					qAndAString = this.bpscQuestions[i] + "   Answer: " + 
+						answerMap[this.bpscAnswers[i]];
+					stringNode = document.createTextNode(qAndAString);
+                    inflContainer.appendChild(stringNode);
+                    inflContainer.appendChild(document.createElement("br"));
+            	};
+            	
+            	var diffContainer = this.$$('#diffQ');
+        		diffContainer.innerHTML = "";
+            	for( var i = 8; i < 12; i++){
+					qAndAString = this.bpscQuestions[i] + "   Answer: " + 
+						answerMap[this.bpscAnswers[i]];
+					stringNode = document.createTextNode(qAndAString);
+                    diffContainer.appendChild(stringNode);
+                    diffContainer.appendChild(document.createElement("br")); 
+            	};
         	},
         	_scoreChanged: function(){
         		if(this.bpscscore == undefined){
@@ -261,9 +381,10 @@
 				var upCutoff = scoreScale[1];
     			this.drawdmBar(this.dmscore, lowCutoff, upCutoff, g);  				
 				this.updatedmstatus(lowCutoff);
-				this.layoutPostiveQuestions();
-				
+				this.layoutdmPostiveQuestions();
+			
 				this.updatebpscstatus();
+				this.layoutbpscPostiveQuestions();
 				
         	},
         	
