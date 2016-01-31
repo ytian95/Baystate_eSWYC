@@ -6,7 +6,7 @@ function QuestionsPage(){
 
 //Contains Questions
 //variables need to be renamed
-function QuestionBlock(container){
+/*function QuestionBlock(container){
 	this.container = container; //id will be adding questions to
 }
 
@@ -18,6 +18,7 @@ QuestionBlock.prototype.show = function(questionsText){
         this.container.appendChild(newDevQuestion);
 	}
 }
+*/
 
 function getScore() {
     console.log("click");
@@ -27,11 +28,12 @@ function getScore() {
 
 function initialize(){
 	//window.alert(document.getElementById("dmQuestions"));
-	var questionBlock = new QuestionBlock(
-		document.getElementById("dmQuestions"));
+	/*var questionBlock = new QuestionBlock(
+		document.querySelector("dev-page"));
 
     questionBlock.show(["Makes sounds that let you know he or she is happy or upset",
      "Seems happy to see you ", "Follows a moving toy with his or her eyes", "Turns head to find the person who is talking","Holds head steady when being pulled up to a sitting position", "Brings hands together", "Laughs", "Keeps head steady when held in a sitting position", 'Makes sounds like "ga," "ma," or "ba"', "Looks when you call his or her name" ]);
+     */
 }
 
 window.onload = initialize;

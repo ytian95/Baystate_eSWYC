@@ -1,0 +1,41 @@
+body {
+  background: #fafafa;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+#name{
+    margin-top: 5%;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#dob{
+    margin-top: 3%;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#phone{
+    margin-top: 3%;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#dob2{
+    margin-top: 3%;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dobb {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
