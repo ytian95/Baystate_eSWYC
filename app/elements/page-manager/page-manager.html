@@ -5,6 +5,7 @@
 <link rel="import" href="../dev-page/dev-page.html">
 <link rel="import" href="../bpsc-page/bpsc-page.html">
 <link rel="import" href="../page-login/page-login.html">
+<link rel="import" href="../result-page/result-page.html">
     
 <dom-module id="page-manager">
     <link rel="import" type="css" href="page-manager.css">
@@ -16,7 +17,8 @@
         </paper-header-panel>-->
         <iron-pages selected="{{pageNum}}">
             <div>
-                <page-login version="{{version}}"></page-login>
+                <page-login version="{{version}}" is-valid="{{inputValid}}"
+                	age="{{age}}"></page-login>
             </div>
             <div>
                 <dev-page version="{{version}}"></dev-page>
@@ -26,10 +28,16 @@
                 <bpsc-page version="{{version}}"></bpsc-page>
             </div>
             
+            <div>
+                <result-page age="{{age}}" dmscore="{{dmscore}}" 
+                	bpscscore="{{bpscscore}}"></result-page>
+            </div>
+            
         </iron-pages>
         <br>
         <div><paper-button raised on-click="back" id="back">Back</paper-button></div>
-        <div><paper-button raised on-click="next" id="next">Next</paper-button></div>
+        <div><paper-button raised on-click="next" id="next">
+        	Next</paper-button></div>
         <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
         </div>
         <?php include('../../scripts/answer.php') ?>
@@ -61,6 +69,26 @@
                     type: Number,
                     notify: true,
                 },
+                age: {
+                    type: Number,
+                    notify: true,
+                },
+                inputValid: {
+                	type: Boolean,
+                	notify: true,
+                	value: false,
+                	observer: '_pageChange',
+                },
+                dmscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                },
+                bpscscore: {
+                	type: Array,
+                	notify: true,
+                	value: [0,0,0],
+                },
             },
             next: function(){
                 var pages = document.querySelector('iron-pages');
@@ -73,65 +101,99 @@
             _pageChange: function(){
                 var pageTotal = document.querySelector("iron-pages").items.length;
                 if(this.pageNum === 0){
-                    document.getElementById("back").style.display = 'none';
-                    document.getElementById("submit").style.display = 'none';
-                }else if(this.pageNum === (pageTotal -1)){
-                    document.getElementById("next").style.display = 'none';
-                    document.getElementById("submit").style.display = 'inline-block';
+                    this.$$("#back").style.display = 'none';
+                    this.$$("#submit").style.display = 'none';
+                    if(this.inputValid === false){
+                    	this.$$("#next").disabled = true;
+                    	this.$$("#next").style.backgroundColor = "grey";
+                    } else {
+                    	this.$$("#next").style.backgroundColor = "#0aae55";
+                    	this.$$("#next").disabled = false;
+                    };
+                }else if(this.pageNum === (pageTotal - 2)){
+                    this.$$("#next").style.display = 'none';
+                    this.$$("#submit").style.display = 'inline-block';
+                }else if(this.pageNum === (pageTotal - 1)){
+                    this.$$("#submit").style.display = 'none';                    
                 }else{
-                    document.getElementById("back").style.display = 'inline-block';
-                    document.getElementById("next").style.display = 'inline-block';
-                    document.getElementById("submit").style.display = 'none';
+                    this.$$("#back").style.display = 'inline-block';
+                    this.$$("#next").style.display = 'inline-block';
+                    this.$$("#submit").style.display = 'none';
                 };
             },
             submit: function() {
+                var pages = document.querySelector('iron-pages');
+                pages.selectNext();
+                var devquestions = document.querySelector("dev-page").questions;
+                document.querySelector("result-page").dmQuestions = devquestions;
             	var devAnswers = document.querySelector("dev-page").answers;
+            	document.querySelector("result-page").dmAnswers = devAnswers;
+            	
+            	var bpscquestions = document.querySelector("bpsc-page").questions;
+                document.querySelector("result-page").bpscQuestions = bpscquestions;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
+            	
             	var answerHashMap = {};
             	answerHashMap["dev"] = devAnswers;
             	answerHashMap["bpsc"] = bpscAnswers;
-            	console.log(devAnswers);
-            	console.log(bpscAnswers);            	
+          	
             	var devTotalScore = 0;
             	for( var i = 0; i < devAnswers.length; i++){
             		if(devAnswers[i] === -1 || devAnswers[i] === undefined ){
-            			// skip a question
-            		
+            			// skip a question            		
             		} else {
             			devTotalScore += Number(devAnswers[i]);
             		};
             	};
             	
-            	var bpscTotalScore = 0;
-            	for( var i = 0; i < bpscAnswers.length; i++){
+            	var bpscTotalScore = [0,0,0];
+            	for( var i = 0; i < 4; i++){
             		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			// skip a question
+            			bpscAnswers[i] = -1;
             		} else {
-            			bpscTotalScore += Number(bpscAnswers[i]);
+            			bpscTotalScore[0] += Number(bpscAnswers[i]);
             		};
             	};
-            	console.log(bpscTotalScore);
-            	alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
-            		+ "Baby Pediatric Symptom Checklist Score : " 
-            		+ bpscTotalScore.toString());
+            	for( var i = 4; i < 8; i++){
+            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            			bpscAnswers[i] = -1;
+            		} else {
+            			bpscTotalScore[1] += Number(bpscAnswers[i]);
+            		};
+            	};
+            	for( var i = 8; i < 12; i++){
+            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            			bpscAnswers[i] = -1;
+            		} else {
+            			bpscTotalScore[2] += Number(bpscAnswers[i]);
+            		};
+            	};
+            	//the answers need to pass to result page before the score since the  
+            	//scoreChanged in the result-page will be triggered.
+            	document.querySelector("result-page").bpscAnswers = bpscAnswers;
+            	
+            	this.dmscore = devTotalScore;
+            	this.bpscscore = bpscTotalScore;
+            	
+            	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
+            		//+ "Baby Pediatric Symptom Checklist Score : " 
+            		//+ bpscTotalScore.toString());
+            		
 				/*var a = [1,2,3];
     			var xmlhttp = new XMLHttpRequest();
 				xmlhttp.open( "POST", "../../scripts/answer.php", true );
 				xmlhttp.setRequestHeader( "Content-Type", "application/json" );
 				xmlhttp.send( '[1,2,3]' ); 
-				*/
-				/*
+				
+				
 				var a = [1,2,3];
 				var ajax = document.querySelector('iron-ajax');
 				ajax.contentType = 'application/json';
 				ajax.params = JSON.stringify(a);
 				*/
 				
+			
             },
-            /*
-            handleResponse: function() {
-            },
-            */
         });
     </script>
 </dom-module>
