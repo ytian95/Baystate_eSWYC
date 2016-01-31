@@ -4,6 +4,10 @@ body {
   color: #333;
 }
 
+paper-toolbar.paper-toolbar-0 {
+	background: #2875e2;
+}
+
 .sName{
     font-size: 30px;
     margin-bottom: 10px;
