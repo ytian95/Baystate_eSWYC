@@ -16,6 +16,12 @@
             <div class="dmoption">Skip Question</div>
         </div>
         <div id="bpscQuestions"></div>
+        <iron-ajax
+            auto
+            url="/questions.json"
+            handle-as="json"
+            on-response="handleResponse">
+        </iron-ajax>
     </template>
     <script>
         HTMLImports.whenReady(function () {
@@ -25,18 +31,7 @@
                     questions: {
                         type: Array,
                         notify: true,
-                        value: ["Does your child have a hard time being with new people?", 
-                        "Does your child have a hard time in new places?", 
-                        "Does your child have a hard time with change?", 
-                        "Does your child mind being held by other people?", 
-                        "Does your child cry a lot?", 
-                        "Does your child have a hard time calming down?", 
-                        "Is your child fussy or irritable?", 
-                        "Is it hard to comfort your child?", 
-                        "Is it hard to keep your child on a schedule or routine?", 
-                        "Is it hard to put your child to sleep?", 
-                        "Is it hard to get enough sleep because of your child?", 
-                        "Does your child have trouble staying asleep?"],
+                        value: [],
                         observer: '_createQuestions',
                     },
                 	answers: {
@@ -47,11 +42,25 @@
                 	version: {
                     	type: Number,
                     	notify: true,
+                        observer: 'pullQuestions',
                 	},
                 },
                 listeners: {
         			'scoreChange': 'gatherScore',
       			},
+                handleResponse: function (data) {
+                    jsonOfQuestions= data.detail.response        
+                },
+
+                pullQuestions: function (data) {
+                    if (this.version){
+                        this.questions = [];
+                        swycAge=(String(this.version)).concat(" month");
+                        console.log(swycAge);
+                        this.questions= jsonOfQuestions[swycAge]["questions"]["BPSC"];
+                        //console.log(swycAge);
+                    }         
+                },
                 _createQuestions: function(){
                     var questionContainer = document.getElementById("bpscQuestions");
                     for(var i = 0; i < this.questions.length; i++){
@@ -68,7 +77,6 @@
     					// append answer from each questions to the answerArray
     					this.answers.push(answerList[i].score); 
     				};    			
-    				//console.log(this.bpscAnswers);
            		},
         
             });
