@@ -26,6 +26,7 @@
         </iron-ajax>
     </template>
     <script>
+        var jsonOfQuestions= "";
         HTMLImports.whenReady(function () {
             Polymer({
                 is: 'bpsc-page',
@@ -59,7 +60,11 @@
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
                         console.log(swycAge);
-                        this.questions= jsonOfQuestions[swycAge]["questions"]["BPSC"];
+                        if (this.version <= 15){
+                            this.questions= jsonOfQuestions[swycAge]["questions"]["BPSC"];
+                        }else{
+                            this.questions= jsonOfQuestions[swycAge]["questions"]["PPSC"];
+                        }
                         //console.log(swycAge);
                     }         
                 },
