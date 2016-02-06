@@ -147,25 +147,35 @@
             	};
             	
             	var bpscTotalScore = [0,0,0];
-            	for( var i = 0; i < 4; i++){
-            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			bpscAnswers[i] = -1;
-            		} else {
-            			bpscTotalScore[0] += Number(bpscAnswers[i]);
+            	if(this.age < 18) {
+            		for( var i = 0; i < 4; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[0] += Number(bpscAnswers[i]);
+            			};
             		};
-            	};
-            	for( var i = 4; i < 8; i++){
-            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			bpscAnswers[i] = -1;
-            		} else {
-            			bpscTotalScore[1] += Number(bpscAnswers[i]);
+            		for( var i = 4; i < 8; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[1] += Number(bpscAnswers[i]);
+            			};
             		};
-            	};
-            	for( var i = 8; i < 12; i++){
-            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			bpscAnswers[i] = -1;
-            		} else {
-            			bpscTotalScore[2] += Number(bpscAnswers[i]);
+            		for( var i = 8; i < 12; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[2] += Number(bpscAnswers[i]);
+            			};
+            		};
+            	} else {
+            		for( var i = 0; i < bpscAnswers.length; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[0] += Number(bpscAnswers[i]);
+            			};
             		};
             	};
             	//the answers need to pass to result page before the score since the  
