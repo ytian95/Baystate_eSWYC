@@ -13,7 +13,7 @@
         </paper-header-panel>
         <div class="sName">Developmental Milestones</div>
         <div class="optionSection">
-            <div class="dmoption">Not Yet</div>
+            <div class="dmoption" id="firstChoice">Not Yet</div>
             <div class="dmoption">Some What</div>
             <div class="dmoption">Very Much</div>
             <div class="dmoption">Skip Question</div>
@@ -49,6 +49,10 @@
                     notify: true,
                     observer: 'pullQuestions',
                 },
+                section: {
+                	type: String,
+                	notify: true,
+                },
                                 
             },
         	listeners: {
@@ -63,16 +67,20 @@
                if (this.version){
                     this.questions = [];
                     swycAge=(String(this.version)).concat(" month");
-                    console.log(swycAge);
-                    this.questions= jsonOfQuestions[swycAge]["questions"]["dev milestones"];
-                    //console.log(swycAge);
+                    this.questions= jsonOfQuestions[swycAge]["questions"][this.section];
                 }         
             },
             _createQuestions: function(){
+            	if(this.section !== 'dev milestones'){
+            		this.$$("#firstChoice").innerHTML = "Not at all";
+            		if (this.section === "parent concern"){
+            			this.$$(".sName").innerHTML = "Parent's Concerns";
+            		};
+            	};
+            	var questionContainer = this.$$("#dmQuestions");
                 for(var i = 0; i < this.questions.length; i++){
                     var newDevQuestion = document.createElement("dev-question");
                     newDevQuestion.questionString = this.questions[i];
-                    var questionContainer = document.getElementById("dmQuestions");
                     questionContainer.appendChild(newDevQuestion);
                 };
             },
