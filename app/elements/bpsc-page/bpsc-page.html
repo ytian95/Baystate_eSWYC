@@ -61,7 +61,7 @@
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
                         console.log(swycAge);
-                        if (this.version <= 15){
+                        if (this.version < 18){
                             this.questions= jsonOfQuestions[swycAge]["questions"]["BPSC"];
                         }else{
                             this.questions= jsonOfQuestions[swycAge]["questions"]["PPSC"];
@@ -70,6 +70,10 @@
                     }         
                 },
                 _createQuestions: function(){
+                    if (this.version >= 18){
+                    	this.$$(".sName").innerHTML = 
+                    		"Preschool Pediatric Symptom Checklist";
+                    };                
                     var questionContainer = document.getElementById("bpscQuestions");
                     for(var i = 0; i < this.questions.length; i++){
                         var newDevQuestion = document.createElement("bpsc-question");

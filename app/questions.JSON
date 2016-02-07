@@ -102,6 +102,10 @@
 				"Is it hard to put your child to sleep?",
 				"Is it hard to get enough sleep because of your child?",
 				"Does your child have trouble staying asleep?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -135,6 +139,10 @@
 				"Is it hard to put your child to sleep?",
 				"Is it hard to get enough sleep because of your child?",
 				"Does your child have trouble staying asleep?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -169,6 +177,10 @@
 				"Is it hard to put your child to sleep?",
 				"Is it hard to get enough sleep because of your child?",
 				"Does your child have trouble staying asleep?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -203,6 +215,10 @@
 				"Is it hard to put your child to sleep?",
 				"Is it hard to get enough sleep because of your child?",
 				"Does your child have trouble staying asleep?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -243,6 +259,10 @@
 				"Is it hard to ... Know what your child needs?",
 				"Is it hard to ... Keep your child on a schedule?",
 				"Is it hard to ... Get your child to obey you?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -283,6 +303,10 @@
 				"Is it hard to ... Know what your child needs?",
 				"Is it hard to ... Keep your child on a schedule?",
 				"Is it hard to ... Get your child to obey you?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -323,6 +347,10 @@
 				"Is it hard to ... Know what your child needs?",
 				"Is it hard to ... Keep your child on a schedule?",
 				"Is it hard to ... Get your child to obey you?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -363,6 +391,10 @@
 				"Is it hard to ... Know what your child needs?",
 				"Is it hard to ... Keep your child on a schedule?",
 				"Is it hard to ... Get your child to obey you?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -403,6 +435,10 @@
 				"Is it hard to ... Know what your child needs?",
 				"Is it hard to ... Keep your child on a schedule?",
 				"Is it hard to ... Get your child to obey you?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	},
@@ -443,6 +479,10 @@
 				"Is it hard to ... Know what your child needs?",
 				"Is it hard to ... Keep your child on a schedule?",
 				"Is it hard to ... Get your child to obey you?"
+			],
+			"parent concern" : [
+				"Do you have any concerns about your child's learning or development?",
+				"Do you have any concerns about your child's behavior?"
 			]
 		}
 	}
