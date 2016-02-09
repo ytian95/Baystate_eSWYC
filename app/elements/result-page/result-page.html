@@ -71,7 +71,11 @@
   			<div class="card-content" id="ppscQ"></div>
 		</paper-card>
     
-    
+        <paper-card class="section" heading="Parent's Concerns" elevation="3">
+  			<div class="card-content" id="pcQ">
+        	</div>
+		</paper-card>
+		    
     </template>
     <script>
 
@@ -176,6 +180,16 @@
                     notify: true,
                     value: [],
                 },
+                pcQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                pcAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
                 dmscore: {
                 	type: Number,
                 	notify: true,
@@ -197,8 +211,8 @@
                     type: Array,
                     notify: true,
                     value: [],
-                },                  		
-        	},
+                }        	
+            },
         	drawdmBar: function(value, aveLow, aveUpper, g){
         			g.fillStyle = "#de2b41";
 					g.fillRect(30, 50, 2.7*this.scaleRatio,30); 
@@ -414,6 +428,23 @@
             		};            	
             	};
         	},
+        	layoutPCQuestions: function(){
+        		var answerMap = {"0": "Not at all", 
+        						"1": "Somewhat",
+        						"2": "Very Much",
+        						"-1": "Skip Question"};
+        		var questionContainer = this.$$('#pcQ');
+        		//this.$$('#dmQ0Card').style.display = 'inline-block';
+        		questionContainer.innerHTML = "";
+        		for( var i = 0; i<this.pcAnswers.length; i++){
+        			var question = document.createTextNode(this.pcQuestions[i]);
+        			qAndAString = this.pcQuestions[i] + "   Answer: " + 
+							answerMap[this.pcAnswers[i]];
+					stringNode = document.createTextNode(qAndAString);
+                    questionContainer.appendChild(stringNode);
+                    questionContainer.appendChild(document.createElement("br"));
+        		}
+        	},
         	_scoreChanged: function(){
         		if(this.bpscscore == undefined){
         			this.bpscscore = [0,0,0]; 
@@ -431,7 +462,9 @@
 				this.layoutdmPostiveQuestions();
 			
 				this.updatebpscstatus();
-				this.layoutbpscPostiveQuestions();				
+				this.layoutbpscPostiveQuestions();	
+				
+				this.layoutPCQuestions();			
         	},
         	_ageChanged: function(){
         		if(this.age >= 18) {

@@ -126,20 +126,29 @@
                 };
             },
             submit: function() {
+            	//flip page
                 var pages = document.querySelector('iron-pages');
                 pages.selectNext();
-                var devquestions = document.querySelector("dev-page").questions;
+                
+                
+                var devquestions = document.querySelectorAll("dev-page")[0].questions;
                 document.querySelector("result-page").dmQuestions = devquestions;
-            	var devAnswers = document.querySelector("dev-page").answers;
+            	var devAnswers = document.querySelectorAll("dev-page")[0].answers;
             	document.querySelector("result-page").dmAnswers = devAnswers;
             	
             	var bpscquestions = document.querySelector("bpsc-page").questions;
                 document.querySelector("result-page").bpscQuestions = bpscquestions;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
+
+                var pcquestions = document.querySelectorAll("dev-page")[1].questions;
+                document.querySelector("result-page").pcQuestions = pcquestions;
+            	var pcAnswers = document.querySelectorAll("dev-page")[1].answers;
+            	document.querySelector("result-page").pcAnswers = pcAnswers;
             	
-            	var answerHashMap = {};
+            	/*var answerHashMap = {};
             	answerHashMap["dev"] = devAnswers;
             	answerHashMap["bpsc"] = bpscAnswers;
+            	*/
           	
             	var devTotalScore = 0;
             	for( var i = 0; i < devAnswers.length; i++){

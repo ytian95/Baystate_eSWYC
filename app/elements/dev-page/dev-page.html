@@ -73,7 +73,7 @@
             _createQuestions: function(){
             	if(this.section !== 'dev milestones'){
             		this.$$("#firstChoice").innerHTML = "Not at all";
-            		if (this.section === "Parent's Concerns"){
+            		if (this.section === "Parent’s Concerns"){
             			this.$$(".sName").innerHTML = "Parent's Concerns";
             		};
             	};
@@ -87,7 +87,7 @@
             gatherScore: function(){
             	this.answers = []; //clear the answerArray
             	// use document.querySelecotorAll() to get the elements.
-   				var answerList = document.querySelectorAll("dev-question"); 
+   				var answerList = Polymer.dom(this.root).querySelectorAll("dev-question");   				 
     			for( var i = 0; i < answerList.length; i++ ){
     				// append answer from each questions to the answerArray
     				this.answers.push(answerList[i].score); 
