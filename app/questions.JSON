@@ -31,7 +31,7 @@
         "Do you have any concerns about your child’s learning or development?",
         "Do you have any concerns about your child’s behavior? "
       ],
-      "family questions": [
+      "Family Questions": [
         "Does anyone smoke tobacco at home?",
         "In the last year, have you ever drunk alcohol or used drugs more than you meant to?",
         "Have you felt you wanted or needed to cut down on your drinking or drug use in the last year?",
@@ -40,7 +40,7 @@
         "In general, how would you describe your relationship with your spouse/partner?",
         "Do you and your partner work out arguments with:"
       ],
-      "postpartum depression": [
+      "Emotional Changes With A New Baby": [
         " I have been able to laugh and see the funny side of things",
         " I have looked forward with enjoyment to things",
         " I have blamed myself unnecessarily when things went wrong",
@@ -51,6 +51,29 @@
         " I have felt sad or miserable",
         " I have been so unhappy that I have been crying",
         "The thought of harming myself has occurred to me"
+      ],
+      "Emotional Changes Answer Options": [
+        ["As much as I always could", "Not quite so much now",
+        "Definitely not so much now", "Not at all"],
+        ["As much as I ever did", "Rather less than I used to",
+        "Definitely less than I used to", "Hardly at all"],
+        ["Yes, most of the time", "Yes, some of the time",
+        "Not very ofter", "No, never"],
+        ["No, not at all", "Hardly ever", "Yes, sometimes", 
+        "Yes, very often"],
+        ["Yes, quite a lot", "Yes, sometimes", "No, not much",
+        "No, not at all"],
+        ["Yes, most of the time I haven't been able to cope at all",
+        "Yes, sometimes I haven't been coping as well as usual",
+        "No, most of the time I have coped quite well",
+        "No, I have been coping as well as ever"],
+        ["Yes, most of the time", "Yes, sometimes", "Not very often",
+        "No, not at all"],
+        ["Yes, most of the time", "Yes, quite often", "Not very often",
+        "No, not at all"],      
+        ["Yes, most of the time", "Yes, quite often", 
+        "Only occasionally", "No, never"],
+        ["Yes, quite often", "Sometimes", "Hardly ever", "Never"]
       ]
     }
   },
@@ -102,6 +125,29 @@
         "I have felt sad or miserable",
         "I have been so unhappy that I have been crying",
         "The thought of harming myself has occurred to me"
+      ],
+      "Emotional Changes Answer Options": [
+        ["As much as I always could", "Not quite so much now",
+        "Definitely not so much now", "Not at all"],
+        ["As much as I ever did", "Rather less than I used to",
+        "Definitely less than I used to", "Hardly at all"],
+        ["Yes, most of the time", "Yes, some of the time",
+        "Not very ofter", "No, never"],
+        ["No, not at all", "Hardly ever", "Yes, sometimes", 
+        "Yes, very often"],
+        ["Yes, quite a lot", "Yes, sometimes", "No, not much",
+        "No, not at all"],
+        ["Yes, most of the time I haven't been able to cope at all",
+        "Yes, sometimes I haven't been coping as well as usual",
+        "No, most of the time I have coped quite well",
+        "No, I have been coping as well as ever"],
+        ["Yes, most of the time", "Yes, sometimes", "Not very often",
+        "No, not at all"],
+        ["Yes, most of the time", "Yes, quite often", "Not very often",
+        "No, not at all"],      
+        ["Yes, most of the time", "Yes, quite often", 
+        "Only occasionally", "No, never"],
+        ["Yes, quite often", "Sometimes", "Hardly ever", "Never"]
       ]
     }
   },
@@ -153,6 +199,29 @@
         "I have felt sad or miserable",
         "I have been so unhappy that I have been crying",
         "The thought of harming myself has occurred to me"
+      ],
+      "Emotional Changes Answer Options": [
+        ["As much as I always could", "Not quite so much now",
+        "Definitely not so much now", "Not at all"],
+        ["As much as I ever did", "Rather less than I used to",
+        "Definitely less than I used to", "Hardly at all"],
+        ["Yes, most of the time", "Yes, some of the time",
+        "Not very ofter", "No, never"],
+        ["No, not at all", "Hardly ever", "Yes, sometimes", 
+        "Yes, very often"],
+        ["Yes, quite a lot", "Yes, sometimes", "No, not much",
+        "No, not at all"],
+        ["Yes, most of the time I haven't been able to cope at all",
+        "Yes, sometimes I haven't been coping as well as usual",
+        "No, most of the time I have coped quite well",
+        "No, I have been coping as well as ever"],
+        ["Yes, most of the time", "Yes, sometimes", "Not very often",
+        "No, not at all"],
+        ["Yes, most of the time", "Yes, quite often", "Not very often",
+        "No, not at all"],      
+        ["Yes, most of the time", "Yes, quite often", 
+        "Only occasionally", "No, never"],
+        ["Yes, quite often", "Sometimes", "Hardly ever", "Never"]
       ]
     }
   },
@@ -381,8 +450,7 @@
         "Is it hard to ... Keep your child on a schedule?",
         "Is it hard to ... Get your child to obey you?"
       ],
-      "Parent Observations": [
-        "Does your child bring things to you to show them to you?",
+      "Parent’s Observation of Social Interactions (POSI)": [
         "Is your  child interested in playing with other children?",
         "When you say a word or wave your hand, will your child try to copy you?",
         "Does your child look at you when you call his or her name?",
@@ -441,7 +509,7 @@
         "Is it hard to ... Keep your child on a schedule?",
         "Is it hard to ... Get your child to obey you?"
       ],
-      "Parent Observations": [
+      "Parent’s Observation of Social Interactions (POSI)": [
         "Does your child bring things to you to show them to you?",
         "Is your  child interested in playing with other children?",
         "When you say a word or wave your hand, will your child try to copy you?",

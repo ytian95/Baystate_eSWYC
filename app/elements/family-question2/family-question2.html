@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
+    
+<dom-module id="family-question2">
+    <link rel="import" type="css" href="family-question2.css">
+    <template>
+    	<div id="main">
+        	<div class="familyWrapper">
+            	<div class="questionString">{{questionString}}</div>
+            	<paper-radio-group class="familyButtons" selected="{{score}}" allow-empty-selection>
+                	<paper-radio-button class="familyButton" name="0">0</paper-radio-button>
+                	<paper-radio-button class="familyButton" name="1">1</paper-radio-button>
+                	<paper-radio-button class="familyButton" name="0">2</paper-radio-button>
+                	<paper-radio-button class="familyButton" name="1">3</paper-radio-button>                	
+                	<paper-radio-button class="familyButton" name="-1"></paper-radio-button>
+            	</paper-radio-group>
+        	</div>
+        </div>
+    </template>
+    <script>
+    Polymer({
+        is: 'family-question2',
+        properties: {
+            questionString: {
+                type: String,
+                notify: true,
+            },
+            
+            score: {
+                type: Number,
+                notify: true,
+                observer: "_scoreChanged",
+            },
+        },
+        _scoreChanged: function(){
+            	this.fire('scoreChange');
+        },
+    });
+    </script>
+</dom-module>

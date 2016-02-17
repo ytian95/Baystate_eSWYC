@@ -52,15 +52,13 @@
         			'scoreChange': 'gatherScore',
       			},
                 handleResponse: function (data) {
-                    jsonOfQuestions= data.detail.response   
-                    console.log(jsonOfQuestions);     
+                    jsonOfQuestions= data.detail.response     
                 },
 
                 pullQuestions: function (data) {
                     if (this.version){
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
-                        console.log(swycAge);
                         if (this.version < 18){
                             this.questions= jsonOfQuestions[swycAge]["questions"]["BPSC"];
                         }else{

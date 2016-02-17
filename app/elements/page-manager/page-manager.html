@@ -4,6 +4,8 @@
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../dev-page/dev-page.html">
 <link rel="import" href="../bpsc-page/bpsc-page.html">
+<link rel="import" href="../family-page/family-page.html">
+<link rel="import" href="../emotional-page/emotional-page.html">
 <link rel="import" href="../page-login/page-login.html">
 <link rel="import" href="../result-page/result-page.html">
     
@@ -31,7 +33,15 @@
             <div>
                 <dev-page version="{{version}}" section="Parent’s Concerns"></dev-page>
             </div>
-            
+
+            <div>
+                <family-page version="{{version}}"></family-page>
+            </div>
+
+			<div>
+                <emotional-page version="{{version}}"></emotioanl-page>
+            </div>
+                        
             <div>
                 <result-page age="{{age}}" dmscore="{{dmscore}}" 
                 	bpscscore="{{bpscscore}}"></result-page>
