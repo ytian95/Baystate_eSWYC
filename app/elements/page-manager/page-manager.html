@@ -17,7 +17,7 @@
                 <div id="headerName">eSWYC<span>{{title}}</span></div>
             </paper-toolbar>
         </paper-header-panel>-->
-        <iron-pages selected="{{pageNum}}">
+        <iron-pages selected="{{pageNum}}" id="ironPage">
             <div>
                 <page-login version="{{version}}" is-valid="{{inputValid}}"
                 	age="{{age}}"></page-login>
@@ -30,6 +30,7 @@
                 <bpsc-page version="{{version}}"></bpsc-page>
             </div>
 
+			<!--
             <div>
                 <dev-page version="{{version}}" section="Parent’s Concerns"></dev-page>
             </div>
@@ -41,8 +42,9 @@
 			<div>
                 <emotional-page version="{{version}}"></emotioanl-page>
             </div>
+            -->
                         
-            <div>
+            <div id="result">
                 <result-page age="{{age}}" dmscore="{{dmscore}}" 
                 	bpscscore="{{bpscscore}}"></result-page>
             </div>
@@ -54,6 +56,12 @@
         	Next</paper-button></div>
         <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
         </div>
+        <iron-ajax
+            auto
+            url="/questions.json"
+            handle-as="json"
+            on-response="handleResponse">
+        </iron-ajax>
         <?php include('../../scripts/answer.php') ?>
         <!--
         <iron-ajax
@@ -65,6 +73,7 @@
     		on-response="handleResponse"></iron-ajax>-->
     </template>
     <script>
+    	var jsonOfQuestions ="";
         Polymer({
             is: 'page-manager',
             properties: {
@@ -82,6 +91,7 @@
                 version: {
                     type: Number,
                     notify: true,
+                    observer: 'pullSections',
                 },
                 age: {
                     type: Number,
@@ -103,10 +113,49 @@
                 	notify: true,
                 	value: [0,0,0],
                 },
+                sectionKeys: {
+                	type: Array,
+                	notify: true,
+                },
             },
             next: function(){
                 var pages = document.querySelector('iron-pages');
                 pages.selectNext();
+            },
+            handleResponse: function (data) {
+                jsonOfQuestions= data.detail.response;       
+            },
+            pullSections: function (data) {
+               if (this.version){
+                    swycAge=(String(this.version)).concat(" month");
+                    var questions = jsonOfQuestions[swycAge]["questions"];
+                    this.sectionKeys = Object.keys(questions);
+                    console.log(sectionKeys);
+                    var pageContainer = Polymer.dom(this.$.ironPage);
+                    var lastPageNode = this.$.result;
+                    if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
+                    	var pPage = document.createElement('dev-page');
+                    	pPage.section = "Parent’s Concerns";
+                    	pPage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(pPage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+                    };
+                    if(this.sectionKeys.indexOf("Family Questions") > -1){
+                    	var fPage = document.createElement('family-page');
+                    	fPage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(fPage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+                    };
+                    if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
+                    	var ePage = document.createElement('emotional-page');
+                    	ePage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(ePage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+    	             };                   
+                }         
             },
             back: function(){
                 var pages = document.querySelector('iron-pages');

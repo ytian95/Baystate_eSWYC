@@ -83,39 +83,41 @@
                         	jsonOfQuestions[swycAge]["questions"]["Family Questions"];
                     }         
                 },
-                _createQuestions: function(){            
-                    var questionContainer1 = document.getElementById("familyQuestions1");
-                    questionContainer1.innerHTML = "";
-                    for(var i = 0; i < 5; i++){
-                        var newFamilyQuestion = document.createElement("family-question1");
-                        newFamilyQuestion.questionString = this.questions[i];
-                        questionContainer1.appendChild(newFamilyQuestion);
-                    };
+                _createQuestions: function(){
+                	if( this.questions.length !== 0){            
+                    	var questionContainer1 = this.$$("#familyQuestions1");
+                    	questionContainer1.innerHTML = "";
+                    	for(var i = 0; i < 5; i++){
+                        	var newFamilyQuestion = document.createElement("family-question1");
+                        	newFamilyQuestion.questionString = this.questions[i];
+                        	questionContainer1.appendChild(newFamilyQuestion);
+                    	};
                     
-                    var questionContainer2 = document.getElementById("familyQuestions2");
-                    var questionContainer3 = document.getElementById("familyQuestions3");
-                    if (this.questions.length <= 7){
-                    	for(var i = 5; i < this.questions.length; i++){
-                        	var newFamilyQuestion = 
-                        		document.createElement("family-question2");
-                        	newFamilyQuestion.questionString = this.questions[i];
-                        	questionContainer3.appendChild(newFamilyQuestion);
-                        	questionContainer2.style.display = "none"; 
-                        	this.$$("#section2").style.display = "none"
-                        };                
-                    }else {
-                    	for(var i = 5; i < 7; i++){
-                        	var newFamilyQuestion = 
-                        		document.createElement("family-question2");
-                        	newFamilyQuestion.questionString = this.questions[i];
-                        	questionContainer2.appendChild(newFamilyQuestion);
-                        };  
-                    	for(var i = 7; i < this.questions.length; i++){
-                        	var newFamilyQuestion = 
-                        		document.createElement("family-question2");
-                        	newFamilyQuestion.questionString = this.questions[i];
-                        	questionContainer3.appendChild(newFamilyQuestion);
-                        };                                  
+                    	var questionContainer2 = this.$$("#familyQuestions2");
+                    	var questionContainer3 = this.$$("#familyQuestions3");
+                    	if (this.questions.length <= 7){
+                    		for(var i = 5; i < this.questions.length; i++){
+                        		var newFamilyQuestion = 
+                        			document.createElement("family-question2");
+                        		newFamilyQuestion.questionString = this.questions[i];
+                        		questionContainer3.appendChild(newFamilyQuestion);
+                        		questionContainer2.style.display = "none"; 
+                        		this.$$("#section2").style.display = "none"
+                        	};                
+                    	}else {
+                    		for(var i = 5; i < 7; i++){
+                        		var newFamilyQuestion = 
+                        			document.createElement("family-question2");
+                        		newFamilyQuestion.questionString = this.questions[i];
+                        		questionContainer2.appendChild(newFamilyQuestion);
+                        	};  
+                    		for(var i = 7; i < this.questions.length; i++){
+                        		var newFamilyQuestion = 
+                        			document.createElement("family-question2");
+                        		newFamilyQuestion.questionString = this.questions[i];
+                        		questionContainer3.appendChild(newFamilyQuestion);
+                        	};                                  
+                    	};
                     };
                 },
             	gatherScore: function(){
