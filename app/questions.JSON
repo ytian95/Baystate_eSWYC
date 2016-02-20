@@ -413,6 +413,17 @@
         "Feeling down, depressed or hopeless?",
         "In general, how would you describe your relationship with your spouse, partner?",
         "Do you and your partner work out argument with:"
+      ],
+      "POSI Answer Options": [
+        ["Many times a day", "A few times a day", "A few times a week", 
+        "less than once a week", "Never"],
+        ["Always", "Usually", "Sometimes", "Rarely", "Never"],   
+        ["Says a word for what he or she wants", "Points to it with one finger", 
+         "Reaches for it", "Pulls me over or puts my hand on it", 
+         "Grunts, cries or screams"],
+        ["Playing with dolls or stuffed animals", "Reading books with you", 
+         "Climbing, running and being active", "Lining up toys or other things", 
+         "Watching things go round and round like fans or wheels"]
       ]
     }
   },
@@ -451,12 +462,24 @@
         "Is it hard to ... Get your child to obey you?"
       ],
       "Parent’s Observation of Social Interactions (POSI)": [
+        "Does your child bring things to you to show them?",
         "Is your  child interested in playing with other children?",
         "When you say a word or wave your hand, will your child try to copy you?",
         "Does your child look at you when you call his or her name?",
         "Does your child look if you point to something across the room?",
         "How does your child usually show you something he or she wants?",
         "What are your child’s favorite play activities?"
+      ],
+      "POSI Answer Options": [
+        ["Many times a day", "A few times a day", "A few times a week", 
+        "less than once a week", "Never"],
+        ["Always", "Usually", "Sometimes", "Rarely", "Never"],   
+        ["Says a word for what he or she wants", "Points to it with one finger", 
+         "Reaches for it", "Pulls me over or puts my hand on it", 
+         "Grunts, cries or screams"],
+        ["Playing with dolls or stuffed animals", "Reading books with you", 
+         "Climbing, running and being active", "Lining up toys or other things", 
+         "Watching things go round and round like fans or wheels"]
       ],
       "Parent’s Concerns": [
         "Do you have any concerns about your child’s learning or development?",
@@ -517,6 +540,17 @@
         "Does your child look if you point to something across the room?",
         "How does your child usually show you something he or she wants?",
         "What are your child’s favorite play activities?"
+      ],
+      "POSI Answer Options": [
+        ["Many times a day", "A few times a day", "A few times a week", 
+        "less than once a week", "Never"],
+        ["Always", "Usually", "Sometimes", "Rarely", "Never"],   
+        ["Says a word for what he or she wants", "Points to it with one finger", 
+         "Reaches for it", "Pulls me over or puts my hand on it", 
+         "Grunts, cries or screams"],
+        ["Playing with dolls or stuffed animals", "Reading books with you", 
+         "Climbing, running and being active", "Lining up toys or other things", 
+         "Watching things go round and round like fans or wheels"]
       ],
       "Parent’s Concerns": [
         "Do you have any concerns about your child’s learning or development?",

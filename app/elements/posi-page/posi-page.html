@@ -1,0 +1,120 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../posi-question1/posi-question1.html">
+<link rel="import" href="../posi-question2/posi-question2.html">
+    
+<dom-module id="posi-page">
+    <link rel="import" type="css" href="posi-page.css">
+    <template>
+        <paper-header-panel mode="seamed">
+            <paper-toolbar>
+                <div id="headerName">eSWYC <span>{{version}}</span> months</div>
+            </paper-toolbar>
+        </paper-header-panel>
+        <div class="sName">Parent’s Observation of Social Interactions (POSI)</div>
+        <div id="posiQuestions">
+        </div>
+        <iron-ajax
+            auto
+            url="/questions.json"
+            handle-as="json"
+            on-response="handleResponse">
+        </iron-ajax>
+    </template>
+    <script>
+    var jsonOfQuestions ="";
+    HTMLImports.whenReady(function () {
+        Polymer({
+            is: 'posi-page',
+            properties: {
+                questions: {
+                    type: Array,
+                    notify: true,
+                    value:[],
+                    observer: '_createQuestions',
+                },
+                answers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                version: {
+                    type: Number,
+                    notify: true,
+                    observer: 'pullQuestions',
+				},
+				answerOptions: {
+                    type: Array,
+                    notify: true,
+                    value:[],
+                },
+                                
+            },
+        	listeners: {
+        		'scoreChange': 'gatherScore',
+      		},
+            
+            handleResponse: function (data) {
+                jsonOfQuestions= data.detail.response;       
+            },
+
+            pullQuestions: function (data) {
+               if (this.version){
+                    this.questions = [];
+                    var sectionName = "Parent’s Observation of Social Interactions (POSI)";
+                    var options = "POSI Answer Options";
+                    swycAge=(String(this.version)).concat(" month");
+                    this.answerOptions = jsonOfQuestions[swycAge]["questions"][options];
+                    this.questions = jsonOfQuestions[swycAge]["questions"][sectionName];
+                }         
+            },
+            _createQuestions: function(){
+            	var questionContainer = this.$$("#posiQuestions");
+                for(var i = 0; i < this.questions.length; i++){               	
+                	if(i <= 4){
+                    	var newposiQuestion = document.createElement("posi-question1");
+                    	newposiQuestion.questionString = this.questions[i];
+                    	//console.log(newposiQuestion.questionString);
+                    	if( i === 0){
+                    		newposiQuestion.options = this.answerOptions[0];
+                    	} else {
+                    		newposiQuestion.options = this.answerOptions[1];
+                    	};
+                    } else {
+                    	var newposiQuestion = document.createElement("posi-question2");
+                    	newposiQuestion.questionString = this.questions[i];
+                    	if(i === 5){
+                    		newposiQuestion.options = this.answerOptions[2];
+                    	} else {
+                    		newposiQuestion.options = this.answerOptions[3];
+                    	}; 
+                    };
+                    //console.log(newposiQuestion);
+                    questionContainer.appendChild(newposiQuestion);
+                };
+            },
+            gatherScore: function(){
+            	this.answers = []; //clear the answerArray
+            	// use document.querySelecotorAll() to get the elements.
+   				var answerList1= 
+   					Polymer.dom(this.root).querySelectorAll("posi-question1");   				 
+    			for( var i = 0; i < answerList1.length; i++ ){
+    				// append answer from each questions to the answerArray
+    				this.answers.push(answerList1[i].score); 
+    			};
+    			var answerList2= 
+   					Polymer.dom(this.root).querySelectorAll("posi-question2");  
+   				for( var i = 0; i < answerList2.length; i++ ){
+    				// append answer from each questions to the answerArray
+    				this.answers.push(answerList2[i].score); 
+    			};  
+    			console.log(this.answers);			
+    			//console.log(this.answers);
+            },
+        
+        });
+    });
+
+    </script>
+</dom-module>

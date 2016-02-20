@@ -6,6 +6,7 @@
 <link rel="import" href="../bpsc-page/bpsc-page.html">
 <link rel="import" href="../family-page/family-page.html">
 <link rel="import" href="../emotional-page/emotional-page.html">
+<link rel="import" href="../posi-page/posi-page.html">
 <link rel="import" href="../page-login/page-login.html">
 <link rel="import" href="../result-page/result-page.html">
     
@@ -130,7 +131,7 @@
                     swycAge=(String(this.version)).concat(" month");
                     var questions = jsonOfQuestions[swycAge]["questions"];
                     this.sectionKeys = Object.keys(questions);
-                    console.log(sectionKeys);
+                    console.log(this.sectionKeys);
                     var pageContainer = Polymer.dom(this.$.ironPage);
                     var lastPageNode = this.$.result;
                     if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
@@ -154,7 +155,15 @@
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(ePage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);
-    	             };                   
+    	            };
+    	            var posiName = "Parent’s Observation of Social Interactions (POSI)";  
+                    if(this.sectionKeys.indexOf(posiName) > -1){
+                    	var ePage = document.createElement('posi-page');
+                    	ePage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(ePage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+    	            };                  
                 }         
             },
             back: function(){
