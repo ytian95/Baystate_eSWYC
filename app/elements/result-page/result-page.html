@@ -179,6 +179,7 @@
                     type: Array,
                     notify: true,
                     value: [],
+                    observer: '_answerChanged',
                 },
                 pcQuestions: {
                     type: Array,
@@ -189,6 +190,40 @@
                     type: Array,
                     notify: true,
                     value: [],
+                    observer: '_answerChanged',
+                },
+                familyQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                familyAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
+                },
+                emoQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                emoAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
+                },
+                posiQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                posiAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
                 },
                 dmscore: {
                 	type: Number,
@@ -211,6 +246,7 @@
                     type: Array,
                     notify: true,
                     value: [],
+                    observer: '_answerChanged',
                 }        	
             },
         	drawdmBar: function(value, aveLow, aveUpper, g){
@@ -472,7 +508,15 @@
         				"Preschool Pediatric Symptom Checklist";
         		};
         	},
-        	
+        	_answerChanged: function(){
+        		console.log(this.dmAnswers);
+        		console.log(this.bpscAnswers);
+        		console.log(this.ppscAnswers);
+        		console.log(this.pcAnswers);
+        		console.log(this.familyAnswers);
+        		console.log(this.emoAnswers);
+        		console.log(this.posiAnswers);
+        	}      	
         });
     </script>
 </dom-module>

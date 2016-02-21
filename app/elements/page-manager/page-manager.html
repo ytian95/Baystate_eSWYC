@@ -30,20 +30,6 @@
             <div>
                 <bpsc-page version="{{version}}"></bpsc-page>
             </div>
-
-			<!--
-            <div>
-                <dev-page version="{{version}}" section="Parent’s Concerns"></dev-page>
-            </div>
-
-            <div>
-                <family-page version="{{version}}"></family-page>
-            </div>
-
-			<div>
-                <emotional-page version="{{version}}"></emotioanl-page>
-            </div>
-            -->
                         
             <div id="result">
                 <result-page age="{{age}}" dmscore="{{dmscore}}" 
@@ -208,10 +194,35 @@
                 document.querySelector("result-page").bpscQuestions = bpscquestions;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
 
-                var pcquestions = document.querySelectorAll("dev-page")[1].questions;
-                document.querySelector("result-page").pcQuestions = pcquestions;
-            	var pcAnswers = document.querySelectorAll("dev-page")[1].answers;
-            	document.querySelector("result-page").pcAnswers = pcAnswers;
+                if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
+                	var pcquestions = document.querySelectorAll("dev-page")[1].questions;
+                	document.querySelector("result-page").pcQuestions = pcquestions;
+            		var pcAnswers = document.querySelectorAll("dev-page")[1].answers;
+            		document.querySelector("result-page").pcAnswers = pcAnswers;
+            	};
+                if(this.sectionKeys.indexOf("Family Questions") > -1){
+                	var familyQuestions = document.querySelector("family-page").questions;
+                	document.querySelector("result-page").familyQuestions = 
+                		familyQuestions;
+            		var familyAnswers = document.querySelector("family-page").answers;
+            		document.querySelector("result-page").familyAnswers = familyAnswers;
+            	};
+                if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
+                	var emoQuestions = document.querySelector("emotional-page").questions;
+                	document.querySelector("result-page").emoQuestions = 
+                		emoQuestions;
+            		var emoAnswers = document.querySelector("emotional-page").answers;
+            		document.querySelector("result-page").emoAnswers = emoAnswers;  
+    	        };
+    	        var posiName = "Parent’s Observation of Social Interactions (POSI)";  
+                if(this.sectionKeys.indexOf(posiName) > -1){
+                	var posiQuestions = document.querySelector("posi-page").questions;
+                	document.querySelector("result-page").emoQuestions = 
+                		posiQuestions;
+            		var posiAnswers = document.querySelector("posi-page").answers;
+            		document.querySelector("result-page").posiAnswers = posiAnswers;
+    	        };  
+
             	
             	/*var answerHashMap = {};
             	answerHashMap["dev"] = devAnswers;
