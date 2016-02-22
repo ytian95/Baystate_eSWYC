@@ -509,12 +509,82 @@
         		};
         	},
         	_answerChanged: function(){
+        	    /*
+        		Development milestone/ BPSC/ PPSC/ Parent's Concern answers map:
+        		{"0": "Not at all", 
+        		 "1": "Somewhat",
+        		 "2": "Very Much",
+        		 "-1": "Skip Question"};
+        		*/
+        		console.log("Development Milestones Answers:")
         		console.log(this.dmAnswers);
+        		
+        		console.log("BPSC Answers:")
         		console.log(this.bpscAnswers);
+        		
+        		console.log("PPSC Answers:")
         		console.log(this.ppscAnswers);
+        		
+        		console.log("Parent's Concerns Answers:")
         		console.log(this.pcAnswers);
+        		
+        	    /*
+        		Family Questions answers map:
+        		Question 1 - 5:
+        		{"0": "Yes", 
+        		 "1": "No",
+        		 "-1": "Skip Question"};
+        		 
+        		 Question 6 and 7:
+        		{"0": "Not at all", 
+        		 "1": "Several days",
+        		 "2": "More than half the days",
+        		 "3": "Nearly everyday",
+        		 "-1": "Skip Question"};    
+        		 
+        		 Question 8 and 9:  
+        		{"0": "No tension", 
+        		 "1": "Some tension",
+        		 "2": "A lot of tension",
+        		 "3": "Not applicable",
+        		 "-1": "Skip Question"};   		 
+        		*/        		      		
+        		console.log("Family Question Answers:")
         		console.log(this.familyAnswers);
+        		
+        		/*
+				Emotional Changes With A New Baby Answers:
+				Every question has different answer options and answer questions can be 
+				fetched from question.json
+				-1 is always Skip Question 		 
+        		*/ 				
+        		console.log("Emotional Changes With A New Baby Answers:")        		
         		console.log(this.emoAnswers);
+        		
+        	    /*
+        		POSI answers map:
+        		Question 1:
+        		{"0": "Many times a day", 
+        		 "1": "A few times a day",
+        		 "2": "A few times a week",
+        		 "3": "less than once a week",
+        		 "4": "Never",
+        		 "-1": "Skip Question"};
+        		 
+        		 Question 2 - 5:
+        		{"0": "Always", 
+        		 "1": "Usually",
+        		 "2": "Sometimes",
+        		 "3": "Rarely",
+        		 "4": "Never",
+        		 "-1": "Skip Question"};    
+        		 
+        		 Question 6 and 7:  
+				 Every question has different answer options and answer questions can be 
+				 fetched from question.json 
+				 -1 is always Skip Question		 
+        		*/   
+        		console.log("Parent’s Observation of Social Interactions (POSI) Answers:")
         		console.log(this.posiAnswers);
         	}      	
         });
