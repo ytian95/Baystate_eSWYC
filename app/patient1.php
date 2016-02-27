@@ -1,4 +1,5 @@
 <?php
+   header('Content-type: application/json');
    $json = file_get_contents("php://input");
    echo "Hello World";
    echo $json;
