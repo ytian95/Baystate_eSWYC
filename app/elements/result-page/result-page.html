@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">           
-            
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">            
 <dom-module id="result-page">
     <link rel="import" type="css" href="result-page.css">
     <template>
@@ -75,16 +75,36 @@
   			<div class="card-content" id="pcQ">
         	</div>
 		</paper-card>
-		    
+		
+        <iron-ajax
+        	id="ajaxPost"
+            url="/personalAnswer.json"
+            method = "POST"
+            on-response="handleResponse1">
+        </iron-ajax>
+        
+        <iron-ajax
+            auto
+            url="/questions.json"
+            handle-as="json"
+            on-response="handleResponse2">
+        </iron-ajax>		    
     </template>
     <script>
-
+		var jsonOfAnswers= "";
+		var jsonOfQuestions= "";
         Polymer({
             is: 'result-page',
         	properties: {
+        	    questions: {
+                    type: Object,
+                    notify: true,
+                    value: {},
+                }, 
             	version: {
                 	type: Number,
                 	notify: true,
+                	observer: 'pullQuestions',
             	},   
             	age: {
             		type: Number,
@@ -247,7 +267,22 @@
                     notify: true,
                     value: [],
                     observer: '_answerChanged',
-                }        	
+                },        	
+            },
+            handleResponse1: function (data) {
+                jsonOfAnswers= data.detail.response   
+            },
+            handleResponse2: function (data) {
+                jsonOfQuestions= data.detail.response   
+            },
+            pullQuestions: function (data) {
+                if (this.version){
+                    this.questions = {};
+                    swycAge=(String(this.version)).concat(" month");
+                    console.log(swycAge);
+                    this.questions = 
+                    jsonOfQuestions[swycAge]["questions"];
+                }         
             },
         	drawdmBar: function(value, aveLow, aveUpper, g){
         			g.fillStyle = "#de2b41";
@@ -509,6 +544,25 @@
         		};
         	},
         	_answerChanged: function(){
+        		this.$.ajaxPost.body = {}
+        		jsonOfAnswers[swycAge] = {}
+        		var swycAge=(String(this.version)).concat(" month");
+        		var dmQuestions = this.questions["dev milestones"]
+        		if(dmQuestions === undefined){
+        			dmQuestions = [];
+        		}
+        		var devSection = {};
+        		var qAndAs =  [];
+        		for (i=0; i< dmQuestions.length; i++){
+        			qAndAs.push([dmQuestions[i], this.dmAnswers]);
+        		};
+        		devSection["questions"] = qAndAs;
+        		devSection["score"] = [this.dmscore];
+        		var temp = {};
+        		temp[swycAge] = {}
+        		temp[swycAge]["Development Milestones"] = devSection;
+        		this.$.ajaxPost.body = JSON.stringify(temp);      		
+        		this.$.ajaxPost.generateRequest();
         	    /*
         		Development milestone/ BPSC/ PPSC/ Parent's Concern answers map:
         		{"0": "Not at all", 
