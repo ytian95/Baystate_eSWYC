@@ -396,8 +396,8 @@
         "When you say a word or wave your hand, will your child try to copy you?",
         "Does your child look at you when you call his or her name?",
         "Does your child look if you point to something across the room?",
-        "How does your child usually show you something he or she wants?",
-        "What are your child’s favorite play activities?"
+        "How does your child usually show you something he or she wants?(please check all that apply)",
+        "What are your child’s favorite play activities?(please check all that apply)"
       ],
       "Parent’s Concerns": [
         "Do you have any concerns about your child’s learning or development?",
@@ -467,8 +467,8 @@
         "When you say a word or wave your hand, will your child try to copy you?",
         "Does your child look at you when you call his or her name?",
         "Does your child look if you point to something across the room?",
-        "How does your child usually show you something he or she wants?",
-        "What are your child’s favorite play activities?"
+        "How does your child usually show you something he or she wants?(please check all that apply)",
+        "What are your child’s favorite play activities?(please check all that apply)"
       ],
       "POSI Answer Options": [
         ["Many times a day", "A few times a day", "A few times a week", 
@@ -538,8 +538,8 @@
         "When you say a word or wave your hand, will your child try to copy you?",
         "Does your child look at you when you call his or her name?",
         "Does your child look if you point to something across the room?",
-        "How does your child usually show you something he or she wants?",
-        "What are your child’s favorite play activities?"
+        "How does your child usually show you something he or she wants?(please check all that apply)",
+        "What are your child’s favorite play activities?(please check all that apply)"
       ],
       "POSI Answer Options": [
         ["Many times a day", "A few times a day", "A few times a week", 
