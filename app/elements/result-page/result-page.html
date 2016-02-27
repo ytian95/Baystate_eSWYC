@@ -214,6 +214,11 @@
                     value: [],
                     observer: '_answerChanged',
                 },
+                pcscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                },
                 familyQuestions: {
                     type: Array,
                     notify: true,
@@ -618,6 +623,22 @@
         				temp[swycAge]["BPSC"]["Difficulty with Routines"] = bpscSection3; 
         			};       		
         		};
+
+        		var pcQuestions = this.questions["Parent’s Concerns"];
+        		if(pcQuestions === undefined){
+        			pcQuestions = [];
+        		}
+        		var pcSection = {};
+        		var pcqAndAs =  [];
+        		for (i=0; i< pcQuestions.length; i++){
+        			pcqAndAs.push([pcQuestions[i], this.pcAnswers[i]]);
+        		};
+        		console.log(pcqAndAs);
+        		pcSection["questions"] = pcqAndAs;
+        		pcSection["score"] = [this.pcscore];
+
+        		temp[swycAge]["Parent Concerns"] = pcSection;
+        		
         		console.log(temp);
         		this.$.ajaxPost.body = JSON.stringify(temp);      		
         		this.$.ajaxPost.generateRequest();
