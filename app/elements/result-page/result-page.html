@@ -562,7 +562,7 @@
         		var temp = {};
         		temp[swycAge] = {}
         		temp[swycAge]["Development Milestones"] = devSection;
-        		this.$.ajaxPost.url = "https://eswyc.duckdns.org/patient1.json";
+        		this.$.ajaxPost.url = "/patient1.json";
         		this.$.ajaxPost.body = JSON.stringify(temp);      		
         		this.$.ajaxPost.generateRequest();
         	    /*
