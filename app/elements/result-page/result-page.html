@@ -192,6 +192,17 @@
                 			"70": [18, 19],
                 			},
                 },  
+                dmQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                dmAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
+                }, 
                 pcQuestions: {
                     type: Array,
                     notify: true,
@@ -264,17 +275,6 @@
                     value: [],
                 }, 
                 bpscAnswers: {
-                    type: Array,
-                    notify: true,
-                    value: [],
-                    observer: '_answerChanged',
-                }, 
-                dmQuestions: {
-                    type: Array,
-                    notify: true,
-                    value: [],
-                },
-                dmAnswers: {
                     type: Array,
                     notify: true,
                     value: [],
