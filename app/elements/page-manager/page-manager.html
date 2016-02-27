@@ -33,7 +33,7 @@
                         
             <div id="result">
                 <result-page age="{{age}}" version="{{version}}" dmscore="{{dmscore}}" 
-                	bpscscore="{{bpscscore}}"></result-page>
+                	bpscscore="{{bpscscore}}" pcscore="{{pcscore}}"></result-page>
             </div>
             
         </iron-pages>
@@ -99,6 +99,11 @@
                 	type: Array,
                 	notify: true,
                 	value: [0,0,0],
+                },
+                pcscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
                 },
                 sectionKeys: {
                 	type: Array,
@@ -194,10 +199,11 @@
                 document.querySelector("result-page").bpscQuestions = bpscquestions;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
 
+				var pcAnswers = [];
                 if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
                 	var pcquestions = document.querySelectorAll("dev-page")[1].questions;
                 	document.querySelector("result-page").pcQuestions = pcquestions;
-            		var pcAnswers = document.querySelectorAll("dev-page")[1].answers;
+            		pcAnswers = document.querySelectorAll("dev-page")[1].answers;
             		document.querySelector("result-page").pcAnswers = pcAnswers;
             	};
                 if(this.sectionKeys.indexOf("Family Questions") > -1){
@@ -273,9 +279,19 @@
             	//the answers need to pass to result page before the score since the  
             	//scoreChanged in the result-page will be triggered.
             	document.querySelector("result-page").bpscAnswers = bpscAnswers;
-            	
+
+            	var pcTotalScore = 0;
+            	for( var i = 0; i < pcAnswers.length; i++){
+            		if(pcAnswers[i] === -1 || pcAnswers[i] === undefined ){
+            			// skip a question            		
+            		} else {
+            			pcTotalScore += Number(pcAnswers[i]);
+            		};
+            	};
+            	            	
             	this.dmscore = devTotalScore;
             	this.bpscscore = bpscTotalScore;
+            	this.pcscore = pcTotalScore;
             	
             	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
             		//+ "Baby Pediatric Symptom Checklist Score : " 
