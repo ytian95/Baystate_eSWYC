@@ -85,16 +85,16 @@
             on-response="handleResponse1">
         </iron-ajax>
         
-        <iron-ajax
+        <!--<iron-ajax
             auto
             url="/questions.json"
             handle-as="json"
             on-response="handleResponse2">
-        </iron-ajax>		    
+        </iron-ajax>-->		    
     </template>
     <script>
 		var jsonOfAnswers= "";
-		var jsonOfQuestions= "";
+		//var jsonOfQuestions= "";
         Polymer({
             is: 'result-page',
         	properties: {
@@ -230,6 +230,11 @@
                     value: [],
                     observer: '_answerChanged',
                 },
+                familyscore: {
+                	type: Array,
+                	notify: true,
+                	value: [0,0,0],
+                },
                 emoQuestions: {
                     type: Array,
                     notify: true,
@@ -280,9 +285,9 @@
                 jsonOfAnswers= data.detail.response
                 console.log(jsonOfAnswers);   
             },
-            handleResponse2: function (data) {
-                jsonOfQuestions= data.detail.response   
-            },
+            //handleResponse2: function (data) {
+                //jsonOfQuestions= data.detail.response   
+            //},
             pullQuestions: function (data) {
                 if (this.version){
                     this.questions = {};
@@ -561,16 +566,12 @@
         		var temp = {};
         		temp[swycAge] = {};
         		
-        		var dmQuestions = this.questions["dev milestones"];
-        		if(dmQuestions === undefined){
-        			dmQuestions = [];
-        		}
         		var devSection = {};
         		var qAndAs =  [];
-        		for (i=0; i< dmQuestions.length; i++){
-        			qAndAs.push([dmQuestions[i], this.dmAnswers[i]]);
+        		for (i=0; i< this.dmQuestions.length; i++){
+        			qAndAs.push([this.dmQuestions[i], this.dmAnswers[i]]);
         		};
-        		console.log(qAndAs);
+        		
         		devSection["questions"] = qAndAs;
         		devSection["score"] = [this.dmscore];
 
@@ -578,66 +579,69 @@
         		
         		if(this.version >= 18) {
         			//ppsc
-        			var ppscQuestions = this.questions["PPSC"];
-        			if(ppscQuestions !== undefined){
-        				temp[swycAge]["PPSC"] = {}
-        				var ppscSection = {};
-        				var qAndAs =  [];
-        				for (i=0; i< ppscQuestions.length; i++){
-        				qAndAs.push([ppscQuestions[i], this.bpscAnswers[i]]);
-        				};
-        				ppscSection["questions"] = qAndAs;
-        				ppscSection["score"] = [this.bpscscore[0]];
-        				temp[swycAge]["PPSC"] = ppscSection;         				
+        			temp[swycAge]["PPSC"] = {}
+        			var ppscSection = {};
+        			var qAndAs =  [];
+        			for (i=0; i< this.bpscQuestions.length; i++){
+        				qAndAs.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
         			};
+        			ppscSection["questions"] = qAndAs;
+        			ppscSection["score"] = [this.bpscscore[0]];
+        			temp[swycAge]["PPSC"] = ppscSection;         				
         		} else {
         			//bpsc
-        			var bpscQuestions = this.questions["BPSC"];
-        			if(bpscQuestions !== undefined){
-        				temp[swycAge]["BPSC"] = {}
-        				var bpscSection1 = {};
-        				var qAndAs1 =  [];
-        				for (i=0; i< 4; i++){
-        				qAndAs1.push([bpscQuestions[i], this.bpscAnswers[i]]);
-        				};
-        				bpscSection1["questions"] = qAndAs1;
-        				bpscSection1["score"] = [this.bpscscore[0]];
-        				temp[swycAge]["BPSC"]["Irritability"] = bpscSection1; 
+        			temp[swycAge]["BPSC"] = {}
+        			var bpscSection1 = {};
+        			var qAndAs1 =  [];
+        			for (i=0; i< 4; i++){
+        				qAndAs1.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        			};
+        			bpscSection1["questions"] = qAndAs1;
+        			bpscSection1["score"] = [this.bpscscore[0]];
+        			temp[swycAge]["BPSC"]["Irritability"] = bpscSection1; 
 
-        				var bpscSection2 = {};
-        				var qAndAs2 =  [];
-        				for (i=4; i< 8; i++){
-        				qAndAs2.push([bpscQuestions[i], this.bpscAnswers[i]]);
-        				};
-        				bpscSection2["questions"] = qAndAs2;
-        				bpscSection2["score"] = [this.bpscscore[1]];
-        				temp[swycAge]["BPSC"]["Inflexibility"] = bpscSection2; 
+        			var bpscSection2 = {};
+        			var qAndAs2 =  [];
+        			for (i=4; i< 8; i++){
+        				qAndAs2.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        			};
+        			bpscSection2["questions"] = qAndAs2;
+        			bpscSection2["score"] = [this.bpscscore[1]];
+        			temp[swycAge]["BPSC"]["Inflexibility"] = bpscSection2; 
         				
-        				var bpscSection3 = {};
-        				var qAndAs3 =  [];
-        				for (i=8; i< 12; i++){
-        				qAndAs3.push([bpscQuestions[i], this.bpscAnswers[i]]);
-        				};
-        				bpscSection3["questions"] = qAndAs3;
-        				bpscSection3["score"] = [this.bpscscore[2]];
-        				temp[swycAge]["BPSC"]["Difficulty with Routines"] = bpscSection3; 
-        			};       		
+        			var bpscSection3 = {};
+        			var qAndAs3 =  [];
+        			for (i=8; i< 12; i++){
+        				qAndAs3.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        			};
+        			bpscSection3["questions"] = qAndAs3;
+        			bpscSection3["score"] = [this.bpscscore[2]];
+        			temp[swycAge]["BPSC"]["Difficulty with Routines"] = bpscSection3;       		
         		};
 
-        		var pcQuestions = this.questions["Parent’s Concerns"];
-        		if(pcQuestions === undefined){
-        			pcQuestions = [];
-        		}
+
         		var pcSection = {};
         		var pcqAndAs =  [];
-        		for (i=0; i< pcQuestions.length; i++){
-        			pcqAndAs.push([pcQuestions[i], this.pcAnswers[i]]);
+        		for (i=0; i< this.pcQuestions.length; i++){
+        			pcqAndAs.push([this.pcQuestions[i], this.pcAnswers[i]]);
         		};
-        		console.log(pcqAndAs);
+
         		pcSection["questions"] = pcqAndAs;
         		pcSection["score"] = [this.pcscore];
 
         		temp[swycAge]["Parent Concerns"] = pcSection;
+        		
+        		var familySection = {};
+        		var familyqAndAs =  [];
+        		for (i=0; i< this.familyQuestions.length; i++){
+        			familyqAndAs.push([this.familyQuestions[i], this.familyAnswers[i]]);
+        		};
+        		
+        		familySection["questions"] = familyqAndAs;
+        		familySection["score"] = [this.familyscore];
+
+        		temp[swycAge]["Family Questions"] = familySection;        		
+        		
         		
         		console.log(temp);
         		this.$.ajaxPost.body = JSON.stringify(temp);      		
