@@ -568,6 +568,9 @@
         		
         		var devSection = {};
         		var qAndAs =  [];
+        		if(this.dmQuestions === undefined ){
+        			this.dmQuestions = [];
+        		};
         		for (var i=0; i< this.dmQuestions.length; i++){
         			qAndAs.push([this.dmQuestions[i], this.dmAnswers[i]]);
         		};
@@ -582,6 +585,9 @@
         			temp[swycAge]["PPSC"] = {}
         			var ppscSection = {};
         			var qAndAs =  [];
+        			if(this.bpscQuestions === undefined ){
+        				this.bpscQuestions = [];
+        			};
         			for (var i=0; i< this.bpscQuestions.length; i++){
         				qAndAs.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
         			};
@@ -624,6 +630,9 @@
 
         		var pcSection = {};
         		var pcqAndAs =  [];
+        		if(this.pcQuestions === undefined ){
+        			this.pcQuestions = [];
+        		};
         		for (i=0; i< this.pcQuestions.length; i++){
         			pcqAndAs.push([this.pcQuestions[i], this.pcAnswers[i]]);
         		};
@@ -635,6 +644,9 @@
         		
         		var familySection = {};
         		var familyqAndAs =  [];
+        		if(this.familyQuestions === undefined ){
+        			this.familyQuestions = [];
+        		};
         		for (var i=0; i< this.familyQuestions.length; i++){
         			familyqAndAs.push([this.familyQuestions[i], this.familyAnswers[i]]);
         		};
