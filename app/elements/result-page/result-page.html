@@ -80,6 +80,8 @@
         	id="ajaxPost"
             url="/patient_1.json"
             method = "POST"
+            headers='{"Accept": "application/json"}'
+            handle-as="json"
             on-response="handleResponse1">
         </iron-ajax>
         
