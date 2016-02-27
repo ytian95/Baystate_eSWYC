@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">           
-            
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">            
 <dom-module id="result-page">
     <link rel="import" type="css" href="result-page.css">
     <template>
@@ -33,8 +33,8 @@
   			<div class="card-content" id="dmQ1"></div>
 		</paper-card>
 		
-        <paper-card class="section" heading="Baby Pediatric Symptom Checklist" 
-        	elevation="3">
+        <paper-card class="section" id="checklist"  
+        	heading="Baby Pediatric Symptom Checklist" elevation="3">
   			<div class="card-content">
     			<paper-button id ="irritability" on-click="irriTurn">Irritability: 
     				<span>{{bpscscore.0}}</span>
@@ -44,6 +44,9 @@
         		</paper-button>
         		<paper-button id ="difficulty" on-click="diffTurn">
         			Difficulty with Routines: <span>{{bpscscore.2}}</span>
+        		</paper-button>
+        		<paper-button id ="ppsc" on-click="ppscTurn">
+        			Symptom Checklist Total Score: <span>{{bpscscore.0}}</span>
         		</paper-button>
   			</div>
 		</paper-card>
@@ -63,22 +66,51 @@
   			<div class="card-content" id="diffQ"></div>
 		</paper-card>
 		
+		<paper-card class="positiveQ" id="ppscCard" heading="PPSC Answer" 
+			elevation="3">
+  			<div class="card-content" id="ppscQ"></div>
+		</paper-card>
     
-    
+        <paper-card class="section" heading="Parent's Concerns" elevation="3">
+  			<div class="card-content" id="pcQ">
+        	</div>
+		</paper-card>
+		
+        <iron-ajax
+        	id="ajaxPost"
+            url="/personalAnswer.json"
+            method = "POST"
+            on-response="handleResponse1">
+        </iron-ajax>
+        
+        <iron-ajax
+            auto
+            url="/questions.json"
+            handle-as="json"
+            on-response="handleResponse2">
+        </iron-ajax>		    
     </template>
     <script>
-
+		var jsonOfAnswers= "";
+		var jsonOfQuestions= "";
         Polymer({
             is: 'result-page',
         	properties: {
+        	    questions: {
+                    type: Object,
+                    notify: true,
+                    value: {},
+                }, 
             	version: {
                 	type: Number,
                 	notify: true,
+                	observer: 'pullQuestions',
             	},   
             	age: {
             		type: Number,
             		notify: true,
             		value: 2,
+            		observer: '_ageChanged',           		
             	},  
             	scaleRatio: {
             		type: Number,
@@ -167,6 +199,51 @@
                     type: Array,
                     notify: true,
                     value: [],
+                    observer: '_answerChanged',
+                },
+                pcQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                pcAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
+                },
+                familyQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                familyAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
+                },
+                emoQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                emoAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
+                },
+                posiQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                posiAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
                 },
                 dmscore: {
                 	type: Number,
@@ -189,8 +266,24 @@
                     type: Array,
                     notify: true,
                     value: [],
-                },                  		
-        	},
+                    observer: '_answerChanged',
+                },        	
+            },
+            handleResponse1: function (data) {
+                jsonOfAnswers= data.detail.response   
+            },
+            handleResponse2: function (data) {
+                jsonOfQuestions= data.detail.response   
+            },
+            pullQuestions: function (data) {
+                if (this.version){
+                    this.questions = {};
+                    swycAge=(String(this.version)).concat(" month");
+                    console.log(swycAge);
+                    this.questions = 
+                    jsonOfQuestions[swycAge]["questions"];
+                }         
+            },
         	drawdmBar: function(value, aveLow, aveUpper, g){
         			g.fillStyle = "#de2b41";
 					g.fillRect(30, 50, 2.7*this.scaleRatio,30); 
@@ -275,26 +368,46 @@
         		};
         	},
         	updatebpscstatus: function(){
-        		if(this.bpscscore[0] < 3){
-    				this.$$('#irritability').style.background = "#0fa955";
-    				this.$$('#irriCard').style.display = 'none';
-    			} else {
-    	    		this.$$('#irritability').style.background = "#de2b41";
-    	    		this.$$('#irriCard').style.display = 'inline-block';
-				};
-				if(this.bpscscore[1] < 3){
-    				this.$$('#inflexibility').style.background = "#0fa955";
-    				this.$$('#inflCard').style.display = 'none';
-    			} else {
-    	    		this.$$('#inflexibility').style.background = "#de2b41";
-    	    		this.$$('#inflCard').style.display = 'inline-block';
-				};
-				if(this.bpscscore[2] < 3){
-    				this.$$('#difficulty').style.background = "#0fa955";
-    				this.$$('#diffCard').style.display = 'none';
-    			} else {
-    	    		this.$$('#difficulty').style.background = "#de2b41";
-    	    		this.$$('#diffCard').style.display = 'inline-block';
+        	
+        		if(this.age < 18) {
+        			this.$$('#ppscCard').style.display = 'none';
+        			this.$$('#ppsc').style.display = 'none';
+        			if(this.bpscscore[0] < 3){
+    					this.$$('#irritability').style.background = "#0fa955";
+    					this.$$('#irriCard').style.display = 'none';
+    				} else {
+    	    			this.$$('#irritability').style.background = "#de2b41";
+    	    			this.$$('#irriCard').style.display = 'inline-block';
+					};
+					if(this.bpscscore[1] < 3){
+    					this.$$('#inflexibility').style.background = "#0fa955";
+    					this.$$('#inflCard').style.display = 'none';
+    				} else {
+    	    			this.$$('#inflexibility').style.background = "#de2b41";
+    	    			this.$$('#inflCard').style.display = 'inline-block';
+					};
+					if(this.bpscscore[2] < 3){
+    					this.$$('#difficulty').style.background = "#0fa955";
+    					this.$$('#diffCard').style.display = 'none';
+    				} else {
+    	    			this.$$('#difficulty').style.background = "#de2b41";
+    	    			this.$$('#diffCard').style.display = 'inline-block';
+					};
+				} else {
+					this.$$('#irriCard').style.display = 'none';
+					this.$$('#inflCard').style.display = 'none';
+					this.$$('#diffCard').style.display = 'none';
+					this.$$('#irritability').style.display = 'none';
+					this.$$('#inflexibility').style.display = 'none';
+					this.$$('#difficulty').style.display = 'none';
+					this.$$('#ppsc').style.display = 'inline-block';
+        			if(this.bpscscore[0] < 9){
+    					this.$$('#ppsc').style.background = "#0fa955";
+    					this.$$('#ppscCard').style.display = 'none';
+    				} else {
+    	    			this.$$('#ppsc').style.background = "#de2b41";
+    	    			this.$$('#ppscCard').style.display = 'inline-block';
+					};					
 				};
         	},
         	irriTurn: function(){
@@ -318,10 +431,17 @@
         		if(display === 'none'){
         			this.$$('#diffCard').style.display = 'inline-block';
         		} else{
-        		    console.log(display);
         			this.$$('#diffCard').style.display = 'none';
         		};
-        	},        	
+        	}, 
+        	ppscTurn: function(){
+        	    var display = this.$$('#ppscCard').style.display;
+        		if(display === 'none'){
+        			this.$$('#ppscCard').style.display = 'inline-block';
+        		} else{
+        			this.$$('#ppscCard').style.display = 'none';
+        		};
+        	},       	
         	layoutbpscPostiveQuestions: function(){
         		var qAndAString;
         		var stringNode;
@@ -337,35 +457,64 @@
         			this.bpscQuestions = ["","","","","","","","","","","",""];
         		};
         		
-        		var irriContainer = this.$$('#irriQ');
-        		irriContainer.innerHTML = "";				
-        		for( var i = 0; i < 4; i++){
-					qAndAString = this.bpscQuestions[i] + "   Answer: " + 
-						answerMap[this.bpscAnswers[i]];
-					stringNode = document.createTextNode(qAndAString);
-                    irriContainer.appendChild(stringNode);
-                    irriContainer.appendChild(document.createElement("br"));
-            	};
+        		if(this.age < 18){
+        			var irriContainer = this.$$('#irriQ');
+        			irriContainer.innerHTML = "";				
+        			for( var i = 0; i < 4; i++){
+						qAndAString = this.bpscQuestions[i] + "   Answer: " + 
+							answerMap[this.bpscAnswers[i]];
+						stringNode = document.createTextNode(qAndAString);
+                    	irriContainer.appendChild(stringNode);
+                   		irriContainer.appendChild(document.createElement("br"));
+            		};
             	
-            	var inflContainer = this.$$('#inflQ');
-        		inflContainer.innerHTML = "";
-            	for( var i = 4; i < 8; i++){
-					qAndAString = this.bpscQuestions[i] + "   Answer: " + 
-						answerMap[this.bpscAnswers[i]];
-					stringNode = document.createTextNode(qAndAString);
-                    inflContainer.appendChild(stringNode);
-                    inflContainer.appendChild(document.createElement("br"));
-            	};
+            		var inflContainer = this.$$('#inflQ');
+        			inflContainer.innerHTML = "";
+            		for( var i = 4; i < 8; i++){
+						qAndAString = this.bpscQuestions[i] + "   Answer: " + 
+							answerMap[this.bpscAnswers[i]];
+						stringNode = document.createTextNode(qAndAString);
+                    	inflContainer.appendChild(stringNode);
+                    	inflContainer.appendChild(document.createElement("br"));
+            		};
             	
-            	var diffContainer = this.$$('#diffQ');
-        		diffContainer.innerHTML = "";
-            	for( var i = 8; i < 12; i++){
-					qAndAString = this.bpscQuestions[i] + "   Answer: " + 
-						answerMap[this.bpscAnswers[i]];
-					stringNode = document.createTextNode(qAndAString);
-                    diffContainer.appendChild(stringNode);
-                    diffContainer.appendChild(document.createElement("br")); 
+            		var diffContainer = this.$$('#diffQ');
+        			diffContainer.innerHTML = "";
+            		for( var i = 8; i < 12; i++){
+						qAndAString = this.bpscQuestions[i] + "   Answer: " + 
+							answerMap[this.bpscAnswers[i]];
+						stringNode = document.createTextNode(qAndAString);
+                    	diffContainer.appendChild(stringNode);
+                    	diffContainer.appendChild(document.createElement("br")); 
+            		};
+            	} else {
+            		var ppscContainer = this.$$('#ppscQ');
+        			ppscContainer.innerHTML = "";
+            		for( var i = 0; i < this.bpscQuestions.length; i++){
+						qAndAString = this.bpscQuestions[i] + "   Answer: " + 
+							answerMap[this.bpscAnswers[i]];
+						stringNode = document.createTextNode(qAndAString);
+                    	ppscContainer.appendChild(stringNode);
+                    	ppscContainer.appendChild(document.createElement("br")); 
+            		};            	
             	};
+        	},
+        	layoutPCQuestions: function(){
+        		var answerMap = {"0": "Not at all", 
+        						"1": "Somewhat",
+        						"2": "Very Much",
+        						"-1": "Skip Question"};
+        		var questionContainer = this.$$('#pcQ');
+        		//this.$$('#dmQ0Card').style.display = 'inline-block';
+        		questionContainer.innerHTML = "";
+        		for( var i = 0; i<this.pcAnswers.length; i++){
+        			var question = document.createTextNode(this.pcQuestions[i]);
+        			qAndAString = this.pcQuestions[i] + "   Answer: " + 
+							answerMap[this.pcAnswers[i]];
+					stringNode = document.createTextNode(qAndAString);
+                    questionContainer.appendChild(stringNode);
+                    questionContainer.appendChild(document.createElement("br"));
+        		}
         	},
         	_scoreChanged: function(){
         		if(this.bpscscore == undefined){
@@ -384,10 +533,114 @@
 				this.layoutdmPostiveQuestions();
 			
 				this.updatebpscstatus();
-				this.layoutbpscPostiveQuestions();
+				this.layoutbpscPostiveQuestions();	
 				
+				this.layoutPCQuestions();			
         	},
-        	
+        	_ageChanged: function(){
+        		if(this.age >= 18) {
+        			this.$$('#checklist').heading = 
+        				"Preschool Pediatric Symptom Checklist";
+        		};
+        	},
+        	_answerChanged: function(){
+        		this.$.ajaxPost.body = {}
+        		jsonOfAnswers[swycAge] = {}
+        		var swycAge=(String(this.version)).concat(" month");
+        		var dmQuestions = this.questions["dev milestones"]
+        		if(dmQuestions === undefined){
+        			dmQuestions = [];
+        		}
+        		var devSection = {};
+        		var qAndAs =  [];
+        		for (i=0; i< dmQuestions.length; i++){
+        			qAndAs.push([dmQuestions[i], this.dmAnswers]);
+        		};
+        		devSection["questions"] = qAndAs;
+        		devSection["score"] = [this.dmscore];
+        		var temp = {};
+        		temp[swycAge] = {}
+        		temp[swycAge]["Development Milestones"] = devSection;
+        		this.$.ajaxPost.body = JSON.stringify(temp);      		
+        		this.$.ajaxPost.generateRequest();
+        	    /*
+        		Development milestone/ BPSC/ PPSC/ Parent's Concern answers map:
+        		{"0": "Not at all", 
+        		 "1": "Somewhat",
+        		 "2": "Very Much",
+        		 "-1": "Skip Question"};
+        		*/
+        		console.log("Development Milestones Answers:")
+        		console.log(this.dmAnswers);
+        		
+        		console.log("BPSC Answers:")
+        		console.log(this.bpscAnswers);
+        		
+        		console.log("PPSC Answers:")
+        		console.log(this.ppscAnswers);
+        		
+        		console.log("Parent's Concerns Answers:")
+        		console.log(this.pcAnswers);
+        		
+        	    /*
+        		Family Questions answers map:
+        		Question 1 - 5:
+        		{"0": "Yes", 
+        		 "1": "No",
+        		 "-1": "Skip Question"};
+        		 
+        		 Question 6 and 7:
+        		{"0": "Not at all", 
+        		 "1": "Several days",
+        		 "2": "More than half the days",
+        		 "3": "Nearly everyday",
+        		 "-1": "Skip Question"};    
+        		 
+        		 Question 8 and 9:  
+        		{"0": "No tension", 
+        		 "1": "Some tension",
+        		 "2": "A lot of tension",
+        		 "3": "Not applicable",
+        		 "-1": "Skip Question"};   		 
+        		*/        		      		
+        		console.log("Family Question Answers:")
+        		console.log(this.familyAnswers);
+        		
+        		/*
+				Emotional Changes With A New Baby Answers:
+				Every question has different answer options and answer questions can be 
+				fetched from question.json
+				-1 is always Skip Question 		 
+        		*/ 				
+        		console.log("Emotional Changes With A New Baby Answers:")        		
+        		console.log(this.emoAnswers);
+        		
+        	    /*
+        		POSI answers map:
+        		Question 1:
+        		{"0": "Many times a day", 
+        		 "1": "A few times a day",
+        		 "2": "A few times a week",
+        		 "3": "less than once a week",
+        		 "4": "Never",
+        		 "-1": "Skip Question"};
+        		 
+        		 Question 2 - 5:
+        		{"0": "Always", 
+        		 "1": "Usually",
+        		 "2": "Sometimes",
+        		 "3": "Rarely",
+        		 "4": "Never",
+        		 "-1": "Skip Question"};    
+        		 
+        		 Question 6 and 7:  
+				 Every question has different answer options and answer questions can be 
+				 fetched from question.json 
+				 -1 is always Skip Question		 
+        		*/   
+        		console.log("Parent’s Observation of Social Interactions (POSI) Answers:")
+        		console.log(this.posiAnswers);
+        	}      	
         });
     </script>
 </dom-module>

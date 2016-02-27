@@ -26,6 +26,7 @@
         </iron-ajax>
     </template>
     <script>
+        var jsonOfQuestions= "";
         HTMLImports.whenReady(function () {
             Polymer({
                 is: 'bpsc-page',
@@ -51,19 +52,26 @@
         			'scoreChange': 'gatherScore',
       			},
                 handleResponse: function (data) {
-                    jsonOfQuestions= data.detail.response        
+                    jsonOfQuestions= data.detail.response     
                 },
 
                 pullQuestions: function (data) {
                     if (this.version){
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
-                        console.log(swycAge);
-                        this.questions= jsonOfQuestions[swycAge]["questions"]["BPSC"];
+                        if (this.version < 18){
+                            this.questions= jsonOfQuestions[swycAge]["questions"]["BPSC"];
+                        }else{
+                            this.questions= jsonOfQuestions[swycAge]["questions"]["PPSC"];
+                        }
                         //console.log(swycAge);
                     }         
                 },
                 _createQuestions: function(){
+                    if (this.version >= 18){
+                    	this.$$(".sName").innerHTML = 
+                    		"Preschool Pediatric Symptom Checklist";
+                    };                
                     var questionContainer = document.getElementById("bpscQuestions");
                     for(var i = 0; i < this.questions.length; i++){
                         var newDevQuestion = document.createElement("bpsc-question");

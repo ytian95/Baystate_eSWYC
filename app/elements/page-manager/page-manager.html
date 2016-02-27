@@ -4,6 +4,9 @@
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../dev-page/dev-page.html">
 <link rel="import" href="../bpsc-page/bpsc-page.html">
+<link rel="import" href="../family-page/family-page.html">
+<link rel="import" href="../emotional-page/emotional-page.html">
+<link rel="import" href="../posi-page/posi-page.html">
 <link rel="import" href="../page-login/page-login.html">
 <link rel="import" href="../result-page/result-page.html">
     
@@ -15,20 +18,20 @@
                 <div id="headerName">eSWYC<span>{{title}}</span></div>
             </paper-toolbar>
         </paper-header-panel>-->
-        <iron-pages selected="{{pageNum}}">
+        <iron-pages selected="{{pageNum}}" id="ironPage">
             <div>
                 <page-login version="{{version}}" is-valid="{{inputValid}}"
                 	age="{{age}}"></page-login>
             </div>
             <div>
-                <dev-page version="{{version}}"></dev-page>
+                <dev-page version="{{version}}" section="dev milestones"></dev-page>
             </div>
             
             <div>
                 <bpsc-page version="{{version}}"></bpsc-page>
             </div>
-            
-            <div>
+                        
+            <div id="result">
                 <result-page age="{{age}}" dmscore="{{dmscore}}" 
                 	bpscscore="{{bpscscore}}"></result-page>
             </div>
@@ -40,6 +43,12 @@
         	Next</paper-button></div>
         <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
         </div>
+        <iron-ajax
+            auto
+            url="/questions.json"
+            handle-as="json"
+            on-response="handleResponse">
+        </iron-ajax>
         <?php include('../../scripts/answer.php') ?>
         <!--
         <iron-ajax
@@ -51,6 +60,7 @@
     		on-response="handleResponse"></iron-ajax>-->
     </template>
     <script>
+    	var jsonOfQuestions ="";
         Polymer({
             is: 'page-manager',
             properties: {
@@ -68,6 +78,7 @@
                 version: {
                     type: Number,
                     notify: true,
+                    observer: 'pullSections',
                 },
                 age: {
                     type: Number,
@@ -89,10 +100,57 @@
                 	notify: true,
                 	value: [0,0,0],
                 },
+                sectionKeys: {
+                	type: Array,
+                	notify: true,
+                },
             },
             next: function(){
                 var pages = document.querySelector('iron-pages');
                 pages.selectNext();
+            },
+            handleResponse: function (data) {
+                jsonOfQuestions= data.detail.response;       
+            },
+            pullSections: function (data) {
+               if (this.version){
+                    swycAge=(String(this.version)).concat(" month");
+                    var questions = jsonOfQuestions[swycAge]["questions"];
+                    this.sectionKeys = Object.keys(questions);
+                    console.log(this.sectionKeys);
+                    var pageContainer = Polymer.dom(this.$.ironPage);
+                    var lastPageNode = this.$.result;
+                    if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
+                    	var pPage = document.createElement('dev-page');
+                    	pPage.section = "Parent’s Concerns";
+                    	pPage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(pPage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+                    };
+                    if(this.sectionKeys.indexOf("Family Questions") > -1){
+                    	var fPage = document.createElement('family-page');
+                    	fPage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(fPage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+                    };
+                    if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
+                    	var ePage = document.createElement('emotional-page');
+                    	ePage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(ePage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+    	            };
+    	            var posiName = "Parent’s Observation of Social Interactions (POSI)";  
+                    if(this.sectionKeys.indexOf(posiName) > -1){
+                    	var ePage = document.createElement('posi-page');
+                    	ePage.version = this.version;
+                    	var newDiv = document.createElement('div');
+                    	newDiv.appendChild(ePage);
+                    	pageContainer.insertBefore(newDiv, lastPageNode);
+    	            };                  
+                }         
             },
             back: function(){
                 var pages = document.querySelector('iron-pages');
@@ -122,20 +180,54 @@
                 };
             },
             submit: function() {
+            	//flip page
                 var pages = document.querySelector('iron-pages');
                 pages.selectNext();
-                var devquestions = document.querySelector("dev-page").questions;
+                
+                
+                var devquestions = document.querySelectorAll("dev-page")[0].questions;
                 document.querySelector("result-page").dmQuestions = devquestions;
-            	var devAnswers = document.querySelector("dev-page").answers;
+            	var devAnswers = document.querySelectorAll("dev-page")[0].answers;
             	document.querySelector("result-page").dmAnswers = devAnswers;
             	
             	var bpscquestions = document.querySelector("bpsc-page").questions;
                 document.querySelector("result-page").bpscQuestions = bpscquestions;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
+
+                if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
+                	var pcquestions = document.querySelectorAll("dev-page")[1].questions;
+                	document.querySelector("result-page").pcQuestions = pcquestions;
+            		var pcAnswers = document.querySelectorAll("dev-page")[1].answers;
+            		document.querySelector("result-page").pcAnswers = pcAnswers;
+            	};
+                if(this.sectionKeys.indexOf("Family Questions") > -1){
+                	var familyQuestions = document.querySelector("family-page").questions;
+                	document.querySelector("result-page").familyQuestions = 
+                		familyQuestions;
+            		var familyAnswers = document.querySelector("family-page").answers;
+            		document.querySelector("result-page").familyAnswers = familyAnswers;
+            	};
+                if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
+                	var emoQuestions = document.querySelector("emotional-page").questions;
+                	document.querySelector("result-page").emoQuestions = 
+                		emoQuestions;
+            		var emoAnswers = document.querySelector("emotional-page").answers;
+            		document.querySelector("result-page").emoAnswers = emoAnswers;  
+    	        };
+    	        var posiName = "Parent’s Observation of Social Interactions (POSI)";  
+                if(this.sectionKeys.indexOf(posiName) > -1){
+                	var posiQuestions = document.querySelector("posi-page").questions;
+                	document.querySelector("result-page").emoQuestions = 
+                		posiQuestions;
+            		var posiAnswers = document.querySelector("posi-page").answers;
+            		document.querySelector("result-page").posiAnswers = posiAnswers;
+    	        };  
+
             	
-            	var answerHashMap = {};
+            	/*var answerHashMap = {};
             	answerHashMap["dev"] = devAnswers;
             	answerHashMap["bpsc"] = bpscAnswers;
+            	*/
           	
             	var devTotalScore = 0;
             	for( var i = 0; i < devAnswers.length; i++){
@@ -147,25 +239,35 @@
             	};
             	
             	var bpscTotalScore = [0,0,0];
-            	for( var i = 0; i < 4; i++){
-            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			bpscAnswers[i] = -1;
-            		} else {
-            			bpscTotalScore[0] += Number(bpscAnswers[i]);
+            	if(this.age < 18) {
+            		for( var i = 0; i < 4; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[0] += Number(bpscAnswers[i]);
+            			};
             		};
-            	};
-            	for( var i = 4; i < 8; i++){
-            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			bpscAnswers[i] = -1;
-            		} else {
-            			bpscTotalScore[1] += Number(bpscAnswers[i]);
+            		for( var i = 4; i < 8; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[1] += Number(bpscAnswers[i]);
+            			};
             		};
-            	};
-            	for( var i = 8; i < 12; i++){
-            		if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
-            			bpscAnswers[i] = -1;
-            		} else {
-            			bpscTotalScore[2] += Number(bpscAnswers[i]);
+            		for( var i = 8; i < 12; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[2] += Number(bpscAnswers[i]);
+            			};
+            		};
+            	} else {
+            		for( var i = 0; i < bpscAnswers.length; i++){
+            			if(bpscAnswers[i] === -1 || bpscAnswers[i] === undefined ){
+            				bpscAnswers[i] = -1;
+            			} else {
+            				bpscTotalScore[0] += Number(bpscAnswers[i]);
+            			};
             		};
             	};
             	//the answers need to pass to result page before the score since the  
