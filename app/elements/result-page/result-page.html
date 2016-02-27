@@ -79,6 +79,7 @@
         <iron-ajax
         	id = "ajaxPost"
             method = "POST"
+            url = "/patient1.json"
             headers='{"Accept": "application/json"}'
             handle-as="json"
             on-response="handleResponse1">
@@ -86,7 +87,7 @@
         
         <iron-ajax
             auto
-            url="/questions.JSON"
+            url="/questions.json"
             handle-as="json"
             on-response="handleResponse2">
         </iron-ajax>		    
@@ -558,12 +559,13 @@
         		for (i=0; i< dmQuestions.length; i++){
         			qAndAs.push([dmQuestions[i], this.dmAnswers]);
         		};
+        		console.log(qAndAs);
         		devSection["questions"] = qAndAs;
         		devSection["score"] = [this.dmscore];
         		var temp = {};
         		temp[swycAge] = {}
         		temp[swycAge]["Development Milestones"] = devSection;
-        		this.$.ajaxPost.url = "/patient1.json";
+        		console.log(temp);
         		this.$.ajaxPost.body = JSON.stringify(temp);      		
         		this.$.ajaxPost.generateRequest();
         		
