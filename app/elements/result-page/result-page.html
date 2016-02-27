@@ -573,7 +573,7 @@
      					console.log("xttpworks!!!!");
     				}
   				};
-  				xhttp.open("POST", "/patient1.json", true);
+  				xhttp.open("POST", "/patient1.json");
   				xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 				xhttp.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
   				
