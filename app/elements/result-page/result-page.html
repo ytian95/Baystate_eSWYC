@@ -218,6 +218,7 @@
                 	type: Number,
                 	notify: true,
                 	value: 0,
+                	observer: '_answerChanged',
                 },
                 familyQuestions: {
                     type: Array,
@@ -234,6 +235,7 @@
                 	type: Array,
                 	notify: true,
                 	value: [0,0,0],
+                	observer: '_answerChanged',
                 },
                 emoQuestions: {
                     type: Array,
@@ -245,6 +247,12 @@
                     notify: true,
                     value: [],
                     observer: '_answerChanged',
+                },
+                emoscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                	observer: '_answerChanged',
                 },
                 posiQuestions: {
                     type: Array,
@@ -572,7 +580,7 @@
         			this.dmQuestions = [];
         		};
         		for (var i=0; i< this.dmQuestions.length; i++){
-        			qAndAs.push([this.dmQuestions[i], this.dmAnswers[i]]);
+        			qAndAs.push([this.dmQuestions[i], Number(this.dmAnswers[i])]);
         		};
         		
         		devSection["questions"] = qAndAs;
@@ -589,7 +597,7 @@
         				this.bpscQuestions = [];
         			};
         			for (var i=0; i< this.bpscQuestions.length; i++){
-        				qAndAs.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        				qAndAs.push([this.bpscQuestions[i], Number(this.bpscAnswers[i])]);
         			};
         			ppscSection["questions"] = qAndAs;
         			ppscSection["score"] = [this.bpscscore[0]];
@@ -601,7 +609,8 @@
         				var bpscSection1 = {};
         				var qAndAs1 =  [];
         				for (var i=0; i< 4; i++){
-        					qAndAs1.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        					qAndAs1.push([this.bpscQuestions[i], 
+        						Number(this.bpscAnswers[i])]);
         				};
         				bpscSection1["questions"] = qAndAs1;
         				bpscSection1["score"] = [this.bpscscore[0]];
@@ -610,16 +619,18 @@
         				var bpscSection2 = {};
         				var qAndAs2 =  [];
         				for (var i=4; i< 8; i++){
-        					qAndAs2.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        					qAndAs2.push([this.bpscQuestions[i], 
+        						Number(this.bpscAnswers[i])]);
         				};
         				bpscSection2["questions"] = qAndAs2;
         				bpscSection2["score"] = [this.bpscscore[1]];
         				temp[swycAge]["BPSC"]["Inflexibility"] = bpscSection2; 
-        				
+        					
         				var bpscSection3 = {};
         				var qAndAs3 =  [];
         				for (var i=8; i< 12; i++){
-        					qAndAs3.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        					qAndAs3.push([this.bpscQuestions[i], 
+        						Number(this.bpscAnswers[i])]);
         				};
         				bpscSection3["questions"] = qAndAs3;
         				bpscSection3["score"] = [this.bpscscore[2]];
@@ -634,12 +645,11 @@
         			this.pcQuestions = [];
         		};
         		for (i=0; i< this.pcQuestions.length; i++){
-        			pcqAndAs.push([this.pcQuestions[i], this.pcAnswers[i]]);
+        			pcqAndAs.push([this.pcQuestions[i], Number(this.pcAnswers[i])]);
         		};
 
         		pcSection["questions"] = pcqAndAs;
         		pcSection["score"] = [this.pcscore];
-
         		temp[swycAge]["Parent Concerns"] = pcSection;
         		
         		var familySection = {};
@@ -648,18 +658,31 @@
         			this.familyQuestions = [];
         		};
         		for (var i=0; i< this.familyQuestions.length; i++){
-        			familyqAndAs.push([this.familyQuestions[i], this.familyAnswers[i]]);
+        			familyqAndAs.push([this.familyQuestions[i], 
+        				Number(this.familyAnswers[i])]);
         		};
         		
         		familySection["questions"] = familyqAndAs;
-        		familySection["score"] = [this.familyscore];
+        		familySection["score"] = this.familyscore;
 
         		temp[swycAge]["Family Questions"] = familySection;        		
-        		
+
+        		var emoSection = {};
+        		var emoqAndAs =  [];
+        		if(this.emoQuestions === undefined ){
+        			this.emoQuestions = [];
+        		};
+        		for (i=0; i< this.emoQuestions.length; i++){
+        			emoqAndAs.push([this.emoQuestions[i], Number(this.emoAnswers[i])]);
+        		};
+
+        		emoSection["questions"] = emoqAndAs;
+        		emoSection["score"] = [this.emoscore];
+        		temp[swycAge]["Emotional Changes With A New Baby"] = emoSection;       		
         		
         		console.log(temp);
         		this.$.ajaxPost.body = JSON.stringify(temp);      		
-        		this.$.ajaxPost.generateRequest();
+        		//this.$.ajaxPost.generateRequest();
         		
         		/*
         		var xhttp = new XMLHttpRequest();
