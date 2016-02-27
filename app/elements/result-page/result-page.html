@@ -550,10 +550,13 @@
         		
         		this.$.ajaxPost.body = {}
         		//jsonOfAnswers[swycAge] = {}
-        		console.log();
+
         		var swycAge=(String(this.version)).concat(" month");
         		console.log(swycAge);
-        		var dmQuestions = this.questions["dev milestones"]
+        		var temp = {};
+        		temp[swycAge] = {};
+        		
+        		var dmQuestions = this.questions["dev milestones"];
         		if(dmQuestions === undefined){
         			dmQuestions = [];
         		}
@@ -565,9 +568,56 @@
         		console.log(qAndAs);
         		devSection["questions"] = qAndAs;
         		devSection["score"] = [this.dmscore];
-        		var temp = {};
-        		temp[swycAge] = {}
+
         		temp[swycAge]["Development Milestones"] = devSection;
+        		
+        		if(this.version >= 18) {
+        			//ppsc
+        			var ppscQuestions = this.questions["PPSC"];
+        			if(ppscQuestions !== undefined){
+        				temp[swycAge]["PPSC"] = {}
+        				var ppscSection = {};
+        				var qAndAs =  [];
+        				for (i=0; i< ppscQuestions.length; i++){
+        				qAndAs.push([ppscQuestions[i], this.bpscAnswers[i]]);
+        				};
+        				ppscSection["questions"] = qAndAs;
+        				ppscSection["score"] = [this.bpscscore[0]];
+        				temp[swycAge]["PPSC"] = ppscSection;         				
+        			};
+        		} else {
+        			//bpsc
+        			var bpscQuestions = this.questions["BPSC"];
+        			if(bpscQuestions !== undefined){
+        				temp[swycAge]["BPSC"] = {}
+        				var bpscSection1 = {};
+        				var qAndAs1 =  [];
+        				for (i=0; i< 4; i++){
+        				qAndAs1.push([bpscQuestions[i], this.bpscAnswers[i]]);
+        				};
+        				bpscSection1["questions"] = qAndAs1;
+        				bpscSection1["score"] = [this.bpscscore[0]];
+        				temp[swycAge]["BPSC"]["Irritability"] = bpscSection1; 
+
+        				var bpscSection2 = {};
+        				var qAndAs2 =  [];
+        				for (i=4; i< 8; i++){
+        				qAndAs2.push([bpscQuestions[i], this.bpscAnswers[i]]);
+        				};
+        				bpscSection2["questions"] = qAndAs2;
+        				bpscSection2["score"] = [this.bpscscore[1]];
+        				temp[swycAge]["BPSC"]["Inflexibility"] = bpscSection2; 
+        				
+        				var bpscSection3 = {};
+        				var qAndAs3 =  [];
+        				for (i=8; i< 12; i++){
+        				qAndAs3.push([bpscQuestions[i], this.bpscAnswers[i]]);
+        				};
+        				bpscSection3["questions"] = qAndAs3;
+        				bpscSection3["score"] = [this.bpscscore[2]];
+        				temp[swycAge]["BPSC"]["Difficulty with Routines"] = bpscSection3; 
+        			};       		
+        		};
         		console.log(temp);
         		this.$.ajaxPost.body = JSON.stringify(temp);      		
         		this.$.ajaxPost.generateRequest();
