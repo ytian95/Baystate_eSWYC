@@ -34,7 +34,8 @@
             <div id="result">
                 <result-page age="{{age}}" version="{{version}}" dmscore="{{dmscore}}" 
                 	bpscscore="{{bpscscore}}" pcscore="{{pcscore}}" 
-                	familyscore="{{familyscore}}" emoscore="{{emoscore}}" ></result-page>
+                	familyscore="{{familyscore}}" emoscore="{{emoscore}}"
+                	posiscore="{{posiscore}}" ></result-page>
             </div>
             
         </iron-pages>
@@ -112,6 +113,11 @@
                 	value: [0,0,0],
                 },
                 emoscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                },
+                posiscore: {
                 	type: Number,
                 	notify: true,
                 	value: 0,
@@ -235,12 +241,14 @@
             		emoAnswers = document.querySelector("emotional-page").answers;
             		document.querySelector("result-page").emoAnswers = emoAnswers;  
     	        };
+    	        
+    	        var posiAnswers = [];
     	        var posiName = "Parent’s Observation of Social Interactions (POSI)";  
                 if(this.sectionKeys.indexOf(posiName) > -1){
                 	var posiQuestions = document.querySelector("posi-page").questions;
                 	document.querySelector("result-page").emoQuestions = 
                 		posiQuestions;
-            		var posiAnswers = document.querySelector("posi-page").answers;
+            		posiAnswers = document.querySelector("posi-page").answers;
             		document.querySelector("result-page").posiAnswers = posiAnswers;
     	        };  
 
@@ -339,13 +347,25 @@
             			emoTotalScore += Number(emoAnswers[i]);
             		};
             	};
+            	
+            	var posiTotalScore = 0;
+            	for( var i = 0; i < posiAnswers.length; i++){
+            		//only score the second sub-section
+            		if( i >=1 && i <5 ){
+            			if(posiAnswers[i] === -1 || posiAnswers[i] === undefined ){
+            				// skip a question            		
+            			} else {
+            				posiTotalScore += Number(posiAnswers[i]);
+            			};
+            		};
+            	};
             	            	
             	this.dmscore = devTotalScore;
             	this.bpscscore = bpscTotalScore;
             	this.pcscore = pcTotalScore;
-            	this.familyscore = familyTotalScore;
-            	
+            	this.familyscore = familyTotalScore;            	
             	this.emoscore = emoTotalScore;
+            	this.posiscore = posiTotalScore;
             	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
             		//+ "Baby Pediatric Symptom Checklist Score : " 
             		//+ bpscTotalScore.toString());

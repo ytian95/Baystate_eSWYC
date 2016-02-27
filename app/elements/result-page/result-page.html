@@ -265,6 +265,12 @@
                     value: [],
                     observer: '_answerChanged',
                 },
+                posiscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                	observer: '_answerChanged',
+                },
                 dmscore: {
                 	type: Number,
                 	notify: true,
@@ -573,7 +579,14 @@
         		console.log(swycAge);
         		var temp = {};
         		temp[swycAge] = {};
-        		
+
+        	    /*
+        		Development milestone/ BPSC/ PPSC/ Parent's Concern answers map:
+        		{"0": "Not at all", 
+        		 "1": "Somewhat",
+        		 "2": "Very Much",
+        		 "-1": "Skip Question"};
+        		*/        		
         		var devSection = {};
         		var qAndAs =  [];
         		if(this.dmQuestions === undefined ){
@@ -638,115 +651,6 @@
         			};      		
         		};
 
-
-        		var pcSection = {};
-        		var pcqAndAs =  [];
-        		if(this.pcQuestions === undefined ){
-        			this.pcQuestions = [];
-        		};
-        		for (i=0; i< this.pcQuestions.length; i++){
-        			pcqAndAs.push([this.pcQuestions[i], Number(this.pcAnswers[i])]);
-        		};
-
-        		pcSection["questions"] = pcqAndAs;
-        		pcSection["score"] = [this.pcscore];
-        		temp[swycAge]["Parent Concerns"] = pcSection;
-        		
-        		var familySection = {};
-        		var familyqAndAs =  [];
-        		if(this.familyQuestions === undefined ){
-        			this.familyQuestions = [];
-        		};
-        		for (var i=0; i< this.familyQuestions.length; i++){
-        			familyqAndAs.push([this.familyQuestions[i], 
-        				Number(this.familyAnswers[i])]);
-        		};
-        		
-        		familySection["questions"] = familyqAndAs;
-        		familySection["score"] = this.familyscore;
-
-        		temp[swycAge]["Family Questions"] = familySection;        		
-
-        		var emoSection = {};
-        		var emoqAndAs =  [];
-        		if(this.emoQuestions === undefined ){
-        			this.emoQuestions = [];
-        		};
-        		for (i=0; i< this.emoQuestions.length; i++){
-        			emoqAndAs.push([this.emoQuestions[i], Number(this.emoAnswers[i])]);
-        		};
-
-        		emoSection["questions"] = emoqAndAs;
-        		emoSection["score"] = [this.emoscore];
-        		temp[swycAge]["Emotional Changes With A New Baby"] = emoSection;       		
-        		
-        		console.log(temp);
-        		this.$.ajaxPost.body = JSON.stringify(temp);      		
-        		//this.$.ajaxPost.generateRequest();
-        		
-        		/*
-        		var xhttp = new XMLHttpRequest();
-  				xhttp.onreadystatechange = function() {
-    				if (xhttp.readyState == 4 && xhttp.status == 200) {
-     					console.log("xttpworks!!!!");
-    				}
-  				};
-  				xhttp.open("POST", "/patient1.php");
-  				xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-				xhttp.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
-  				*/
-        	    /*
-        		Development milestone/ BPSC/ PPSC/ Parent's Concern answers map:
-        		{"0": "Not at all", 
-        		 "1": "Somewhat",
-        		 "2": "Very Much",
-        		 "-1": "Skip Question"};
-        		*/
-        		console.log("Development Milestones Answers:")
-        		console.log(this.dmAnswers);
-        		
-        		console.log("BPSC Answers:")
-        		console.log(this.bpscAnswers);
-        		
-        		console.log("PPSC Answers:")
-        		console.log(this.ppscAnswers);
-        		
-        		console.log("Parent's Concerns Answers:")
-        		console.log(this.pcAnswers);
-        		
-        	    /*
-        		Family Questions answers map:
-        		Question 1 - 5:
-        		{"0": "Yes", 
-        		 "1": "No",
-        		 "-1": "Skip Question"};
-        		 
-        		 Question 6 and 7:
-        		{"0": "Not at all", 
-        		 "1": "Several days",
-        		 "2": "More than half the days",
-        		 "3": "Nearly everyday",
-        		 "-1": "Skip Question"};    
-        		 
-        		 Question 8 and 9:  
-        		{"0": "No tension", 
-        		 "1": "Some tension",
-        		 "2": "A lot of tension",
-        		 "3": "Not applicable",
-        		 "-1": "Skip Question"};   		 
-        		*/        		      		
-        		console.log("Family Question Answers:")
-        		console.log(this.familyAnswers);
-        		
-        		/*
-				Emotional Changes With A New Baby Answers:
-				Every question has different answer options and answer questions can be 
-				fetched from question.json
-				-1 is always Skip Question 		 
-        		*/ 				
-        		console.log("Emotional Changes With A New Baby Answers:")        		
-        		console.log(this.emoAnswers);
-        		
         	    /*
         		POSI answers map:
         		Question 1:
@@ -769,9 +673,102 @@
 				 Every question has different answer options and answer questions can be 
 				 fetched from question.json 
 				 -1 is always Skip Question		 
-        		*/   
-        		console.log("Parent’s Observation of Social Interactions (POSI) Answers:")
-        		console.log(this.posiAnswers);
+        		*/ 
+        		var posiSection = {};
+        		var posiqAndAs =  [];
+        		if(this.posiQuestions === undefined ){
+        			this.posiQuestions = [];
+        		};
+        		for (i=0; i< this.posiQuestions.length; i++){
+        			posiqAndAs.push([this.posiQuestions[i], Number(this.posiAnswers[i])]);
+        		};
+        		posiSection["questions"] = posiqAndAs;
+        		//the score is only for the second sub section
+        		posiSection["score"] = [this.posiscore];
+        		temp[swycAge]["POSI"] = posiSection;
+
+        		var pcSection = {};
+        		var pcqAndAs =  [];
+        		if(this.pcQuestions === undefined ){
+        			this.pcQuestions = [];
+        		};
+        		for (i=0; i< this.pcQuestions.length; i++){
+        			pcqAndAs.push([this.pcQuestions[i], Number(this.pcAnswers[i])]);
+        		};
+
+        		pcSection["questions"] = pcqAndAs;
+        		pcSection["score"] = [this.pcscore];
+        		temp[swycAge]["Parent Concerns"] = pcSection;
+
+        	    /*
+        		Family Questions answers map:
+        		Question 1 - 5:
+        		{"0": "Yes", 
+        		 "1": "No",
+        		 "-1": "Skip Question"};
+        		 
+        		 Question 6 and 7:
+        		{"0": "Not at all", 
+        		 "1": "Several days",
+        		 "2": "More than half the days",
+        		 "3": "Nearly everyday",
+        		 "-1": "Skip Question"};    
+        		 
+        		 Question 8 and 9:  
+        		{"0": "No tension", 
+        		 "1": "Some tension",
+        		 "2": "A lot of tension",
+        		 "3": "Not applicable",
+        		 "-1": "Skip Question"};   		 
+        		*/        		
+        		var familySection = {};
+        		var familyqAndAs =  [];
+        		if(this.familyQuestions === undefined ){
+        			this.familyQuestions = [];
+        		};
+        		for (var i=0; i< this.familyQuestions.length; i++){
+        			familyqAndAs.push([this.familyQuestions[i], 
+        				Number(this.familyAnswers[i])]);
+        		};
+        		
+        		familySection["questions"] = familyqAndAs;
+        		familySection["score"] = this.familyscore;
+
+        		temp[swycAge]["Family Questions"] = familySection;        		
+
+        		/*
+				Emotional Changes With A New Baby Answers:
+				Every question has different answer options and answer questions can be 
+				fetched from question.json
+				-1 is always Skip Question 		 
+        		*/ 	
+        		var emoSection = {};
+        		var emoqAndAs =  [];
+        		if(this.emoQuestions === undefined ){
+        			this.emoQuestions = [];
+        		};
+        		for (i=0; i< this.emoQuestions.length; i++){
+        			emoqAndAs.push([this.emoQuestions[i], Number(this.emoAnswers[i])]);
+        		};
+        		emoSection["questions"] = emoqAndAs;
+        		emoSection["score"] = [this.emoscore];
+        		temp[swycAge]["Emotional Changes With A New Baby"] = emoSection;       		
+        		
+        		console.log(temp);
+        		this.$.ajaxPost.body = JSON.stringify(temp);      		
+        		//this.$.ajaxPost.generateRequest();
+        		
+        		/*
+        		var xhttp = new XMLHttpRequest();
+  				xhttp.onreadystatechange = function() {
+    				if (xhttp.readyState == 4 && xhttp.status == 200) {
+     					console.log("xttpworks!!!!");
+    				}
+  				};
+  				xhttp.open("POST", "/patient1.php");
+  				xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+				xhttp.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
+  				*/
         	}      	
         });
     </script>
