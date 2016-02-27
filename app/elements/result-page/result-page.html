@@ -9,9 +9,10 @@
     <template>
         <paper-header-panel id="header" mode="seamed">
             <paper-toolbar>
-                <div id="headerName">Patient's Result <span>{{age}}</span> months</div>
+                <div id="headerName">Patient's Result <span>{{version}}</span> months</div>
             </paper-toolbar>
         </paper-header-panel>
+
         <paper-card class="section" heading="Developmental Milestones" elevation="3">
   			<div class="card-content">
   				<paper-button id ="dmstatus">Developmental Milestones Score: 
@@ -85,16 +86,11 @@
             on-response="handleResponse1">
         </iron-ajax>
         
-        <!--<iron-ajax
-            auto
-            url="/questions.json"
-            handle-as="json"
-            on-response="handleResponse2">
-        </iron-ajax>-->		    
+        <div><paper-button raised on-click="_getjson" id="getjson">Create JSON
+        </paper-button></div>	    
     </template>
     <script>
 		var jsonOfAnswers= "";
-		//var jsonOfQuestions= "";
         Polymer({
             is: 'result-page',
         	properties: {
@@ -201,7 +197,6 @@
                     type: Array,
                     notify: true,
                     value: [],
-                    observer: '_answerChanged',
                 }, 
                 pcQuestions: {
                     type: Array,
@@ -212,13 +207,11 @@
                     type: Array,
                     notify: true,
                     value: [],
-                    observer: '_answerChanged',
                 },
                 pcscore: {
                 	type: Number,
                 	notify: true,
                 	value: 0,
-                	observer: '_answerChanged',
                 },
                 familyQuestions: {
                     type: Array,
@@ -229,13 +222,11 @@
                     type: Array,
                     notify: true,
                     value: [],
-                    observer: '_answerChanged',
                 },
                 familyscore: {
                 	type: Array,
                 	notify: true,
                 	value: [0,0,0],
-                	observer: '_answerChanged',
                 },
                 emoQuestions: {
                     type: Array,
@@ -246,13 +237,11 @@
                     type: Array,
                     notify: true,
                     value: [],
-                    observer: '_answerChanged',
                 },
                 emoscore: {
                 	type: Number,
                 	notify: true,
                 	value: 0,
-                	observer: '_answerChanged',
                 },
                 posiQuestions: {
                     type: Array,
@@ -263,13 +252,11 @@
                     type: Array,
                     notify: true,
                     value: [],
-                    observer: '_answerChanged',
                 },
                 posiscore: {
                 	type: Number,
                 	notify: true,
                 	value: 0,
-                	observer: '_answerChanged',
                 },
                 dmscore: {
                 	type: Number,
@@ -292,16 +279,12 @@
                     type: Array,
                     notify: true,
                     value: [],
-                    observer: '_answerChanged',
                 },       	
             },
             handleResponse1: function (data) {
                 jsonOfAnswers= data.detail.response
                 console.log(jsonOfAnswers);   
             },
-            //handleResponse2: function (data) {
-                //jsonOfQuestions= data.detail.response   
-            //},
             pullQuestions: function (data) {
                 if (this.version){
                     this.questions = {};
@@ -570,7 +553,7 @@
         				"Preschool Pediatric Symptom Checklist";
         		};
         	},
-        	_answerChanged: function(){
+        	_getjson: function(){
         		
         		this.$.ajaxPost.body = {}
         		//jsonOfAnswers[swycAge] = {}
