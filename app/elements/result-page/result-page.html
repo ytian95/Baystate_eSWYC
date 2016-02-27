@@ -549,7 +549,8 @@
         		
         		this.$.ajaxPost.body = {}
         		jsonOfAnswers[swycAge] = {}
-        		var swycAge=(String(this.version)).concat(" month");
+        		var swycAge=((this.version).toString()).concat(" month");
+        		console.log(swycAge);
         		var dmQuestions = this.questions["dev milestones"]
         		if(dmQuestions === undefined){
         			dmQuestions = [];
@@ -557,7 +558,7 @@
         		var devSection = {};
         		var qAndAs =  [];
         		for (i=0; i< dmQuestions.length; i++){
-        			qAndAs.push([dmQuestions[i], this.dmAnswers]);
+        			qAndAs.push([dmQuestions[i], this.dmAnswers[i]]);
         		};
         		console.log(qAndAs);
         		devSection["questions"] = qAndAs;
