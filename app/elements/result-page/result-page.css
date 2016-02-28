@@ -36,3 +36,10 @@ paper-toolbar.paper-toolbar-0 {
 	margin-left: auto;
     margin-right: auto;
 }
+
+#getjson{
+    display: inline-block;
+    background-color: #2875e2;
+    color: white;
+    margin-left: 10%;
+}

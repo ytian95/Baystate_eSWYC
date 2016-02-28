@@ -34,7 +34,8 @@
             <div id="result">
                 <result-page age="{{age}}" version="{{version}}" dmscore="{{dmscore}}" 
                 	bpscscore="{{bpscscore}}" pcscore="{{pcscore}}" 
-                	familyscore="{{familyscore}}"></result-page>
+                	familyscore="{{familyscore}}" emoscore="{{emoscore}}"
+                	posiscore="{{posiscore}}" ></result-page>
             </div>
             
         </iron-pages>
@@ -110,6 +111,16 @@
                 	type: Array,
                 	notify: true,
                 	value: [0,0,0],
+                },
+                emoscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
+                },
+                posiscore: {
+                	type: Number,
+                	notify: true,
+                	value: 0,
                 },
                 sectionKeys: {
                 	type: Array,
@@ -221,19 +232,23 @@
             		familyAnswers = document.querySelector("family-page").answers;
             		document.querySelector("result-page").familyAnswers = familyAnswers;
             	};
+            	
+            	var emoAnswers = [];
                 if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
                 	var emoQuestions = document.querySelector("emotional-page").questions;
                 	document.querySelector("result-page").emoQuestions = 
                 		emoQuestions;
-            		var emoAnswers = document.querySelector("emotional-page").answers;
+            		emoAnswers = document.querySelector("emotional-page").answers;
             		document.querySelector("result-page").emoAnswers = emoAnswers;  
     	        };
+    	        
+    	        var posiAnswers = [];
     	        var posiName = "Parent’s Observation of Social Interactions (POSI)";  
                 if(this.sectionKeys.indexOf(posiName) > -1){
                 	var posiQuestions = document.querySelector("posi-page").questions;
                 	document.querySelector("result-page").emoQuestions = 
                 		posiQuestions;
-            		var posiAnswers = document.querySelector("posi-page").answers;
+            		posiAnswers = document.querySelector("posi-page").answers;
             		document.querySelector("result-page").posiAnswers = posiAnswers;
     	        };  
 
@@ -323,12 +338,34 @@
             			};
             		};
             	}; 
+            	
+            	var emoTotalScore = 0;
+            	for( var i = 0; i < emoAnswers.length; i++){
+            		if(emoAnswers[i] === -1 || emoAnswers[i] === undefined ){
+            			// skip a question            		
+            		} else {
+            			emoTotalScore += Number(emoAnswers[i]);
+            		};
+            	};
+            	
+            	var posiTotalScore = 0;
+            	for( var i = 0; i < posiAnswers.length; i++){
+            		//only score the second sub-section
+            		if( i >=1 && i <5 ){
+            			if(posiAnswers[i] === -1 || posiAnswers[i] === undefined ){
+            				// skip a question            		
+            			} else {
+            				posiTotalScore += Number(posiAnswers[i]);
+            			};
+            		};
+            	};
             	            	
             	this.dmscore = devTotalScore;
             	this.bpscscore = bpscTotalScore;
             	this.pcscore = pcTotalScore;
-            	this.familyscore = familyTotalScore;
-            	
+            	this.familyscore = familyTotalScore;            	
+            	this.emoscore = emoTotalScore;
+            	this.posiscore = posiTotalScore;
             	//alert("Development Milestone Score : " + devTotalScore.toString() + "\n" 
             		//+ "Baby Pediatric Symptom Checklist Score : " 
             		//+ bpscTotalScore.toString());
