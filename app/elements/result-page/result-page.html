@@ -192,17 +192,6 @@
                 			"70": [18, 19],
                 			},
                 },  
-                dmQuestions: {
-                    type: Array,
-                    notify: true,
-                    value: [],
-                },
-                dmAnswers: {
-                    type: Array,
-                    notify: true,
-                    value: [],
-                    observer: '_answerChanged',
-                },
                 pcQuestions: {
                     type: Array,
                     notify: true,
@@ -279,7 +268,18 @@
                     notify: true,
                     value: [],
                     observer: '_answerChanged',
-                },        	
+                }, 
+                dmQuestions: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                },
+                dmAnswers: {
+                    type: Array,
+                    notify: true,
+                    value: [],
+                    observer: '_answerChanged',
+                },       	
             },
             handleResponse1: function (data) {
                 jsonOfAnswers= data.detail.response
@@ -590,7 +590,7 @@
         			temp[swycAge]["PPSC"] = ppscSection;         				
         		} else {
         			//bpsc
-        			if (this.bpscQuestions !== []){
+        			if (this.bpscQuestions !== [] && this.bpscQuestions !== undefined){
         				temp[swycAge]["BPSC"] = {}
         				var bpscSection1 = {};
         				var qAndAs1 =  [];
