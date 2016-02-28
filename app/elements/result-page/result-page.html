@@ -568,7 +568,7 @@
         		
         		var devSection = {};
         		var qAndAs =  [];
-        		for (i=0; i< this.dmQuestions.length; i++){
+        		for (var i=0; i< this.dmQuestions.length; i++){
         			qAndAs.push([this.dmQuestions[i], this.dmAnswers[i]]);
         		};
         		
@@ -582,7 +582,7 @@
         			temp[swycAge]["PPSC"] = {}
         			var ppscSection = {};
         			var qAndAs =  [];
-        			for (i=0; i< this.bpscQuestions.length; i++){
+        			for (var i=0; i< this.bpscQuestions.length; i++){
         				qAndAs.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
         			};
         			ppscSection["questions"] = qAndAs;
@@ -590,33 +590,35 @@
         			temp[swycAge]["PPSC"] = ppscSection;         				
         		} else {
         			//bpsc
-        			temp[swycAge]["BPSC"] = {}
-        			var bpscSection1 = {};
-        			var qAndAs1 =  [];
-        			for (i=0; i< 4; i++){
-        				qAndAs1.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
-        			};
-        			bpscSection1["questions"] = qAndAs1;
-        			bpscSection1["score"] = [this.bpscscore[0]];
-        			temp[swycAge]["BPSC"]["Irritability"] = bpscSection1; 
+        			if (this.bpscQuestions !== []){
+        				temp[swycAge]["BPSC"] = {}
+        				var bpscSection1 = {};
+        				var qAndAs1 =  [];
+        				for (var i=0; i< 4; i++){
+        					qAndAs1.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        				};
+        				bpscSection1["questions"] = qAndAs1;
+        				bpscSection1["score"] = [this.bpscscore[0]];
+        				temp[swycAge]["BPSC"]["Irritability"] = bpscSection1; 
 
-        			var bpscSection2 = {};
-        			var qAndAs2 =  [];
-        			for (i=4; i< 8; i++){
-        				qAndAs2.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
-        			};
-        			bpscSection2["questions"] = qAndAs2;
-        			bpscSection2["score"] = [this.bpscscore[1]];
-        			temp[swycAge]["BPSC"]["Inflexibility"] = bpscSection2; 
+        				var bpscSection2 = {};
+        				var qAndAs2 =  [];
+        				for (var i=4; i< 8; i++){
+        					qAndAs2.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        				};
+        				bpscSection2["questions"] = qAndAs2;
+        				bpscSection2["score"] = [this.bpscscore[1]];
+        				temp[swycAge]["BPSC"]["Inflexibility"] = bpscSection2; 
         				
-        			var bpscSection3 = {};
-        			var qAndAs3 =  [];
-        			for (i=8; i< 12; i++){
-        				qAndAs3.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
-        			};
-        			bpscSection3["questions"] = qAndAs3;
-        			bpscSection3["score"] = [this.bpscscore[2]];
-        			temp[swycAge]["BPSC"]["Difficulty with Routines"] = bpscSection3;       		
+        				var bpscSection3 = {};
+        				var qAndAs3 =  [];
+        				for (var i=8; i< 12; i++){
+        					qAndAs3.push([this.bpscQuestions[i], this.bpscAnswers[i]]);
+        				};
+        				bpscSection3["questions"] = qAndAs3;
+        				bpscSection3["score"] = [this.bpscscore[2]];
+        				temp[swycAge]["BPSC"]["Difficulty with Routines"] = bpscSection3; 
+        			};      		
         		};
 
 
@@ -633,7 +635,7 @@
         		
         		var familySection = {};
         		var familyqAndAs =  [];
-        		for (i=0; i< this.familyQuestions.length; i++){
+        		for (var i=0; i< this.familyQuestions.length; i++){
         			familyqAndAs.push([this.familyQuestions[i], this.familyAnswers[i]]);
         		};
         		
