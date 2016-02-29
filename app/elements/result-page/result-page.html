@@ -80,7 +80,8 @@
         <iron-ajax
         	id = "ajaxPost"
             method = "POST"
-            url = "/patient1.php"
+            url = "/send_json.php"
+            contentType = "application/json"
             handle-as="json"
             on-response="handleResponse1">
         </iron-ajax>
