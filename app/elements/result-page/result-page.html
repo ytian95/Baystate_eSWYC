@@ -748,39 +748,28 @@
         		
         		console.log(temp);
         		var allInfo = {};
-        		//allInfo["info"] = temp;
+        		allInfo["info"] = temp;
 
-        		console.log(this.name);
-        		console.log(this.phoneNum);
-        		var nameFormat = this.name.trim();
+          		var nameFormat = this.name.trim();
         		console.log(nameFormat);
         		while(nameFormat.indexOf(' ') !== -1){
         			var index = nameFormat.indexOf(' ');
         			nameFormat = nameFormat.substr(0, index) + '_' + 
-        				nameFormat.substr(index+character.length);
+        				nameFormat.substr(index+1);
         		};
+			nameFormat = nameFormat.toLowerCase();
         		console.log(nameFormat);
         		
         		var phone = this.phoneNum.trim();
         		console.log(phone);
-        		//allInfo[""]
+        		allInfo["name"] = nameFormat;
+			allInfo["phone"] = phone;	     
         		
 
-        		this.$.ajaxPost.body = JSON.stringify(temp);      		
-        		//this.$.ajaxPost.generateRequest();
-        		
-        		/*
-        		var xhttp = new XMLHttpRequest();
-  				xhttp.onreadystatechange = function() {
-    				if (xhttp.readyState == 4 && xhttp.status == 200) {
-     					console.log("xttpworks!!!!");
-    				}
-  				};
-  				xhttp.open("POST", "/patient1.php");
-  				xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-				xhttp.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
-  				*/
-        	}      	
+        		this.$.ajaxPost.body = JSON.stringify(allInfo);      		
+        		this.$.ajaxPost.generateRequest();
+		}
+            	
         });
     </script>
 </dom-module>
