@@ -110,6 +110,16 @@
             		value: 2,
             		observer: '_ageChanged',           		
             	},  
+            	phoneNum: {
+            		type: String,
+            		notify: true,
+            		value: "",
+            	}, 
+            	name: {
+            		type: String,
+            		notify: true,
+            		value: "",
+            	},
             	scaleRatio: {
             		type: Number,
             		value: 60,
@@ -283,7 +293,6 @@
             },
             handleResponse1: function (data) {
                 jsonOfAnswers= data.detail.response
-                console.log(jsonOfAnswers);   
             },
             pullQuestions: function (data) {
                 if (this.version){
@@ -738,8 +747,27 @@
         		temp[swycAge]["Emotional Changes With A New Baby"] = emoSection;       		
         		
         		console.log(temp);
+        		var allInfo = {};
+        		//allInfo["info"] = temp;
+
+        		console.log(this.name);
+        		console.log(this.phoneNum);
+        		var nameFormat = this.name.trim();
+        		console.log(nameFormat);
+        		while(nameFormat.indexOf(' ') !== -1){
+        			var index = nameFormat.indexOf(' ');
+        			nameFormat = nameFormat.substr(0, index) + '_' + 
+        				nameFormat.substr(index+character.length);
+        		};
+        		console.log(nameFormat);
+        		
+        		var phone = this.phoneNum.trim();
+        		console.log(phone);
+        		//allInfo[""]
+        		
+
         		this.$.ajaxPost.body = JSON.stringify(temp);      		
-        		this.$.ajaxPost.generateRequest();
+        		//this.$.ajaxPost.generateRequest();
         		
         		/*
         		var xhttp = new XMLHttpRequest();

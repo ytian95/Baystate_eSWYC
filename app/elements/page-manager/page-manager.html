@@ -21,7 +21,7 @@
         <iron-pages selected="{{pageNum}}" id="ironPage">
             <div>
                 <page-login version="{{version}}" is-valid="{{inputValid}}"
-                	age="{{age}}"></page-login>
+                	age="{{age}}" name="{{name}}" phone-num="{{phoneNum}}"></page-login>
             </div>
             <div>
                 <dev-page version="{{version}}" section="dev milestones"></dev-page>
@@ -35,7 +35,8 @@
                 <result-page age="{{age}}" version="{{version}}" dmscore="{{dmscore}}" 
                 	bpscscore="{{bpscscore}}" pcscore="{{pcscore}}" 
                 	familyscore="{{familyscore}}" emoscore="{{emoscore}}"
-                	posiscore="{{posiscore}}" ></result-page>
+                	posiscore="{{posiscore}}" name="{{name}}" phone-num="{{phoneNum}}">
+                	</result-page>
             </div>
             
         </iron-pages>
@@ -86,6 +87,16 @@
                     type: Number,
                     notify: true,
                 },
+            	phoneNum: {
+            		type: String,
+            		notify: true,
+            		value: "",
+            	}, 
+            	name: {
+            		type: String,
+            		notify: true,
+            		value: "",
+            	},
                 inputValid: {
                 	type: Boolean,
                 	notify: true,
