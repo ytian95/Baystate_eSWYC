@@ -78,6 +78,7 @@
             		};
             	};
             	var questionContainer = this.$$("#dmQuestions");
+            	questionContainer.innerHTML = "";
                 for(var i = 0; i < this.questions.length; i++){
                     var newDevQuestion = document.createElement("dev-question");
                     newDevQuestion.questionString = this.questions[i];

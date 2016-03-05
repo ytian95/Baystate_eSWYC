@@ -71,6 +71,7 @@
             },
             _createQuestions: function(){
             	var questionContainer = this.$$("#posiQuestions");
+            	questionContainer.innerHTML = "";
                 for(var i = 0; i < this.questions.length; i++){               	
                 	if(i <= 4){
                     	var newposiQuestion = document.createElement("posi-question1");

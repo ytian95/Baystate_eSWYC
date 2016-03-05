@@ -73,6 +73,7 @@
                     		"Preschool Pediatric Symptom Checklist";
                     };                
                     var questionContainer = document.getElementById("bpscQuestions");
+                    questionContainer.innerHTML = "";
                     for(var i = 0; i < this.questions.length; i++){
                         var newDevQuestion = document.createElement("bpsc-question");
                         newDevQuestion.questionString = this.questions[i];
