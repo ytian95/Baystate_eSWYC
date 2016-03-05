@@ -19,15 +19,16 @@
             </paper-toolbar>
         </paper-header-panel>-->
         <iron-pages selected="{{pageNum}}" id="ironPage">
-            <div>
+            <div id="login">
                 <page-login version="{{version}}" is-valid="{{inputValid}}"
                 	age="{{age}}" name="{{name}}" phone-num="{{phoneNum}}"></page-login>
             </div>
-            <div>
-                <dev-page version="{{version}}" section="dev milestones"></dev-page>
+            <div id="dev">
+                <dev-page  version="{{version}}" section="dev milestones">
+                </dev-page>
             </div>
             
-            <div>
+            <div id="bpsc">
                 <bpsc-page version="{{version}}"></bpsc-page>
             </div>
                         
@@ -152,6 +153,15 @@
                     this.sectionKeys = Object.keys(questions);
                     console.log(this.sectionKeys);
                     var pageContainer = Polymer.dom(this.$.ironPage);
+                    //clear extra section
+                    var pageNodes = pageContainer.childNodes;
+                    console.log(pageNodes);
+                    for(var i=0; i < pageNodes.length; i++){
+                    	if(pageNodes[i].id !=="login" || pageNodes[i].id !=="dev" ||
+                    		pageNodes[i].id !=="bpsc" || pageNodes[i].id !=="result"){
+                    		pageContainer.removeChild(pageNodes[i]);
+                    	};
+                    };
                     var lastPageNode = this.$.result;
                     if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
                     	var pPage = document.createElement('dev-page');
