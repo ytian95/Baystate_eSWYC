@@ -154,14 +154,14 @@
                     console.log(this.sectionKeys);
                     var pageContainer = Polymer.dom(this.$.ironPage);
                     //clear extra section
-                    var pageNodes = pageContainer.childNodes;
-                    console.log(pageNodes);
-                    for(var i=0; i < pageNodes.length; i++){
-                    	if(pageNodes[i].id !=="login" || pageNodes[i].id !=="dev" ||
-                    		pageNodes[i].id !=="bpsc" || pageNodes[i].id !=="result"){
-                    		pageContainer.removeChild(pageNodes[i]);
+                    var pageNodes = pageContainer.querySelectorAll("div");;
+	            for(var i=0; i < pageNodes.length; i++){
+		        if(pageNodes[i].id !=="login" && pageNodes[i].id !=="dev" &&
+			pageNodes[i].id !=="bpsc" && pageNodes[i].id !=="result"){
+				  pageContainer.removeChild(pageNodes[i]);
+				  Polymer.dom.flush();
                     	};
-                    };
+		    };
                     var lastPageNode = this.$.result;
                     if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
                     	var pPage = document.createElement('dev-page');
