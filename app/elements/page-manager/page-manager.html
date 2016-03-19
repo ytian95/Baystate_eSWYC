@@ -24,12 +24,14 @@
                 	age="{{age}}" name="{{name}}" phone-num="{{phoneNum}}"></page-login>
             </div>
             <div id="dev">
-                <dev-page  version="{{version}}" section="dev milestones">
+                <dev-page  version="{{version}}" section="dev milestones" 
+                	questions-set="{{questionsSet}}">
                 </dev-page>
             </div>
             
             <div id="bpsc">
-                <bpsc-page version="{{version}}"></bpsc-page>
+                <bpsc-page version="{{version}}" questions-set="{{questionsSet}}">
+                </bpsc-page>
             </div>
                         
             <div id="result">
@@ -83,6 +85,11 @@
                     type: Number,
                     notify: true,
                     observer: 'pullSections',
+                },
+                questionsSet: {
+                    type: Object,
+                    notify: true,
+                    value: {},
                 },
                 age: {
                     type: Number,
@@ -144,35 +151,40 @@
                 pages.selectNext();
             },
             handleResponse: function (data) {
-                jsonOfQuestions= data.detail.response;       
+                jsonOfQuestions= data.detail.response;  
+            	this.questionsSet = jsonOfQuestions;
             },
-            pullSections: function (data) {
+            pullSections: function () {
                if (this.version){
                     swycAge=(String(this.version)).concat(" month");
                     var questions = jsonOfQuestions[swycAge]["questions"];
+                    //console.log(questions);
+                    //this.questionsSet = questions;
                     this.sectionKeys = Object.keys(questions);
                     console.log(this.sectionKeys);
                     var pageContainer = Polymer.dom(this.$.ironPage);
                     //clear extra section
                     var pageNodes = pageContainer.querySelectorAll("div");;
-	            for(var i=0; i < pageNodes.length; i++){
-		        if(pageNodes[i].id !=="login" && pageNodes[i].id !=="dev" &&
-			pageNodes[i].id !=="bpsc" && pageNodes[i].id !=="result"){
-				  pageContainer.removeChild(pageNodes[i]);
-				  Polymer.dom.flush();
+	            	for(var i=0; i < pageNodes.length; i++){
+		        		if(pageNodes[i].id !=="login" && pageNodes[i].id !=="dev" &&
+							pageNodes[i].id !=="bpsc" && pageNodes[i].id !=="result"){
+				  		pageContainer.removeChild(pageNodes[i]);
+				  		Polymer.dom.flush();
                     	};
-		    };
+		    		};
                     var lastPageNode = this.$.result;
                     if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
                     	var pPage = document.createElement('dev-page');
                     	pPage.section = "Parent’s Concerns";
-                    	pPage.version = this.version;
+                    	pPage.questionsSet = this.questionsSet;
+                    	pPage.version = this.version;                    	
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(pPage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);
                     };
                     if(this.sectionKeys.indexOf("Family Questions") > -1){
                     	var fPage = document.createElement('family-page');
+                    	fPage.questionsSet = this.questionsSet;
                     	fPage.version = this.version;
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(fPage);
@@ -180,6 +192,7 @@
                     };
                     if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
                     	var ePage = document.createElement('emotional-page');
+                    	ePage.questionsSet = this.questionsSet;
                     	ePage.version = this.version;
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(ePage);
@@ -188,6 +201,7 @@
     	            var posiName = "Parent’s Observation of Social Interactions (POSI)";  
                     if(this.sectionKeys.indexOf(posiName) > -1){
                     	var ePage = document.createElement('posi-page');
+                    	ePage.questionsSet = this.questionsSet;
                     	ePage.version = this.version;
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(ePage);

@@ -20,19 +20,18 @@
         </div>
         <div id="dmQuestions">
         </div>
-        <iron-ajax
-            auto
-            url="/questions.json"
-            handle-as="json"
-            on-response="handleResponse">
-        </iron-ajax>
     </template>
     <script>
-    var jsonOfQuestions ="";
+    //var jsonOfQuestions ="";
     HTMLImports.whenReady(function () {
         Polymer({
             is: 'dev-page',
             properties: {
+                questionsSet: {
+                    type: Object,
+                    notify: true,
+                    value:{},
+                },
                 questions: {
                     type: Array,
                     notify: true,
@@ -52,23 +51,16 @@
                 section: {
                 	type: String,
                 	notify: true,
-                },
-                                
+                },                                
             },
         	listeners: {
         		'scoreChange': 'gatherScore',
       		},
-            
-            handleResponse: function (data) {
-                jsonOfQuestions= data.detail.response;       
-            },
 
             pullQuestions: function (data) {
-               if (this.version){
-                    this.questions = [];
-                    swycAge=(String(this.version)).concat(" month");
-                    this.questions= jsonOfQuestions[swycAge]["questions"][this.section];
-                }         
+                this.questions = [];
+                swycAge=(String(this.version)).concat(" month");
+                this.questions = this.questionsSet[swycAge]["questions"][this.section];      
             },
             _createQuestions: function(){
             	if(this.section !== 'dev milestones'){

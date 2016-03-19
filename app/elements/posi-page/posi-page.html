@@ -15,19 +15,17 @@
         <div class="sName">Parent’s Observation of Social Interactions (POSI)</div>
         <div id="posiQuestions">
         </div>
-        <iron-ajax
-            auto
-            url="/questions.json"
-            handle-as="json"
-            on-response="handleResponse">
-        </iron-ajax>
     </template>
     <script>
-    var jsonOfQuestions ="";
     HTMLImports.whenReady(function () {
         Polymer({
             is: 'posi-page',
             properties: {
+                questionsSet: {
+                    type: Object,
+                    notify: true,
+                    value:{},
+                },
                 questions: {
                     type: Array,
                     notify: true,
@@ -54,19 +52,14 @@
         	listeners: {
         		'scoreChange': 'gatherScore',
       		},
-            
-            handleResponse: function (data) {
-                jsonOfQuestions= data.detail.response;       
-            },
-
             pullQuestions: function (data) {
                if (this.version){
                     this.questions = [];
                     var sectionName = "Parent’s Observation of Social Interactions (POSI)";
                     var options = "POSI Answer Options";
                     swycAge=(String(this.version)).concat(" month");
-                    this.answerOptions = jsonOfQuestions[swycAge]["questions"][options];
-                    this.questions = jsonOfQuestions[swycAge]["questions"][sectionName];
+                    this.answerOptions = this.questionsSet[swycAge]["questions"][options];
+                    this.questions = this.questionsSet[swycAge]["questions"][sectionName];
                 }         
             },
             _createQuestions: function(){

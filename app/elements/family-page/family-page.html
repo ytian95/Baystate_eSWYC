@@ -36,20 +36,17 @@
             <div class="familyoption">Skip Question</div>
         </div>
         <div id="familyQuestions3"></div>
-        
-        <iron-ajax
-            auto
-            url="/questions.json"
-            handle-as="json"
-            on-response="handleResponse">
-        </iron-ajax>
     </template>
     <script>
-        var jsonOfQuestions= "";
         HTMLImports.whenReady(function () {
             Polymer({
                 is: 'family-page',
                 properties: {
+                	questionsSet: {
+                    	type: Object,
+                    	notify: true,
+                    	value:{},
+                	},
                     questions: {
                         type: Array,
                         notify: true,
@@ -70,17 +67,13 @@
                 listeners: {
         			'scoreChange': 'gatherScore',
       			},
-                handleResponse: function (data) {
-                    jsonOfQuestions= data.detail.response   
-                },
-
                 pullQuestions: function (data) {
                     if (this.version){
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
                         console.log(swycAge);
                         this.questions = 
-                        	jsonOfQuestions[swycAge]["questions"]["Family Questions"];
+                        	this.questionsSet[swycAge]["questions"]["Family Questions"];
                     }         
                 },
                 _createQuestions: function(){

@@ -14,19 +14,17 @@
         <div class="sName">Emotional Changes With A New Baby</div>
         <div id="emotionalQuestions">
         </div>
-        <iron-ajax
-            auto
-            url="/questions.json"
-            handle-as="json"
-            on-response="handleResponse">
-        </iron-ajax>
     </template>
     <script>
-    var jsonOfQuestions ="";
     HTMLImports.whenReady(function () {
         Polymer({
             is: 'emotional-page',
             properties: {
+                questionsSet: {
+                    type: Object,
+                    notify: true,
+                    value:{},
+                },
                 questions: {
                     type: Array,
                     notify: true,
@@ -53,19 +51,14 @@
         	listeners: {
         		'scoreChange': 'gatherScore',
       		},
-            
-            handleResponse: function (data) {
-                jsonOfQuestions= data.detail.response;       
-            },
-
             pullQuestions: function (data) {
                if (this.version){
                     this.questions = [];
                     var sectionName = "Emotional Changes With A New Baby";
                     var options = "Emotional Changes Answer Options";
                     swycAge=(String(this.version)).concat(" month");
-                    this.answerOptions = jsonOfQuestions[swycAge]["questions"][options];
-                    this.questions = jsonOfQuestions[swycAge]["questions"][sectionName];
+                    this.answerOptions = this.questionsSet[swycAge]["questions"][options];
+                    this.questions = this.questionsSet[swycAge]["questions"][sectionName];
                 }         
             },
             _createQuestions: function(){
