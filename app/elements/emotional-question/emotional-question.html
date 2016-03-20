@@ -4,16 +4,18 @@
 <dom-module id="emotional-question">
     <link rel="import" type="css" href="emotional-question.css">
     <template>
-        <div class="emoWrapper">
-            <div class="questionString">{{questionString}}</div>
-            <paper-radio-group id="emoButtons" selected="{{score}}" allow-empty-selection>
-                <paper-radio-button class="emoButton" name="0"></paper-radio-button>
-                <paper-radio-button class="emoButton" name="1"></paper-radio-button>
-                <paper-radio-button class="emoButton" name="2"></paper-radio-button>
-                <paper-radio-button class="emoButton" name="3"></paper-radio-button>                	
-                <paper-radio-button class="emoButton" name="-1">Skip question
-                </paper-radio-button>
-            </paper-radio-group>
+    	<div id="main">
+        	<div class="emoWrapper">
+            	<div class="questionString">{{questionString}}</div>
+            	<paper-radio-group id="emoButtons" selected="{{score}}" allow-empty-selection>
+                	<paper-radio-button class="emoButton" name="0"></paper-radio-button>
+                	<paper-radio-button class="emoButton" name="1"></paper-radio-button>
+                	<paper-radio-button class="emoButton" name="2"></paper-radio-button>
+                	<paper-radio-button class="emoButton" name="3"></paper-radio-button>                	
+                	<paper-radio-button class="emoButton" name="-1">Skip question
+                	</paper-radio-button>
+            	</paper-radio-group>
+       		</div>
         </div>
     </template>
     <script>

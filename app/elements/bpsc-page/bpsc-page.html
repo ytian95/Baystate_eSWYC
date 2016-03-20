@@ -60,19 +60,25 @@
                             this.questions= 
                             	this.questionsSet[swycAge]["questions"]["PPSC"];
                         }
+                        //console.log(swycAge);
                     }         
                 },
                 _createQuestions: function(){
                     if (this.version >= 18){
                     	this.$$(".sName").innerHTML = 
                     		"Preschool Pediatric Symptom Checklist";
-                    };                
+                    };      
+                    var counter = 0;          
                     var questionContainer = document.getElementById("bpscQuestions");
                     questionContainer.innerHTML = "";
                     for(var i = 0; i < this.questions.length; i++){
                         var newDevQuestion = document.createElement("bpsc-question");
                         newDevQuestion.questionString = this.questions[i];
+                        if(counter%2 == 0) {
+                    		newDevQuestion.$$("#main").style.background = "#e1e1e1";
+                    	};
                         questionContainer.appendChild(newDevQuestion);
+                        counter += 1;
                     };
                 },
             	gatherScore: function(){

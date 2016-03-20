@@ -4,14 +4,16 @@
 <dom-module id="bpsc-question">
     <link rel="import" type="css" href="bpsc-question.css">
     <template>
-        <div class="bpscWrapper">
-            <div class="questionString">{{questionString}}</div>
-            <paper-radio-group class="bpscButtons" selected="{{score}}" allow-empty-selection>
-                <paper-radio-button class="bpscButton" name="0">0</paper-radio-button>
-                <paper-radio-button class="bpscButton" name="1">1</paper-radio-button>
-                <paper-radio-button class="bpscButton" name="2">2</paper-radio-button>
-                <paper-radio-button class="bpscButton" name="-1"></paper-radio-button>
-            </paper-radio-group>
+    	<div id="main">
+        	<div class="bpscWrapper">
+            	<div class="questionString">{{questionString}}</div>
+            	<paper-radio-group class="bpscButtons" selected="{{score}}" allow-empty-selection>
+                	<paper-radio-button class="bpscButton" name="0">0</paper-radio-button>
+               		<paper-radio-button class="bpscButton" name="1">1</paper-radio-button>
+                	<paper-radio-button class="bpscButton" name="2">2</paper-radio-button>
+                	<paper-radio-button class="bpscButton" name="-1"></paper-radio-button>
+            	</paper-radio-group>
+        	</div>
         </div>
     </template>
     <script>

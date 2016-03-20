@@ -69,12 +69,17 @@
             			this.$$(".sName").innerHTML = "Parent's Concerns";
             		};
             	};
+            	var counter = 0;
             	var questionContainer = this.$$("#dmQuestions");
             	questionContainer.innerHTML = "";
                 for(var i = 0; i < this.questions.length; i++){
                     var newDevQuestion = document.createElement("dev-question");
                     newDevQuestion.questionString = this.questions[i];
+                    if(counter%2 == 0) {
+                    	newDevQuestion.$$("#main").style.background = "#e1e1e1";
+                    };
                     questionContainer.appendChild(newDevQuestion);
+                    counter += 1;
                 };
             },
             gatherScore: function(){

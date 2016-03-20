@@ -4,22 +4,24 @@
 <dom-module id="posi-question2">
     <link rel="import" type="css" href="posi-question2.css">
     <template>
-        <div class="posiWrapper">
-            <div class="questionString">{{questionString}}</div>
-            <div class="posiButtons">
-                <paper-radio-button class="posiButton" name="0" on-click="changed">
-                </paper-radio-button>
-                <paper-radio-button class="posiButton" name="1" on-click="changed">
-                </paper-radio-button>
-                <paper-radio-button class="posiButton" name="2" on-click="changed">
-                </paper-radio-button>
-                <paper-radio-button class="posiButton" name="3" on-click="changed">
-                </paper-radio-button>
-                <paper-radio-button class="posiButton" name="4" on-click="changed">
-                </paper-radio-button>                	
-                <paper-radio-button class="posiButton" name="-1" on-click="changed">
-                Skip question</paper-radio-button>
-            </div>
+    	<div id="main">
+        	<div class="posiWrapper">
+            	<div class="questionString">{{questionString}}</div>
+            	<div class="posiButtons">
+                	<paper-radio-button class="posiButton" name="0" on-click="changed">
+                	</paper-radio-button>
+                	<paper-radio-button class="posiButton" name="1" on-click="changed">
+                	</paper-radio-button>
+                	<paper-radio-button class="posiButton" name="2" on-click="changed">
+                	</paper-radio-button>
+                	<paper-radio-button class="posiButton" name="3" on-click="changed">
+                	</paper-radio-button>
+                	<paper-radio-button class="posiButton" name="4" on-click="changed">
+                	</paper-radio-button>                	
+                	<paper-radio-button class="posiButton" name="-1" on-click="changed">
+                	Skip question</paper-radio-button>
+            	</div>
+        	</div>
         </div>
     </template>
     <script>

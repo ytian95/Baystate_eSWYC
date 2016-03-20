@@ -65,6 +65,7 @@
             _createQuestions: function(){
             	var questionContainer = this.$$("#posiQuestions");
             	questionContainer.innerHTML = "";
+            	var counter = 0;
                 for(var i = 0; i < this.questions.length; i++){               	
                 	if(i <= 4){
                     	var newposiQuestion = document.createElement("posi-question1");
@@ -84,8 +85,12 @@
                     		newposiQuestion.options = this.answerOptions[3];
                     	}; 
                     };
+                    if(counter%2 == 0) {
+                    	newposiQuestion.$$("#main").style.background = "#e1e1e1";
+                    };
                     //console.log(newposiQuestion);
                     questionContainer.appendChild(newposiQuestion);
+                    counter += 1;
                 };
             },
             gatherScore: function(){

@@ -38,6 +38,7 @@
         <div id="familyQuestions3"></div>
     </template>
     <script>
+
         HTMLImports.whenReady(function () {
             Polymer({
                 is: 'family-page',
@@ -46,7 +47,7 @@
                     	type: Object,
                     	notify: true,
                     	value:{},
-                	},
+                },
                     questions: {
                         type: Array,
                         notify: true,
@@ -67,23 +68,30 @@
                 listeners: {
         			'scoreChange': 'gatherScore',
       			},
+
                 pullQuestions: function (data) {
                     if (this.version){
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
                         console.log(swycAge);
                         this.questions = 
-                        	this.questionsSet[swycAge]["questions"]["Family Questions"];
-                    }         
+                        	jsonOfQuestions[swycAge]["questions"]["Family Questions"];
+                    };         
                 },
                 _createQuestions: function(){
                 	if( this.questions.length !== 0){            
                     	var questionContainer1 = this.$$("#familyQuestions1");
                     	questionContainer1.innerHTML = "";
+                    	var counter = 0;
                     	for(var i = 0; i < 5; i++){
                         	var newFamilyQuestion = document.createElement("family-question1");
                         	newFamilyQuestion.questionString = this.questions[i];
+                        	if(counter%2 == 0) {
+                    			newFamilyQuestion.$$("#main").style.background 
+                    				= "#e1e1e1";
+                    		};
                         	questionContainer1.appendChild(newFamilyQuestion);
+                        	counter +=1;
                     	};
                     
                     	var questionContainer2 = this.$$("#familyQuestions2");
@@ -95,7 +103,12 @@
                         		var newFamilyQuestion = 
                         			document.createElement("family-question2");
                         		newFamilyQuestion.questionString = this.questions[i];
+                        		if(counter%2 == 0) {
+                    				newFamilyQuestion.$$("#main").style.background 
+                    					= "#e1e1e1";
+                    			};
                         		questionContainer3.appendChild(newFamilyQuestion);
+                        		counter +=1;
                         		questionContainer2.style.display = "none"; 
                         		this.$$("#section2").style.display = "none"
                         	};                
@@ -104,13 +117,23 @@
                         		var newFamilyQuestion = 
                         			document.createElement("family-question2");
                         		newFamilyQuestion.questionString = this.questions[i];
+                        		if(counter%2 == 0) {
+                    				newFamilyQuestion.$$("#main").style.background 
+                    					= "#e1e1e1";
+                    			};
                         		questionContainer2.appendChild(newFamilyQuestion);
+                        		counter +=1;
                         	};  
                     		for(var i = 7; i < this.questions.length; i++){
                         		var newFamilyQuestion = 
                         			document.createElement("family-question2");
                         		newFamilyQuestion.questionString = this.questions[i];
+                        		if(counter%2 == 0) {
+                    				newFamilyQuestion.$$("#main").style.background 
+                    					= "#e1e1e1";
+                    			};
                         		questionContainer3.appendChild(newFamilyQuestion);
+                        		counter +=1;
                         	};                                  
                     	};
                     };

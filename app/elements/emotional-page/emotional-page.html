@@ -59,16 +59,21 @@
                     swycAge=(String(this.version)).concat(" month");
                     this.answerOptions = this.questionsSet[swycAge]["questions"][options];
                     this.questions = this.questionsSet[swycAge]["questions"][sectionName];
-                }         
+                };         
             },
             _createQuestions: function(){
             	var questionContainer = this.$$("#emotionalQuestions");
             	questionContainer.innerHTML = "";
+            	var counter = 0;
                 for(var i = 0; i < this.questions.length; i++){
                     var newEmoQuestion = document.createElement("emotional-question");
                     newEmoQuestion.questionString = this.questions[i];
                     newEmoQuestion.options = this.answerOptions[i];
+                    if(counter%2 == 0) {
+                    	newEmoQuestion.$$("#main").style.background = "#e1e1e1";
+                    };
                     questionContainer.appendChild(newEmoQuestion);
+                    counter += 1;
                 };
             },
             gatherScore: function(){
