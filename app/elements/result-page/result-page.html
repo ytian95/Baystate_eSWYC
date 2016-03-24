@@ -568,7 +568,7 @@
         		//jsonOfAnswers[swycAge] = {}
 
         		var swycAge=(String(this.version)).concat(" month");
-        		console.log(swycAge);
+        		//console.log(swycAge);
         		var temp = {};
         		temp[swycAge] = {};
 
@@ -746,24 +746,24 @@
         		emoSection["score"] = [this.emoscore];
         		temp[swycAge]["Emotional Changes With A New Baby"] = emoSection;       		
         		
-        		console.log(temp);
+        		//console.log(temp);
         		var allInfo = {};
         		allInfo["info"] = temp;
 
           		var nameFormat = this.name.trim();
-        		console.log(nameFormat);
+        		//console.log(nameFormat);
         		while(nameFormat.indexOf(' ') !== -1){
         			var index = nameFormat.indexOf(' ');
         			nameFormat = nameFormat.substr(0, index) + '_' + 
         				nameFormat.substr(index+1);
         		};
-			nameFormat = nameFormat.toLowerCase();
-        		console.log(nameFormat);
+				nameFormat = nameFormat.toLowerCase();
+        		//console.log(nameFormat);
         		
         		var phone = this.phoneNum.trim();
-        		console.log(phone);
+        		//console.log(phone);
         		allInfo["name"] = nameFormat;
-			allInfo["phone"] = phone;	     
+				allInfo["phone"] = phone;	     
         		
 
         		this.$.ajaxPost.body = JSON.stringify(allInfo);      		

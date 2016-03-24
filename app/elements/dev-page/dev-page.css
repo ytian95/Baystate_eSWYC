@@ -6,7 +6,6 @@ body {
 paper-toolbar.paper-toolbar-0 {
 	background: #2875e2;
 }
-
 .sName{
     font-size: 30px;
     margin-bottom: 10px;
@@ -15,10 +14,6 @@ paper-toolbar.paper-toolbar-0 {
 }
 
 .optionSection{
-	/*position: fixed;
-	top: 40px;
-    right: 10px;
-    */
     float: right;
     color: green;
 }
