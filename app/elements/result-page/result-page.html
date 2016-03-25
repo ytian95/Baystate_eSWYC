@@ -289,7 +289,11 @@
                     type: Array,
                     notify: true,
                     value: [],
-                },       	
+                }, 
+                sectionkeys: {
+                	type: Array,
+                	notify: true,
+                },      	
             },
             handleResponse1: function (data) {
                 jsonOfAnswers= data.detail.response
@@ -677,7 +681,10 @@
         		posiSection["questions"] = posiqAndAs;
         		//the score is only for the second sub section
         		posiSection["score"] = [this.posiscore];
-        		temp[swycAge]["POSI"] = posiSection;
+        		
+        		if(this.sectionkeys.indexOf("Parent’s Observation of Social Interactions (POSI)") > -1){
+        			temp[swycAge]["POSI"] = posiSection;
+        		};
 
         		var pcSection = {};
         		var pcqAndAs =  [];
@@ -690,7 +697,9 @@
 
         		pcSection["questions"] = pcqAndAs;
         		pcSection["score"] = [this.pcscore];
-        		temp[swycAge]["Parent Concerns"] = pcSection;
+        		if(this.sectionkeys.indexOf("Parent’s Concerns") > -1){
+        			temp[swycAge]["Parent Concerns"] = pcSection;
+        		};
 
         	    /*
         		Family Questions answers map:
@@ -725,8 +734,9 @@
         		
         		familySection["questions"] = familyqAndAs;
         		familySection["score"] = this.familyscore;
-
-        		temp[swycAge]["Family Questions"] = familySection;        		
+				if(this.sectionkeys.indexOf("Family Questions") > -1){
+        			temp[swycAge]["Family Questions"] = familySection;  
+        		};      		
 
         		/*
 				Emotional Changes With A New Baby Answers:
@@ -744,7 +754,9 @@
         		};
         		emoSection["questions"] = emoqAndAs;
         		emoSection["score"] = [this.emoscore];
-        		temp[swycAge]["Emotional Changes With A New Baby"] = emoSection;       		
+        		if(this.sectionkeys.indexOf("Emotional Changes With A New Baby") > -1){
+        			temp[swycAge]["Emotional Changes With A New Baby"] = emoSection;       		
+        		};
         		
         		//console.log(temp);
         		var allInfo = {};
