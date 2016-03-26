@@ -43,3 +43,13 @@ paper-toolbar.paper-toolbar-0 {
     overflow: hidden;
     white-space: nowrap;
 }
+
+#language {
+    margin-top: 3%;
+    width: 400px;
+    left: 35%;
+}
+
+.item {
+    width: 100px;
+}

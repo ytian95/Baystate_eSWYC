@@ -4,6 +4,9 @@
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">           
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html"> 
+<link rel="import" href="../../bower_components/paper-item/paper-item.html"> 
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html"> 
             
 <dom-module id="page-login">
     <link rel="import" type="css" href="page-login.css">
@@ -30,6 +33,13 @@
         	<paper-icon-button suffix icon="clear"></paper-icon-button>
         </paper-input>
     
+    	<paper-dropdown-menu id="language" 
+    		label="Select language (Seleccione el idioma)">
+ 			<paper-listbox class="dropdown-content" selected="{{isSpanish}}">
+    			<paper-item class="item">English</paper-item>
+    			<paper-item class="item">Español</paper-item>
+  			</paper-listbox>
+		</paper-dropdown-menu>
     </template>
     <script>
 
@@ -66,7 +76,12 @@
             		type: String,
             		notify: true,
             		value: "",
-            	},      	        		
+            	},
+            	isSpanish: {
+            		type: Number,
+            		notify: true,
+            		value: 0,
+            	},            	      	        		
         	},
         	getDate: function(){
         	    this.isValid = false;

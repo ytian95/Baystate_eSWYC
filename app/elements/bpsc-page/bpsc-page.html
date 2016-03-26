@@ -11,12 +11,6 @@
             </paper-toolbar>
         </paper-header-panel>
         <div class="sName">Baby Pediatric Symptom Checklist</div>
-        <div class="optionSection">
-            <div class="dmoption">Not at all</div>
-            <div class="dmoption">Somewhat</div>
-            <div class="dmoption">Very Much</div>
-            <div class="dmoption">Skip Question</div>
-        </div>
         <div id="bpscQuestions"></div>
     </template>
     <script>
@@ -28,6 +22,7 @@
                     	type: Object,
                     	notify: true,
                     	value:{},
+                    	observer: 'pullQuestions',
                 	},
                     questions: {
                         type: Array,
@@ -43,7 +38,6 @@
                 	version: {
                     	type: Number,
                     	notify: true,
-                        observer: 'pullQuestions',
                 	},
                 },
                 listeners: {

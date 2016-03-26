@@ -21,16 +21,17 @@
         <iron-pages selected="{{pageNum}}" id="ironPage">
             <div id="login">
                 <page-login version="{{version}}" is-valid="{{inputValid}}"
-                	age="{{age}}" name="{{name}}" phone-num="{{phoneNum}}"></page-login>
+                	age="{{age}}" name="{{name}}" phone-num="{{phoneNum}}" 
+                	is-spanish="{{isSpanish}}">
+                	</page-login>
             </div>
             <div id="dev">
-                <dev-page  version="{{version}}" section="dev milestones" 
-                	questions-set="{{questionsSet}}">
+                <dev-page  id="devS" version="{{version}}" section="dev milestones">
                 </dev-page>
             </div>
             
             <div id="bpsc">
-                <bpsc-page version="{{version}}" questions-set="{{questionsSet}}">
+                <bpsc-page id="bpscS" version="{{version}}">
                 </bpsc-page>
             </div>
                         
@@ -56,18 +57,18 @@
             handle-as="json"
             on-response="handleResponse">
         </iron-ajax>
-        <?php include('../../scripts/answer.php') ?>
-        <!--
+        
         <iron-ajax
-        	auto = "ture"
-    		method="POST"
-    		url="../../scripts/answer.php"
-    		params=''
-    		handle-as="json"
-    		on-response="handleResponse"></iron-ajax>-->
+            auto
+            url="/spanishSWYC.json"
+            handle-as="json"
+            on-response="handleResponse1">
+        </iron-ajax>
+        <?php include('../../scripts/answer.php') ?>
     </template>
     <script>
     	var jsonOfQuestions ="";
+    	var jsonOfQuestionsSpanish ="";
         Polymer({
             is: 'page-manager',
             properties: {
@@ -92,6 +93,16 @@
                     notify: true,
                     value: {},
                 },
+                questionsSetEnglish: {
+                    type: Object,
+                    notify: true,
+                    value: {},
+                },
+                questionsSetSpanish: {
+                    type: Object,
+                    notify: true,
+                    value: {},
+                },
                 age: {
                     type: Number,
                     notify: true,
@@ -101,6 +112,12 @@
             		notify: true,
             		value: "",
             	}, 
+            	isSpanish: {
+            		type: Number,
+            		notify: true,
+            		value: 0,
+            		observer: 'pullSections',
+            	},  
             	name: {
             		type: String,
             		notify: true,
@@ -153,12 +170,27 @@
             },
             handleResponse: function (data) {
                 jsonOfQuestions= data.detail.response;  
-            	this.questionsSet = jsonOfQuestions;
+            	this.questionsSetEnglish = jsonOfQuestions;
+            },
+            handleResponse1: function (data) {
+                jsonOfQuestionsSpanish= data.detail.response;  
+            	this.questionsSetSpainsh = jsonOfQuestionsSpanish;
             },
             pullSections: function () {
                if (this.version){
                     swycAge=(String(this.version)).concat(" month");
-                    var questions = jsonOfQuestions[swycAge]["questions"];
+                    //console.log(this.isSpanish);
+                    var questions = "";
+                     
+                    if(this.isSpanish === 0){
+                    	questions = jsonOfQuestions[swycAge]["questions"];
+                    	this.questionsSet = this.questionsSetEnglish;
+                    } else {
+                    	questions = jsonOfQuestionsSpanish[swycAge]["questions"];
+                    	this.questionsSet = this.questionsSetSpainsh;
+                    };
+                    this.$$("#devS").questionsSet = this.questionsSet;
+                    this.$$("#bpscS").questionsSet = this.questionsSet;
                     //console.log(questions);
                     //this.questionsSet = questions;
                     this.sectionKeys = Object.keys(questions);
@@ -177,16 +209,17 @@
                     if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
                     	var pPage = document.createElement('dev-page');
                     	pPage.section = "Parent’s Concerns";
-                    	pPage.questionsSet = this.questionsSet;
-                    	pPage.version = this.version;                    	
+                    	pPage.version = this.version; 
+                    	pPage.questionsSet = this.questionsSet;                   	
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(pPage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);
                     };
                     if(this.sectionKeys.indexOf("Family Questions") > -1){
                     	var fPage = document.createElement('family-page');
-                    	fPage.questionsSet = this.questionsSet;
                     	fPage.version = this.version;
+                    	console.log(this.questionsSet);
+                    	fPage.questionsSet = this.questionsSet;
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(fPage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);

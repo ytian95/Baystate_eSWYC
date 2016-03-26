@@ -47,7 +47,8 @@
                     	type: Object,
                     	notify: true,
                     	value:{},
-                },
+                    	observer: 'pullQuestions',
+                	},
                     questions: {
                         type: Array,
                         notify: true,
@@ -62,20 +63,19 @@
                 	version: {
                     	type: Number,
                     	notify: true,
-                        observer: 'pullQuestions',
                 	},
                 },
                 listeners: {
         			'scoreChange': 'gatherScore',
       			},
 
-                pullQuestions: function (data) {
+                pullQuestions: function () {
                     if (this.version){
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
                         console.log(swycAge);
                         this.questions = 
-                        	jsonOfQuestions[swycAge]["questions"]["Family Questions"];
+                        	this.questionsSet[swycAge]["questions"]["Family Questions"];
                     };         
                 },
                 _createQuestions: function(){
