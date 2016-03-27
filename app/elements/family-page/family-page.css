@@ -21,7 +21,7 @@ paper-toolbar.paper-toolbar-0 {
     color: green;
 }
 
-.familyoption {
+.familyoption2 {
     display: inline-block;
     margin-left: 10px;
     font-size: 14px;
@@ -33,7 +33,11 @@ paper-toolbar.paper-toolbar-0 {
     font-size: 14px;
 }
 
-
+.familyoption3 {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+}
 .qWrapper {
     clear: both;
 }

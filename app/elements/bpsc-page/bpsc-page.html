@@ -39,6 +39,11 @@
                     	type: Number,
                     	notify: true,
                 	},
+                	answerOptions: {
+                    	type: Array,
+                    	notify: true,
+                    	value:[],
+                	},
                 },
                 listeners: {
         			'scoreChange': 'gatherScore',
@@ -48,12 +53,21 @@
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
                         if (this.version < 18){
+                        	var options = "BPSC Answer Options";
+                        	this.answerOptions = 
+                        		this.questionsSet[swycAge]["questions"][options];
                             this.questions= 
                             	this.questionsSet[swycAge]["questions"]["BPSC"];
+                            
                         }else{
+                        	var options = "PPSC Answer Options";
+                        	this.answerOptions = 
+                        		this.questionsSet[swycAge]["questions"][options];
                             this.questions= 
-                            	this.questionsSet[swycAge]["questions"]["PPSC"];
-                        }
+                            	this.questionsSet[swycAge]["questions"]["PPSC"];                            
+                        };
+                        
+                        //console.log(this.questionsSet[swycAge]["questions"][options]);
                         //console.log(swycAge);
                     }         
                 },
@@ -66,12 +80,13 @@
                     var questionContainer = document.getElementById("bpscQuestions");
                     questionContainer.innerHTML = "";
                     for(var i = 0; i < this.questions.length; i++){
-                        var newDevQuestion = document.createElement("bpsc-question");
-                        newDevQuestion.questionString = this.questions[i];
+                        var newSCQuestion = document.createElement("bpsc-question");
+                        newSCQuestion.questionString = this.questions[i];
+                        newSCQuestion.options = this.answerOptions;
                         if(counter%2 == 0) {
-                    		newDevQuestion.$$("#main").style.background = "#e1e1e1";
+                    		newSCQuestion.$$("#main").style.background = "#e1e1e1";
                     	};
-                        questionContainer.appendChild(newDevQuestion);
+                        questionContainer.appendChild(newSCQuestion);
                         counter += 1;
                     };
                 },

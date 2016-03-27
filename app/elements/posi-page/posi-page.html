@@ -25,6 +25,7 @@
                     type: Object,
                     notify: true,
                     value:{},
+                    observer: 'pullQuestions',
                 },
                 questions: {
                     type: Array,
@@ -40,7 +41,6 @@
                 version: {
                     type: Number,
                     notify: true,
-                    observer: 'pullQuestions',
 				},
 				answerOptions: {
                     type: Array,
@@ -53,9 +53,9 @@
         		'scoreChange': 'gatherScore',
       		},
             pullQuestions: function () {
-               if (this.version){
+               if (this.version){               
                     this.questions = [];
-                    var sectionName = "Parent’s Observation of Social Interactions (POSI)";
+                    var sectionName = "Parent's Observation of Social Interactions (POSI)";
                     var options = "POSI Answer Options";
                     swycAge=(String(this.version)).concat(" month");
                     this.answerOptions = this.questionsSet[swycAge]["questions"][options];

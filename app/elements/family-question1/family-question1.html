@@ -8,8 +8,8 @@
         	<div class="familyWrapper">
             	<div class="questionString">{{questionString}}</div>
             	<paper-radio-group class="familyButtons" selected="{{score}}" allow-empty-selection>
-                	<paper-radio-button class="familyButton" name="0">0</paper-radio-button>
-                	<paper-radio-button class="familyButton" name="1">1</paper-radio-button>
+                	<paper-radio-button class="familyButton" name="0"></paper-radio-button>
+                	<paper-radio-button class="familyButton" name="1"></paper-radio-button>
                 	<paper-radio-button class="familyButton" name="-1"></paper-radio-button>
             	</paper-radio-group>
         	</div>
@@ -23,12 +23,26 @@
                 type: String,
                 notify: true,
             },
-            
+            options: {
+            	type: Array,
+            	notify: true,
+            	value: [],
+            	observer: "optionsChanged",
+            },              
             score: {
                 type: Number,
                 notify: true,
                 observer: "_scoreChanged",
             },
+        },
+        optionsChanged: function(){
+        	//console.log(this.options);
+        	var buttons = Polymer.dom(this.root).querySelectorAll("paper-radio-button")
+        	for(var i = 0; i < this.options.length; i++){
+        		buttons.innerHTML = "";
+        		textNode = document.createTextNode(this.options[i]);
+        		buttons[i].appendChild(textNode);       		
+        	};  	
         },
         _scoreChanged: function(){
             	this.fire('scoreChange');

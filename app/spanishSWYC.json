@@ -13,6 +13,12 @@
 			"Hace sonidos como \"ga\", \"ma\", o \"ba\"",
 			"Lo mira cuando usted dice su nombre"
 	    ],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 	    "BPSC": [
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
 			"¿Su niño/a tiene dificultad al estar en lugares nuevos?",
@@ -29,9 +35,21 @@
 			"¿Es difícil para usted dormir lo suficiente debido a su niño/a?",
 			"¿Su niño/a tiene dificultad para mantenerse dormido?"
 	    ],
-	    "Parent’s Concerns": [
+	    "BPSC Answer Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
+	    "Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamiento de su niño/a?"
+	    ],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
 	    ],
 	    "Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -43,6 +61,17 @@
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con:"
 	    ],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
+		],
 	    "Emotional Changes With A New Baby": [
 			"He sido capaz de reírme y ver el lado divertido de las cosas",
 			"He mirado las cosas con ilusión",
@@ -95,6 +124,12 @@
 			"Cuando él/ella se molesta, lo busca a usted u otra persona conocida",
 			"Agarra dos objetos y los golpea uno contra el otro"
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 	    "BPSC": [
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
 			"¿Su niño/a tiene dificultad al estar en lugares nuevos?",
@@ -111,20 +146,32 @@
 			"¿Es difícil para usted dormir lo suficiente debido a su niño/a?",
 			"¿Su niño/a tiene dificultad para mantenerse dormido?"
 	    ],
-		"Parent’s Concerns": [
-			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
-			"¿Tiene usted alguna preocupación acerca del comportamiento de su niño/a?"
+	    "BPSC Answer Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"
 	    ],
 	    "Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
 			"¿Durante el último año, ha usted consumido bebidas alcohólocas o usado drogas más de lo que hubiera deseado?",
 			"¿Ha sentido usted el deseo o necesidad de consumir menos alcohol o drogas durante el último año?",
 			"¿Han tenido las drogas o el consumo de alcohol por parte de algún miembro de la familia algún efecto negativo en su niño/a?",
-			"¿Durante este último mes, hubo algún día en donde usted o algún miembro de su familia paso hambre porque no había dinero suficiente para comprar comida?",
-			
+			"¿Durante este último mes, hubo algún día en donde usted o algún miembro de su familia paso hambre porque no había dinero suficiente para comprar comida?",			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con:"
 	    ],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
+		],
 	    "Emotional Changes With A New Baby": [
 			"He sido capaz de reírme y ver el lado divertido de las cosas",
 			"He mirado las cosas con ilusión",
@@ -177,6 +224,12 @@
 			"Agarra comida y la come",
 			"Se sostiene para levantarse hasta quedar de pie"
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"BPSC": [
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
 			"¿Su niño/a tiene dificultad al estar en lugares nuevos?",
@@ -193,6 +246,12 @@
 			"¿Es difícil para usted dormir lo suficiente debido a su niño/a?",
 			"¿Su niño/a tiene dificultad para mantenerse dormido?"
 	    ],
+	    "BPSC Answer Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
 			"¿Durante el último año, ha usted consumido bebidas alcohólocas o usado drogas más de lo que hubiera deseado?",
@@ -202,6 +261,17 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con:"
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		],
 		"Emotional Changes With A New Baby": [
 			"He sido capaz de reírme y ver el lado divertido de las cosas",
@@ -255,6 +325,12 @@
 			"Cruza una habitación caminando sin ayuda",
 			"Sigue instrucciones – por ejemplo \"Ven acá\" o \"Dame la pelota\""
 		], 
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"BPSC":[
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
 			"¿Su niño/a tiene dificultad al estar en lugares nuevos?",
@@ -271,9 +347,21 @@
 			"¿Es difícil para usted dormir lo suficiente debido a su niño/a?",
 			"¿Su niño/a tiene dificultad para mantenerse dormido?"
 		], 
-		"Parent’s Concerns": [
+	    "BPSC Answer Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
+		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamiento de su niño/a?"
+	    ],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -287,6 +375,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con:"
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -305,6 +408,12 @@
 			"Corre",
 			"Sube las escaleras caminando con ayuda"  
 		], 
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"BPSC":[
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
 			"¿Su niño/a tiene dificultad al estar en lugares nuevos?",
@@ -321,9 +430,21 @@
 			"¿Es difícil para usted dormir lo suficiente debido a su niño/a?",
 			"¿Su niño/a tiene dificultad para mantenerse dormido?"
 		], 
-		"Parent’s Concerns": [
+	    "BPSC Answer Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
+		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamiento de su niño/a?"
+	    ],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -337,6 +458,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con:"
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -355,6 +491,12 @@
 			"Nombra por lo menos 5 objetos familiares – por ejemplo pelota o leche",
 			"Nombra por lo menos 5 partes del cuerpo – por ejemplo nariz, mano, o boca"
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"BPSC":[
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
 			"¿Su niño/a tiene dificultad al estar en lugares nuevos?",
@@ -371,9 +513,21 @@
 			"¿Es difícil para usted dormir lo suficiente debido a su niño/a?",
 			"¿Su niño/a tiene dificultad para mantenerse dormido?"
 		], 
-		"Parent’s Concerns": [
+	    "BPSC Answer Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
+		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamiento de su niño/a?"
+	    ],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -387,6 +541,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con:"
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -405,6 +574,12 @@
 			"Junta 2 o más palabras – como \"más agua\" o \"quiero leche\"",
 			"Usa palabras para pedir ayuda"
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"PPSC": [
 			"parace nervioso o asustado?",
 			"parece triste o infeliz?",
@@ -426,7 +601,13 @@
 			"mantener a su niño/a en un horario o rutina establecida?",
 			"hacer que su niño/a le obedezca?"
 		],
-		"Parent’s Observation of Social Interactions (POSI)": [
+	    "PPSC Answer Options": [
+	    	"Igual",
+	    	"Un Poco Más",
+	    	"Mucho Más",
+	    	"Omita Pregunta"
+	    ],	
+		"Parent's Observation of Social Interactions (POSI)": [
 			"¿Su niño/a le trae cosas para mostrárselas a usted?",
 			
 			"¿Su niño/a tiene interés en jugar con otros niños/as?",
@@ -434,8 +615,8 @@
 			"¿Su niño/a lo mira cuando lo llama por su nombre?",
 			"¿Si usted apunta o señala algo al otro lado del cuarto, su niño/a lo mira?",
 			
-			"En general, ¿cómo le demuestra su niño/a que quiere algo?",
-			"¿Cuáles son los juegos favoritos de su niño/a?"
+			"En general, ¿cómo le demuestra su niño/a que quiere algo? (Por favor marque todo lo que corresponda)",
+			"¿Cuáles son los juegos favoritos de su niño/a? (Por favor marque todo lo que corresponda)"
 		],
 	    "POSI Answer Options": [
 		["Muchas veces al día","Algunas veces al día","Algunas veces a la semana",
@@ -452,6 +633,12 @@
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamient de su niño/a?"
 		],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
+	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
 			"¿Durante el último año, ha usted consumidobebidas alcohólicas o usado drogas más de lo que hubiera deseado?",
@@ -464,6 +651,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con: "
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -482,6 +684,12 @@
 			"Dice su nombre cuando se lo preguntan",
 			"Dibuja líneas"
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"PPSC": [
 			"parece nervioso o asustado?",
 			"parece triste o infeliz?",
@@ -503,7 +711,13 @@
 			"mantener a su niño/a en un horario o rutina establecida?",
 			"hacer que su niño/a le obedezca?"
 		],
-		"Parent’s Observation of Social Interactions (POSI)": [
+	    "PPSC Answer Options": [
+	    	"Igual",
+	    	"Un Poco Más",
+	    	"Mucho Más",
+	    	"Omita Pregunta"
+	    ],	
+		"Parent's Observation of Social Interactions (POSI)": [
 			"¿Su niño/a le trae cosas para mostrárselas a usted?",
 			
 			"¿Su niño/a tiene interés en jugar con otros niños/as?",
@@ -511,8 +725,8 @@
 			"¿Su niño/a lo mira cuando lo llama por su nombre?",
 			"¿Si usted apunta o señala algo al otro lado del cuarto, su niño/a lo mira?",
 			
-			"En general, ¿cómo le demuestra su niño/a que quiere algo?",
-			"¿Cuáles son los juegos favoritos de su niño/a?"
+			"En general, ¿cómo le demuestra su niño/a que quiere algo? (Por favor marque todo lo que corresponda)",
+			"¿Cuáles son los juegos favoritos de su niño/a? (Por favor marque todo lo que corresponda)"
 		],
 	    "POSI Answer Options": [
 		["Muchas veces al día","Algunas veces al día","Algunas veces a la semana",
@@ -525,10 +739,16 @@
 		 "Trepar, correr y estar activo", "Acomodar juguetes u otras cosas en línea",
 		 "Ver cosas que giran y dan vueltas, por ejemplo ventiladores o ruedas"]
 	    ],
-		"Parent’s Concerns": [
+		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamiento de su niño/a?"
 		],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
+	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa?",
 			"¿Durante el último año, ha usted consumido bebidas alcohólicas o usado drogas más de lo que hubiera deseado?",
@@ -541,6 +761,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con: "
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -559,6 +794,12 @@
 			"Compara cosas usando palabras como \"más grande\" o \"más corto\"",
 			"Contesta preguntas como \"¿Qué haces cuando tienes frío?\" o \"¿…cuando tienes sueño?\""
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"PPSC": [
 			"parece nervioso o asustado?",
 			"parece triste o infeliz?",
@@ -580,7 +821,13 @@
 			"mantener a su niño/a en un horario o rutina establecida?",
 			"hacer que su niño/a le obedezca?"
 		],
-		"Parent’s Observation of Social Interactions (POSI)": [
+	    "PPSC Answer Options": [
+	    	"Igual",
+	    	"Un Poco Más",
+	    	"Mucho Más",
+	    	"Omita Pregunta"
+	    ],	
+		"Parent's Observation of Social Interactions (POSI)": [
 			"¿Su niño/a le trae cosas para mostrárselas a usted?",
 			
 			"¿Su niño/a tiene interés en jugar con otros niños/as?",
@@ -588,8 +835,8 @@
 			"¿Su niño/a lo mira cuando lo llama por su nombre?",
 			"¿Si usted apunta o señala algo al otro lado del cuarto, su niño/a lo mira?",
 			
-			"En general, ¿cómo le demuestra su niño/a que quiere algo?",
-			"¿Cuáles son los juegos favoritos de su niño/a?"
+			"En general, ¿cómo le demuestra su niño/a que quiere algo? (Por favor marque todo lo que corresponda)",
+			"¿Cuáles son los juegos favoritos de su niño/a? (Por favor marque todo lo que corresponda)"
 		],
 	    "POSI Answer Options": [
 		["Muchas veces al día","Algunas veces al día","Algunas veces a la semana",
@@ -602,10 +849,16 @@
 		 "Trepar, correr y estar activo", "Acomodar juguetes u otras cosas en línea",
 		 "Ver cosas que giran y dan vueltas, por ejemplo ventiladores o ruedas"]
 	    ],
-		"Parent’s Concerns": [
+		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamiento de su niño/a?"
 		],
+		"Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
+	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa?",
 			"¿Durante el último año, ha usted consumido bebidas alcohólicas o usado drogas más de lo que hubiera deseado?",
@@ -618,6 +871,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con: "
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -636,6 +904,12 @@
 			"Dice palabras como \"peces\" para más de un pez y \"lápices\" para más de un lápiz",
 			"Usa palabras como \"ayer\" y \"mañana\" correctamente"
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"PPSC": [
 			"parace nervioso o asustado?",
 			"parece triste o infeliz?",
@@ -657,10 +931,22 @@
 			"mantener a su niño/a en un horario o rutina establecida?",
 			"hacer que su niño/a le obedezca?"
 		],
+	    "PPSC Answer Options": [
+	    	"Igual",
+	    	"Un Poco Más",
+	    	"Mucho Más",
+	    	"Omita Pregunta"
+	    ],	
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamient de su niño/a?"
 		],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
+	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
 			"¿Durante el último año, ha usted consumidobebidas alcohólicas o usado drogas más de lo que hubiera deseado?",
@@ -673,6 +959,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con: "
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -691,6 +992,12 @@
 			"Escribe su nombre",
 			"Dibuja cosas que usted puede reconocer"
 		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],
 		"PPSC": [
 			"parace nervioso o asustado?",
 			"parece triste o infeliz?",
@@ -711,11 +1018,23 @@
 			"saber qué necesita su niño/a?",
 			"mantener a su niño/a en un horario o rutina establecida?",
 			"hacer que su niño/a le obedezca?"
-		],		
+		],
+	    "PPSC Answer Options": [
+	    	"Igual",
+	    	"Un Poco Más",
+	    	"Mucho Más",
+	    	"Omita Pregunta"
+	    ],			
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamient de su niño/a?"
-		],		
+		],
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
+	    ],		
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
 			"¿Durante el último año, ha usted consumidobebidas alcohólicas o usado drogas más de lo que hubiera deseado?",
@@ -728,6 +1047,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con: "
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 },
@@ -745,7 +1079,13 @@
 			"Dibuja cosas que usted puede reconocer",
 			"Colorea dentro de las líneas",
 			"Nombra los días de la semana en el orden correcto"
-		],		
+		],
+	    "Dev Options": [
+	    	"Todavía No",
+	    	"Algunas Veces",
+	    	"Mucho",
+	    	"Omita Pregunta"
+	    ],		
 		"PPSC": [
 			"parace nervioso o asustado?",
 			"parece triste o infeliz?",
@@ -766,11 +1106,23 @@
 			"saber qué necesita su niño/a?",
 			"mantener a su niño/a en un horario o rutina establecida?",
 			"hacer que su niño/a le obedezca?"
-		],		
+		],	
+	    "PPSC Answer Options": [
+	    	"Igual",
+	    	"Un Poco Más",
+	    	"Mucho Más",
+	    	"Omita Pregunta"
+	    ],	
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
 			"¿Tiene usted alguna preocupación acerca del comportamient de su niño/a?"
-		],		
+		],	
+	    "Parent's Concerns Options": [
+	    	"Nunca",
+	    	"Un Poco",
+	    	"Mucho",
+	    	"Omita Pregunta"	    
+	    ],	
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
 			"¿Durante el último año, ha usted consumidobebidas alcohólicas o usado drogas más de lo que hubiera deseado?",
@@ -783,6 +1135,21 @@
 			
 			"En general, ¿cómo describiría usted su relación con su esposo/a o su pareja?",
 			"Usted y su pareja resuelven sus discusiones con: "
+		],
+	    "Family Questions Options": [
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
+			"Omita Pregunta"],
+			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
+			"Omita Pregunta"],
+			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
+			"Omita Pregunta"]
 		]
 	}
 }

@@ -42,8 +42,8 @@
         optionsChanged: function(){
         	var buttons = Polymer.dom(this.root).querySelectorAll("paper-radio-button")
         	for(var i = 0; i < this.options.length; i++){
-        		textNode = document.createTextNode(this.options[i])
-        		buttons[i].appendChild(textNode)        		
+        		textNode = document.createTextNode(this.options[i]);
+        		buttons[i].appendChild(textNode);        		
         	};  	
         },        
         _scoreChanged: function(){

@@ -12,29 +12,8 @@
             </paper-toolbar>
         </paper-header-panel>
         <div class="sName">Family Question</div>
-        <div class="optionSection">
-            <div class="familyoption1">Yes</div>
-            <div class="familyoption1">No</div>
-            <div class="familyoption1">Skip Question</div>
-        </div>
         <div id="familyQuestions1"></div>
-
-        <div class="optionSection" id="section2">
-            <div class="familyoption">Not at all</div>
-            <div class="familyoption">Several days</div>
-            <div class="familyoption">More than half the days</div>
-            <div class="familyoption">Nearly everyday</div>
-            <div class="familyoption">Skip Question</div>
-        </div>
         <div id="familyQuestions2"></div>
-        
-        <div class="optionSection">
-            <div class="familyoption">No tension</div>
-            <div class="familyoption">Some tension</div>
-            <div class="familyoption">A lot of tension</div>
-            <div class="familyoption">Not applicable</div>
-            <div class="familyoption">Skip Question</div>
-        </div>
         <div id="familyQuestions3"></div>
     </template>
     <script>
@@ -48,6 +27,11 @@
                     	notify: true,
                     	value:{},
                     	observer: 'pullQuestions',
+                	},
+                    answerOptions: {
+                    	type: Array,
+                    	notify: true,
+                    	value:[],
                 	},
                     questions: {
                         type: Array,
@@ -73,35 +57,41 @@
                     if (this.version){
                         this.questions = [];
                         swycAge=(String(this.version)).concat(" month");
-                        console.log(swycAge);
+                        var options = "Family Questions Options";
+                        this.answerOptions = 
+                        	this.questionsSet[swycAge]["questions"][options];
                         this.questions = 
                         	this.questionsSet[swycAge]["questions"]["Family Questions"];
                     };         
                 },
                 _createQuestions: function(){
-                	if( this.questions.length !== 0){            
+                	if( this.questions.length !== 0){           
                     	var questionContainer1 = this.$$("#familyQuestions1");
                     	questionContainer1.innerHTML = "";
                     	var counter = 0;
                     	for(var i = 0; i < 5; i++){
                         	var newFamilyQuestion = document.createElement("family-question1");
                         	newFamilyQuestion.questionString = this.questions[i];
+                        	newFamilyQuestion.options = this.answerOptions[i];
                         	if(counter%2 == 0) {
                     			newFamilyQuestion.$$("#main").style.background 
                     				= "#e1e1e1";
                     		};
                         	questionContainer1.appendChild(newFamilyQuestion);
                         	counter +=1;
-                    	};
-                    
+                    	};   
+                    	              
                     	var questionContainer2 = this.$$("#familyQuestions2");
                     	questionContainer2.innerHTML = "";
                     	var questionContainer3 = this.$$("#familyQuestions3");
                     	questionContainer3.innerHTML = "";
                     	if (this.questions.length <= 7){
+                    	    var optionTitles = 
+            					Polymer.dom(this.root).querySelectorAll(".familyoption2");
                     		for(var i = 5; i < this.questions.length; i++){
                         		var newFamilyQuestion = 
                         			document.createElement("family-question2");
+                        		newFamilyQuestion.options = this.answerOptions[i];
                         		newFamilyQuestion.questionString = this.questions[i];
                         		if(counter%2 == 0) {
                     				newFamilyQuestion.$$("#main").style.background 
@@ -110,12 +100,12 @@
                         		questionContainer3.appendChild(newFamilyQuestion);
                         		counter +=1;
                         		questionContainer2.style.display = "none"; 
-                        		this.$$("#section2").style.display = "none"
                         	};                
                     	}else {
                     		for(var i = 5; i < 7; i++){
                         		var newFamilyQuestion = 
                         			document.createElement("family-question2");
+                        		newFamilyQuestion.options = this.answerOptions[i];
                         		newFamilyQuestion.questionString = this.questions[i];
                         		if(counter%2 == 0) {
                     				newFamilyQuestion.$$("#main").style.background 
@@ -123,10 +113,11 @@
                     			};
                         		questionContainer2.appendChild(newFamilyQuestion);
                         		counter +=1;
-                        	};  
+                        	}; 
                     		for(var i = 7; i < this.questions.length; i++){
                         		var newFamilyQuestion = 
                         			document.createElement("family-question2");
+                        		newFamilyQuestion.options = this.answerOptions[i];
                         		newFamilyQuestion.questionString = this.questions[i];
                         		if(counter%2 == 0) {
                     				newFamilyQuestion.$$("#main").style.background 

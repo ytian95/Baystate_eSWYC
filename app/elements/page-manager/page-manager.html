@@ -26,7 +26,8 @@
                 	</page-login>
             </div>
             <div id="dev">
-                <dev-page  id="devS" version="{{version}}" section="dev milestones">
+                <dev-page  id="devS" version="{{version}}" section="dev milestones"
+                	options="Dev Options">
                 </dev-page>
             </div>
             
@@ -206,9 +207,10 @@
                     	};
 		    		};
                     var lastPageNode = this.$.result;
-                    if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
+                    if(this.sectionKeys.indexOf("Parent's Concerns") > -1){
                     	var pPage = document.createElement('dev-page');
-                    	pPage.section = "Parent’s Concerns";
+                    	pPage.section = "Parent's Concerns";
+                    	pPage.options = "Parent's Concerns Options";
                     	pPage.version = this.version; 
                     	pPage.questionsSet = this.questionsSet;                   	
                     	var newDiv = document.createElement('div');
@@ -218,7 +220,6 @@
                     if(this.sectionKeys.indexOf("Family Questions") > -1){
                     	var fPage = document.createElement('family-page');
                     	fPage.version = this.version;
-                    	console.log(this.questionsSet);
                     	fPage.questionsSet = this.questionsSet;
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(fPage);
@@ -232,11 +233,11 @@
                     	newDiv.appendChild(ePage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);
     	            };
-    	            var posiName = "Parent’s Observation of Social Interactions (POSI)";  
+    	            var posiName = "Parent's Observation of Social Interactions (POSI)";  
                     if(this.sectionKeys.indexOf(posiName) > -1){
                     	var ePage = document.createElement('posi-page');
-                    	ePage.questionsSet = this.questionsSet;
                     	ePage.version = this.version;
+                    	ePage.questionsSet = this.questionsSet;
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(ePage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);
@@ -286,7 +287,7 @@
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
 
 				var pcAnswers = [];
-                if(this.sectionKeys.indexOf("Parent’s Concerns") > -1){
+                if(this.sectionKeys.indexOf("Parent's Concerns") > -1){
                 	var pcquestions = document.querySelectorAll("dev-page")[1].questions;
                 	document.querySelector("result-page").pcQuestions = pcquestions;
             		pcAnswers = document.querySelectorAll("dev-page")[1].answers;
@@ -312,7 +313,7 @@
     	        };
     	        
     	        var posiAnswers = [];
-    	        var posiName = "Parent’s Observation of Social Interactions (POSI)";  
+    	        var posiName = "Parent's Observation of Social Interactions (POSI)";  
                 if(this.sectionKeys.indexOf(posiName) > -1){
                 	var posiQuestions = document.querySelector("posi-page").questions;
                 	document.querySelector("result-page").emoQuestions = 

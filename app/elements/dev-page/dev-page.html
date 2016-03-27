@@ -13,10 +13,10 @@
         </paper-header-panel>
         <div class="sName">Developmental Milestones</div>
         <div class="optionSection">
-            <div class="dmoption" id="firstChoice">Not Yet</div>
-            <div class="dmoption">Some What</div>
-            <div class="dmoption">Very Much</div>
-            <div class="dmoption">Skip Question</div>
+            <div class="dmoption" id="firstChoice"></div>
+            <div class="dmoption"></div>
+            <div class="dmoption"></div>
+            <div class="dmoption"></div>
         </div>
         <div id="dmQuestions">
         </div>
@@ -32,6 +32,11 @@
                     notify: true,
                     value:{},
                     observer: 'pullQuestions',
+                },
+                answerOptions: {
+                    type: Array,
+                    notify: true,
+                    value:[],
                 },
                 questions: {
                     type: Array,
@@ -51,7 +56,11 @@
                 section: {
                 	type: String,
                 	notify: true,
-                },                                
+                },  
+                options: {
+                	type: String,
+                	notify: true,
+                },                              
             },
         	listeners: {
         		'scoreChange': 'gatherScore',
@@ -61,17 +70,27 @@
                 this.questions = [];
                 if (this.version !== undefined){
                 	swycAge=(String(this.version)).concat(" month");
+                    this.answerOptions = 
+                        this.questionsSet[swycAge]["questions"][this.options];
                 	this.questions =
                 		this.questionsSet[swycAge]["questions"][this.section];    
                 };
             },
             _createQuestions: function(){
             	if(this.section !== 'dev milestones'){
-            		this.$$("#firstChoice").innerHTML = "Not at all";
-            		if (this.section === "Parent’s Concerns"){
+            		if (this.section === "Parent's Concerns"){
             			this.$$(".sName").innerHTML = "Parent's Concerns";
             		};
             	};
+            	var optionTitles = 
+            		Polymer.dom(this.root).querySelectorAll(".dmoption");
+            	if (this.answerOptions){
+        			for(var i = 0; i < this.answerOptions.length; i++){
+        				optionTitles[i].innerHTML = "";
+        				textNode = document.createTextNode(this.answerOptions[i]);
+        				optionTitles[i].appendChild(textNode);       		
+        			}; 
+        		};
             	var counter = 0;
             	var questionContainer = this.$$("#dmQuestions");
             	questionContainer.innerHTML = "";
