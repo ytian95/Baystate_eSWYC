@@ -180,12 +180,11 @@
             pullSections: function () {
                if (this.version){
                     swycAge=(String(this.version)).concat(" month");
-                    //console.log(this.isSpanish);
-                    var questions = "";
-                     
-                    if(this.isSpanish === 0){
+                    var questions = "";                     
+                    if(this.isSpanish === "0"){
                     	questions = jsonOfQuestions[swycAge]["questions"];
                     	this.questionsSet = this.questionsSetEnglish;
+                    	console.log(this.questionsSet);
                     } else {
                     	questions = jsonOfQuestionsSpanish[swycAge]["questions"];
                     	this.questionsSet = this.questionsSetSpainsh;
