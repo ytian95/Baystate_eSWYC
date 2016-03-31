@@ -9,6 +9,7 @@
 <link rel="import" href="../posi-page/posi-page.html">
 <link rel="import" href="../page-login/page-login.html">
 <link rel="import" href="../result-page/result-page.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html"> 
     
 <dom-module id="page-manager">
     <link rel="import" type="css" href="page-manager.css">
@@ -47,10 +48,16 @@
             
         </iron-pages>
         <br>
-        <div><paper-button raised on-click="back" id="back">Back</paper-button></div>
-        <div><paper-button raised on-click="next" id="next">
-        	Next</paper-button></div>
-        <div><paper-button raised on-click="submit" id="submit">Submit</paper-button>
+        <div id="buttonDiv">
+        <div id="backBlock"><paper-fab icon="arrow-back" title="back" raised 
+        on-click="back" id="back"></paper-fab></div>
+        
+        <div id="nextBlock"><paper-fab icon="arrow-forward" title="next" raised 
+        	on-click="next" id="next"></paper-fab></div>
+        	
+        <div id="submitBlock"><paper-fab icon="check" title="submit" raised 
+        	on-click="submit" id="submit"></paper-fab>      
+        </div>
         </div>
         <iron-ajax
             auto
@@ -180,8 +187,9 @@
             pullSections: function () {
                if (this.version){
                     swycAge=(String(this.version)).concat(" month");
-                    var questions = "";                     
-                    if(this.isSpanish === "0"){
+                    var questions = ""; 
+                    this.isSpanish = parseInt(this.isSpanish);                    
+                    if(this.isSpanish === 0){
                     	questions = jsonOfQuestions[swycAge]["questions"];
                     	this.questionsSet = this.questionsSetEnglish;
                     	console.log(this.questionsSet);
