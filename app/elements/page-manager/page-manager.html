@@ -283,19 +283,30 @@
                 var pages = document.querySelector('iron-pages');
                 pages.selectNext();
                 
-                
-                var devquestions = document.querySelectorAll("dev-page")[0].questions;
+                var version =(String(this.version)).concat(" month");
+                //var devquestions = document.querySelectorAll("dev-page")[0].questions;
+                var devquestions = 
+                	this.questionsSetEnglish[version]["questions"]["dev milestones"];
                 document.querySelector("result-page").dmQuestions = devquestions;
             	var devAnswers = document.querySelectorAll("dev-page")[0].answers;
             	document.querySelector("result-page").dmAnswers = devAnswers;
             	
-            	var bpscquestions = document.querySelector("bpsc-page").questions;
+            	//var bpscquestions = document.querySelector("bpsc-page").questions;
+            	if (this.version < 18){
+                	var bpscquestions = 
+                		this.questionsSetEnglish[version]["questions"]["BPSC"];
+                } else {
+                	var bpscquestions = 
+                		this.questionsSetEnglish[version]["questions"]["PPSC"];
+                };
                 document.querySelector("result-page").bpscQuestions = bpscquestions;
             	var bpscAnswers = document.querySelector("bpsc-page").answers;
 
 				var pcAnswers = [];
                 if(this.sectionKeys.indexOf("Parent's Concerns") > -1){
-                	var pcquestions = document.querySelectorAll("dev-page")[1].questions;
+                	//var pcquestions = document.querySelectorAll("dev-page")[1].questions;
+                	var pcquestions = 
+                		this.questionsSetEnglish[version]["questions"]["Parent's Concerns"];
                 	document.querySelector("result-page").pcQuestions = pcquestions;
             		pcAnswers = document.querySelectorAll("dev-page")[1].answers;
             		document.querySelector("result-page").pcAnswers = pcAnswers;
@@ -303,7 +314,9 @@
             	
             	var familyAnswers =[];
                 if(this.sectionKeys.indexOf("Family Questions") > -1){
-                	var familyQuestions = document.querySelector("family-page").questions;
+                	//var familyQuestions = document.querySelector("family-page").questions;
+                	var familyQuestions = 
+                		this.questionsSetEnglish[version]["questions"]["Family Questions"];
                 	document.querySelector("result-page").familyQuestions = 
                 		familyQuestions;
             		familyAnswers = document.querySelector("family-page").answers;
@@ -312,7 +325,10 @@
             	
             	var emoAnswers = [];
                 if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
-                	var emoQuestions = document.querySelector("emotional-page").questions;
+                	//var emoQuestions = document.querySelector("emotional-page").questions;
+                	var sectionName = "Emotional Changes With A New Baby";
+                	var emoQuestions = 
+                		this.questionsSetEnglish[version]["questions"][sectionName];
                 	document.querySelector("result-page").emoQuestions = 
                 		emoQuestions;
             		emoAnswers = document.querySelector("emotional-page").answers;
@@ -322,7 +338,11 @@
     	        var posiAnswers = [];
     	        var posiName = "Parent's Observation of Social Interactions (POSI)";  
                 if(this.sectionKeys.indexOf(posiName) > -1){
-                	var posiQuestions = document.querySelector("posi-page").questions;
+                	//var posiQuestions = document.querySelector("posi-page").questions;
+                	var sectionName = 
+                		"Parent's Observation of Social Interactions (POSI)";
+                	var posiQuestions = 
+                		this.questionsSetEnglish[version]["questions"][sectionName];
                 	document.querySelector("result-page").emoQuestions = 
                 		posiQuestions;
             		posiAnswers = document.querySelector("posi-page").answers;
