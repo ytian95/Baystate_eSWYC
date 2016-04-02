@@ -1,42 +1,27 @@
-body {
-  background: #fafafa;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
-}
-
 paper-toolbar.paper-toolbar-0 {
 	background: #2875e2;
 }
 
-#dmstatus {
-	margin-top: 2%;
-	color: white;
-}
-
-#bpscstatus {
-	margin-top: 2%;
-	color: white;
-}
-
-.title {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	font-size: 30px;
-}
-
-.section {
-	width: 60%;
-	margin-top: 20px;
+#message {
+	background: #1E90FF;
+	width: 50%;
+	height: 50%;
 	margin-left: auto;
-    margin-right: auto;
+	margin-right: auto;
+	padding-top: 5%;
+	padding-bottom: 8%;
+	margin-top: 10%;
+	text-align: center;
 }
 
-.positiveQ {
-	width: 60%;
-	margin-left: auto;
-    margin-right: auto;
+.textLine {
+	background: #1E90FF;
+	padding-top: 5%;
+	margin: auto;
+	font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #FFFFFF;
+	font-size: 200%;
 }
-
 #getjson{
     display: inline-block;
     background-color: #2875e2;

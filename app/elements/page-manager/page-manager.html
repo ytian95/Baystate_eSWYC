@@ -42,7 +42,7 @@
                 	bpscscore="{{bpscscore}}" pcscore="{{pcscore}}" 
                 	familyscore="{{familyscore}}" emoscore="{{emoscore}}"
                 	posiscore="{{posiscore}}" name="{{name}}" phone-num="{{phoneNum}}"
-                	sectionkeys="{{sectionKeys}}">
+                	sectionkeys="{{sectionKeys}}" id="resultPage">
                 	</result-page>
             </div>
             
@@ -459,8 +459,7 @@
 				ajax.contentType = 'application/json';
 				ajax.params = JSON.stringify(a);
 				*/
-				
-			
+				this.$$("#resultPage")._sendjson();
             },
         });
     </script>
