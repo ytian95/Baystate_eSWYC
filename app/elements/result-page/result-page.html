@@ -268,8 +268,16 @@
         			this.posiQuestions = [];
         		};
 
-        		for (i=0; i< this.posiQuestions.length; i++){
-        			posiqAndAs.push([this.posiQuestions[i], Number(this.posiAnswers[i])]);
+        		for ( var i=0; i< this.posiQuestions.length; i++){
+        			if (i < 5) {
+        				posiqAndAs.push([this.posiQuestions[i], Number(this.posiAnswers[i])]);
+        			} else {
+        				var list1 = [];
+        				for (var n=0; n< this.posiAnswers[i].length; n++){
+        					list1.push(Number(this.posiAnswers[i][n]));
+        				};
+        				posiqAndAs.push([this.posiQuestions[i], list1]);
+        			};
         		};
         		posiSection["questions"] = posiqAndAs;
         		//the score is only for the second sub section
@@ -278,13 +286,13 @@
         		if(this.sectionkeys.indexOf("Parent's Observation of Social Interactions (POSI)") > -1){
         			temp[swycAge]["POSI"] = posiSection;
         		};
-
+				console.log(temp[swycAge]["POSI"]);
         		var pcSection = {};
         		var pcqAndAs =  [];
         		if(this.pcQuestions === undefined ){
         			this.pcQuestions = [];
         		};
-        		for (i=0; i< this.pcQuestions.length; i++){
+        		for (var i=0; i< this.pcQuestions.length; i++){
         			pcqAndAs.push([this.pcQuestions[i], Number(this.pcAnswers[i])]);
         		};
 
