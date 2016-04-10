@@ -46,6 +46,11 @@
                     notify: true,
                     value:[],
                 },
+                isSpanish: {
+            		type: Number,
+            		notify: true,
+            		value: 0,
+            	},
                                 
             },
         	listeners: {
@@ -59,7 +64,12 @@
                     swycAge=(String(this.version)).concat(" month");
                     this.answerOptions = this.questionsSet[swycAge]["questions"][options];
                     this.questions = this.questionsSet[swycAge]["questions"][sectionName];
-                };         
+                }; 
+        		if(parseInt(this.isSpanish) === 1 ){
+        			this.$$(".sName").innerHTML = "Cambios Emocionales con un Nuevo Bebé";
+        		} else {
+        			this.$$(".sName").innerHTML = "Emotional Changes with a New Baby";	
+        		};        
             },
             _createQuestions: function(){
             	var questionContainer = this.$$("#emotionalQuestions");
@@ -86,8 +96,7 @@
     				this.answers.push(answerList[i].score); 
     			};    			
     			//console.log(this.answers);
-            },
-        
+            }      
         });
     });
 

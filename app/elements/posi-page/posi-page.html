@@ -47,6 +47,12 @@
                     notify: true,
                     value:[],
                 },
+                isSpanish: {
+            		type: Number,
+            		notify: true,
+            		value: 0,
+            		observer: 'changeTitles',
+            	},
                                 
             },
         	listeners: {
@@ -60,7 +66,14 @@
                     swycAge=(String(this.version)).concat(" month");
                     this.answerOptions = this.questionsSet[swycAge]["questions"][options];
                     this.questions = this.questionsSet[swycAge]["questions"][sectionName];
-                }         
+                };
+        		if(parseInt(this.isSpanish) === 1 ){
+        			this.$$(".sName").innerHTML 
+        				= "Observaciones de los Padres Acerca de las Interacciones Sociales";
+        		} else {
+        			this.$$(".sName").innerHTML
+        				= "Parent's Observation of Social Interactions (POSI)";	
+        		};         
             },
             _createQuestions: function(){
             	var questionContainer = this.$$("#posiQuestions");
@@ -109,8 +122,7 @@
     				this.answers.push(answerList2[i].score); 
     			};  			
     			//console.log(this.answers);
-            },
-        
+            }    
         });
     });
 

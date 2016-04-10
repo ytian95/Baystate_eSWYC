@@ -23,17 +23,17 @@
             <div id="login">
                 <page-login version="{{version}}" is-valid="{{inputValid}}"
                 	age="{{age}}" name="{{name}}" phone-num="{{phoneNum}}" 
-                	is-spanish="{{isSpanish}}">
-                	</page-login>
+                	is-spanish= "{{isSpanish}}">
+                </page-login>
             </div>
             <div id="dev">
                 <dev-page  id="devS" version="{{version}}" section="dev milestones"
-                	options="Dev Options">
+                	options="Dev Options" is-spanish= "{{isSpanish}}">
                 </dev-page>
             </div>
             
             <div id="bpsc">
-                <bpsc-page id="bpscS" version="{{version}}">
+                <bpsc-page id="bpscS" version="{{version}}" is-spanish= "{{isSpanish}}">
                 </bpsc-page>
             </div>
                         
@@ -42,7 +42,8 @@
                 	bpscscore="{{bpscscore}}" pcscore="{{pcscore}}" 
                 	familyscore="{{familyscore}}" emoscore="{{emoscore}}"
                 	posiscore="{{posiscore}}" name="{{name}}" phone-num="{{phoneNum}}"
-                	sectionkeys="{{sectionKeys}}" id="resultPage">
+                	sectionkeys="{{sectionKeys}}" is-spanish= "{{isSpanish}}" 
+                	id="resultPage">
                 	</result-page>
             </div>
             
@@ -218,22 +219,25 @@
                     	var pPage = document.createElement('dev-page');
                     	pPage.section = "Parent's Concerns";
                     	pPage.options = "Parent's Concerns Options";
+                    	pPage.isSpanish = this.isSpanish;  
                     	pPage.version = this.version; 
-                    	pPage.questionsSet = this.questionsSet;                   	
+                    	pPage.questionsSet = this.questionsSet;                 	
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(pPage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);
                     };
                     if(this.sectionKeys.indexOf("Family Questions") > -1){
                     	var fPage = document.createElement('family-page');
+                    	fPage.isSpanish = this.isSpanish;
                     	fPage.version = this.version;
-                    	fPage.questionsSet = this.questionsSet;
+                    	fPage.questionsSet = this.questionsSet;   
                     	var newDiv = document.createElement('div');
                     	newDiv.appendChild(fPage);
                     	pageContainer.insertBefore(newDiv, lastPageNode);
                     };
                     if(this.sectionKeys.indexOf("Emotional Changes With A New Baby") > -1){
                     	var ePage = document.createElement('emotional-page');
+                    	ePage.isSpanish = this.isSpanish;
                     	ePage.questionsSet = this.questionsSet;
                     	ePage.version = this.version;
                     	var newDiv = document.createElement('div');
@@ -243,6 +247,7 @@
     	            var posiName = "Parent's Observation of Social Interactions (POSI)";  
                     if(this.sectionKeys.indexOf(posiName) > -1){
                     	var ePage = document.createElement('posi-page');
+                    	ePage.isSpanish = this.isSpanish;
                     	ePage.version = this.version;
                     	ePage.questionsSet = this.questionsSet;
                     	var newDiv = document.createElement('div');

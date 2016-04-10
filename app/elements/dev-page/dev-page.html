@@ -60,7 +60,12 @@
                 options: {
                 	type: String,
                 	notify: true,
-                },                              
+                },  
+                isSpanish: {
+            		type: Number,
+            		notify: true,
+            		value: 0,
+            	},                            
             },
         	listeners: {
         		'scoreChange': 'gatherScore',
@@ -75,6 +80,19 @@
                 	this.questions =
                 		this.questionsSet[swycAge]["questions"][this.section];    
                 };
+        		if(parseInt(this.isSpanish) === 1 ){
+        			if(this.section === 'dev milestones'){
+        				this.$$(".sName").innerHTML = "Pautas Madurativas";
+        			} else {
+        				this.$$(".sName").innerHTML = "Preocupaciones de los Padres";
+        			};
+        		} else {
+        			if(this.section === 'dev milestones'){
+        				this.$$(".sName").innerHTML = "Developmental Milestones";
+        			} else {
+        				this.$$(".sName").innerHTML = "Parent Concerns";
+        			};
+        		};
             },
             _createQuestions: function(){
             	if(this.section !== 'dev milestones'){
@@ -113,8 +131,7 @@
     				this.answers.push(answerList[i].score); 
     			};    			
     			//console.log(this.answers);
-            },
-        
+            }      
         });
     });
 

@@ -8,8 +8,8 @@
     <link rel="import" type="css" href="result-page.css">
     <template>
         <div id="message">
-        	<div class="textLine">Thank you so much for filling out</div>
-            <div class="textLine">The Survey of Wellbeing of Young Children</div>
+        	<div class="textLine" id="line1">Thank you so much for filling out</div>
+            <div class="textLine" id="line2">the Survey of Wellbeing of Young Children</div>
         </div>
         
         <iron-ajax
@@ -145,7 +145,13 @@
                 sectionkeys: {
                 	type: Array,
                 	notify: true,
-                },   	
+                }, 
+                isSpanish: {
+            		type: Number,
+            		notify: true,
+            		value: 0,
+            		observer: 'changeTitles',
+            	},   	
             },
             handleResponse1: function (data) {
                 jsonOfAnswers= data.detail.response
@@ -286,7 +292,6 @@
         		if(this.sectionkeys.indexOf("Parent's Observation of Social Interactions (POSI)") > -1){
         			temp[swycAge]["POSI"] = posiSection;
         		};
-				console.log(temp[swycAge]["POSI"]);
         		var pcSection = {};
         		var pcqAndAs =  [];
         		if(this.pcQuestions === undefined ){
@@ -381,8 +386,20 @@
 
         		this.$.ajaxPost.body = JSON.stringify(allInfo);      		
         		this.$.ajaxPost.generateRequest();
-		}
-            	
+		},
+        changeTitles: function(){
+        	if(parseInt(this.isSpanish) === 1 ){
+        		this.$$("#line1").innerHTML 
+        			= "Gracias tanto para el llenado";
+        		this.$$("#line2").innerHTML  
+        			= "de la encuesta de Bienestar de Niños Pequeños";
+        	} else {
+        		this.$$("#line1").innerHTML 
+        			= "Thank you so much for filling out";
+        		this.$$("#line2").innerHTML  
+        			= "the Survey of Wellbeing of Young Children";
+        	};		
+        }   	
         });
     </script>
 </dom-module>

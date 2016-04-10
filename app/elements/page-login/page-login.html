@@ -90,7 +90,25 @@
             		type: Number,
             		notify: true,
             		value: 0,
+            		observer: 'changeTitles',
             	},            	      	        		
+        	},
+        	changeTitles: function(){
+        		if(parseInt(this.isSpanish) === 1 ){
+        			this.$$("#name").label 
+        				= "Por favor, introduzca el nombre del paciente";
+        			this.$$("#dob").label 
+        				= "Por favor, introduzca del paciente Fecha de Nacimiento";
+        			this.$$("#phone").label 
+        				= "Por favor, introduzca el número de teléfono (número único)"; 
+        		} else {
+        			this.$$("#name").label 
+        				= "Please enter patient's name";
+        			this.$$("#dob").label 
+        				= "Please enter patient's Date of Birth";
+        			this.$$("#phone").label 
+        				= "Please enter phone number(Number Only)"; 
+        		};		
         	},
         	getDate: function(){
         	    this.isValid = false;

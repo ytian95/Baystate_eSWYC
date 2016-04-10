@@ -44,6 +44,11 @@
                     	notify: true,
                     	value:[],
                 	},
+                	isSpanish: {
+            			type: Number,
+            			notify: true,
+            			value: 0,
+            		},
                 },
                 listeners: {
         			'scoreChange': 'gatherScore',
@@ -66,10 +71,26 @@
                             this.questions= 
                             	this.questionsSet[swycAge]["questions"]["PPSC"];                            
                         };
-                        
-                        //console.log(this.questionsSet[swycAge]["questions"][options]);
-                        //console.log(swycAge);
-                    }         
+                    };                      
+                    //console.log(this.questionsSet[swycAge]["questions"][options]);
+                    //console.log(swycAge);
+        			if(parseInt(this.isSpanish) === 1 ){
+        				if(this.version < 18){
+        					this.$$(".sName").innerHTML 
+        						= "Lista de Síntomas Pediátricos para Bebés";
+        				} else {
+        					this.$$(".sName").innerHTML 
+        						= "Lista de Síntomas Pediátricos para Niños en Preescolar";
+        				};
+        			} else {
+        				if(this.version < 18){
+        					this.$$(".sName").innerHTML = "Baby Pediatric Symptom Checklist";
+        				} else {
+        					this.$$(".sName").innerHTML 
+        						= "Preschool Pediatric Symptom Checklist";
+        				};
+        			};	
+         
                 },
                 _createQuestions: function(){
                     if (this.version >= 18){
@@ -98,9 +119,8 @@
     					// append answer from each questions to the answerArray
     					this.answers.push(answerList[i].score); 
     				};    			
-           		},
-        
-            });
+           		}        
+        	});
         });
     </script>
 </dom-module>
