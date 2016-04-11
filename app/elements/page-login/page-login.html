@@ -175,8 +175,18 @@
         		if(mdiff >=2 && mdiff <=70 && this.phoneNum.length === 10
         			&& this.name.length > 0){
         			//alert("get "+this.version.toString()+" months SWYC");
-        			this.isValid = true;
-        			this.age = mdiff;
+        			console.log(Number(this.phoneNum));
+        			if(isNaN(Number(this.phoneNum)) === true){
+        				if(parseInt(this.isSpanish) === 1 ){
+        					alert("Por favor, introduzca el número de teléfono como 1231231234");
+        				} else {
+        					alert("Please enter phone number like 1231231234");
+        				};
+        				this.$$("#phone").value = "";
+        			} else {
+        				this.isValid = true;
+        				this.age = mdiff;
+        			};
         		};          		       	
         	},
         });
