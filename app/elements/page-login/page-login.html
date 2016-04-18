@@ -19,7 +19,7 @@
             </paper-toolbar>
         </paper-header-panel>
         
-        <div id="langString">Select language (Selecciona el idioma)</div>
+        <div id="langString">Select language (Seleccione Idioma)</div>
         <paper-radio-group id="languageSelect" selected="{{isSpanish}}">
             <paper-radio-button class="langButton" name="0">English</paper-radio-button>
             <paper-radio-button class="langButton" name="1">Español</paper-radio-button>
@@ -96,11 +96,11 @@
         	changeTitles: function(){
         		if(parseInt(this.isSpanish) === 1 ){
         			this.$$("#name").label 
-        				= "Introduce el nombre del paciente por favor";
+        				= "Por favor anote el nombre del/a paciente";
         			this.$$("#dob").label 
-        				= "Introduce la Fecha de Nacimiento  del paciente por favor";
+        				= " Por favor anote la fecha de nascimiento del/a paciente";
         			this.$$("#phone").label 
-        				= "Introduce el número de teléfono (número único) por favor"; 
+        				= "Introduce el número de teléfono (solamente el número) por favor"; 
         		} else {
         			this.$$("#name").label 
         				= "Please enter patient's name";
@@ -178,7 +178,7 @@
         			console.log(Number(this.phoneNum));
         			if(isNaN(Number(this.phoneNum)) === true){
         				if(parseInt(this.isSpanish) === 1 ){
-        					alert("Introduce sólo número de teléfono como 1231231234 por favor");
+        					alert("Por favor anote el número telefónico en el formato de 1231231234");
         				} else {
         					alert("Please enter phone number in the format of 1231231234");
         				};

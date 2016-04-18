@@ -1,4 +1,5 @@
 <?php
+	// This php gets json data from the result-page and writes into the local patient folder
    $json = file_get_contents("php://input");
    $_POST = json_decode($json, true);
 

@@ -17,7 +17,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 	    "BPSC": [
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
@@ -39,7 +39,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 	    "Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
@@ -49,7 +49,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 	    "Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -62,15 +62,15 @@
 			"Usted y su pareja resuelven sus discusiones con:"
 	    ],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		],
 	    "Emotional Changes With A New Baby": [
 			"He sido capaz de reírme y ver el lado divertido de las cosas",
@@ -128,7 +128,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 	    "BPSC": [
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
@@ -150,7 +150,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 	    "Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -162,15 +162,15 @@
 			"Usted y su pareja resuelven sus discusiones con:"
 	    ],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		],
 	    "Emotional Changes With A New Baby": [
 			"He sido capaz de reírme y ver el lado divertido de las cosas",
@@ -228,7 +228,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"BPSC": [
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
@@ -250,7 +250,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -263,15 +263,15 @@
 			"Usted y su pareja resuelven sus discusiones con:"
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		],
 		"Emotional Changes With A New Baby": [
 			"He sido capaz de reírme y ver el lado divertido de las cosas",
@@ -329,7 +329,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"BPSC":[
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
@@ -351,7 +351,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
@@ -361,7 +361,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -377,19 +377,19 @@
 			"Usted y su pareja resuelven sus discusiones con:"
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -412,7 +412,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"BPSC":[
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
@@ -434,7 +434,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
@@ -444,7 +444,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -460,19 +460,19 @@
 			"Usted y su pareja resuelven sus discusiones con:"
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -495,7 +495,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"BPSC":[
 			"¿Su niño/a tiene dificultad al estar con personas desconocidas?",
@@ -517,7 +517,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
@@ -527,7 +527,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa",
@@ -543,19 +543,19 @@
 			"Usted y su pareja resuelven sus discusiones con:"
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -578,7 +578,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"PPSC": [
 			"parace nervioso o asustado?",
@@ -605,7 +605,7 @@
 	    	"Igual",
 	    	"Un Poco Más",
 	    	"Mucho Más",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],	
 		"Parent's Observation of Social Interactions (POSI)": [
 			"¿Su niño/a le trae cosas para mostrárselas a usted?",
@@ -637,7 +637,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
@@ -653,19 +653,19 @@
 			"Usted y su pareja resuelven sus discusiones con: "
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -688,7 +688,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"PPSC": [
 			"parece nervioso o asustado?",
@@ -715,7 +715,7 @@
 	    	"Igual",
 	    	"Un Poco Más",
 	    	"Mucho Más",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],	
 		"Parent's Observation of Social Interactions (POSI)": [
 			"¿Su niño/a le trae cosas para mostrárselas a usted?",
@@ -747,7 +747,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa?",
@@ -763,19 +763,19 @@
 			"Usted y su pareja resuelven sus discusiones con: "
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -798,7 +798,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"PPSC": [
 			"parece nervioso o asustado?",
@@ -825,7 +825,7 @@
 	    	"Igual",
 	    	"Un Poco Más",
 	    	"Mucho Más",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],	
 		"Parent's Observation of Social Interactions (POSI)": [
 			"¿Su niño/a le trae cosas para mostrárselas a usted?",
@@ -857,7 +857,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tabaco en la casa?",
@@ -873,19 +873,19 @@
 			"Usted y su pareja resuelven sus discusiones con: "
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -908,7 +908,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"PPSC": [
 			"parace nervioso o asustado?",
@@ -935,7 +935,7 @@
 	    	"Igual",
 	    	"Un Poco Más",
 	    	"Mucho Más",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],	
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
@@ -945,7 +945,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
@@ -961,19 +961,19 @@
 			"Usted y su pareja resuelven sus discusiones con: "
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -996,7 +996,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],
 		"PPSC": [
 			"parace nervioso o asustado?",
@@ -1023,7 +1023,7 @@
 	    	"Igual",
 	    	"Un Poco Más",
 	    	"Mucho Más",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],			
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
@@ -1033,7 +1033,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],		
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
@@ -1049,19 +1049,19 @@
 			"Usted y su pareja resuelven sus discusiones con: "
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 },
@@ -1084,7 +1084,7 @@
 	    	"Todavía No",
 	    	"Algunas Veces",
 	    	"Mucho",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],		
 		"PPSC": [
 			"parace nervioso o asustado?",
@@ -1111,7 +1111,7 @@
 	    	"Igual",
 	    	"Un Poco Más",
 	    	"Mucho Más",
-	    	"Omita Pregunta"
+	    	"Salta la pregunta"
 	    ],	
 		"Parent's Concerns": [
 			"¿Tiene usted alguna preocupación acerca del aprendizaje o desarrollo de su niño/a?",
@@ -1121,7 +1121,7 @@
 	    	"Nunca",
 	    	"Un Poco",
 	    	"Mucho",
-	    	"Omita Pregunta"	    
+	    	"Salta la pregunta"	    
 	    ],	
 		"Family Questions": [
 			"¿Alguna persona fuma tobaco en la casa?",
@@ -1137,19 +1137,19 @@
 			"Usted y su pareja resuelven sus discusiones con: "
 		],
 	    "Family Questions Options": [
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
-			["Sí", "No", "Omita Pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
+			["Sí", "No", "Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["No hay tensíon", "Alguna tensíon", "Mucha tensíon", "No aplica", 
-			"Omita Pregunta"],
+			"Salta la pregunta"],
 			["Sin dificulta", "Alguna dificultad", "Mucha dificultad", "No aplica", 
-			"Omita Pregunta"]
+			"Salta la pregunta"]
 		]
 	}
 }

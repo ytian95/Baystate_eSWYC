@@ -1,19 +1,6 @@
-Welcome to Polymer Starter Kit Light!
+Welcome to eSWYC patient family interface! 
 
-To begin, fire up a local server from inside the `app` directory. Please make sure to serve up the contents of the directory rather than root as routing will otherwise fail to correctly function.
+The goal of this project is to digitize the Survey of Wellbeing of Young Children (SWYC) form in order to help doctors quickly access young children’s health. 
+The whole project consists of patient family interface and clinician interface.
 
-## Firing up a server using Python
-
-If you are a Windows user, install Python and from inside the `app` directory run:
-
-```
-python -m http.server 8080
-```
-
-or on a Mac/*nix machine, run:
-
-```
-python -m SimpleHTTPServer 8080
-```
-
-You can of course also use WAMP or an alternative tool for serving up content. 
+This repository includes the Polymer elements package, customized polymer elements for the project, SWYC question JSON files, and etc.
