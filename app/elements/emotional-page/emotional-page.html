@@ -92,8 +92,21 @@
    				var answerList = 
    					Polymer.dom(this.root).querySelectorAll("emotional-question");   				 
     			for( var i = 0; i < answerList.length; i++ ){
+    				var originScore = answerList[i].score;
+    				// reverse scoring for some question
+    				if(i !==0 && i!==1 && i!==3) {
+    					if(originScore === 0){
+    						originScore = 3;
+    					} else if(originScore === 1){
+    						originScore = 2;
+    					} else if(originScore === 2){
+    						originScore = 1;
+    					} else if(originScore === 3){
+    						originScore = 0;
+    					};
+    				};
     				// append answer from each questions to the answerArray
-    				this.answers.push(answerList[i].score); 
+    				this.answers.push(originScore); 
     			};    			
     			//console.log(this.answers);
             }      
